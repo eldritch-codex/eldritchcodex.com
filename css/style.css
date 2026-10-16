@@ -209,8 +209,8 @@ code {
 
 .wordmark svg {
     width: 18px;
-    height: 18px;
-    color: var(--armitage);
+    height: 20px;
+    flex: none;
 }
 
 .nav {

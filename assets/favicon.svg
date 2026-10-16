@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0c0d10"/><circle cx="12" cy="12" r="9" stroke="#d9a75c" stroke-width="1.3"/><polygon points="12,5 18,15.5 6,15.5" stroke="#d9a75c" stroke-width="1.2" fill="none"/><circle cx="12" cy="12.2" r="2" fill="#d9a75c"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#000" />
+  <path fill="#e1e1e9" fill-rule="evenodd" d="M240 195 Q512 167 784 195 Q819 420 784 647 Q512 675 240 647 Q205 420 240 195 Z M324 281 Q512 270 700 281 L704 375 Q512 372 320 375 Z M320 469 Q416 472 512 469 L512 566 Q416 566 324 562 Z" />
+  <path fill="#e1e1e9" d="M240 738h363v90H240zM693 738h90v90h-90z" />
+</svg>
