@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Security: restrict what the page can load; GitHub Pages cannot set response headers. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-U2Wd7xW3hMQFTRAe3Ers/r5SYwYyFn139FixyL7glpA=' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'sha256-U2Wd7xW3hMQFTRAe3Ers/r5SYwYyFn139FixyL7glpA=' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Google tag (gtag.js) -->
@@ -68,10 +69,12 @@
         <!-- ================================================================ -->
         <section class="row row--first">
             <div class="cell col-8 hero-copy">
-                <div class="kicker">A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan Bomtempo</a> · Est. MMXXVI</div>
+                <div class="kicker">A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan
+                        Bomtempo</a> · Est. MMXXVI</div>
                 <h1>Learning <em>rendering</em> and <em>simulation</em><br>from <em>first principles</em>.</h1>
                 <p>
-                    EldritchCodex is my open-source learning and passion project: a C++23 application framework (Nodens),
+                    EldritchCodex is my open-source learning and passion project: a C++23 application framework
+                    (Nodens),
                     a Vulkan renderer (Nyar), and an agent that helps me work on both (Armitage). I build
                     from books, documentation and papers, because I want to understand how it all works.
                 </p>
@@ -101,7 +104,9 @@
                     </g>
                     <g class="spin-slow" stroke="rgba(217,167,92,0.42)" stroke-width="1">
                         <polygon points="160,48 257,216 63,216" />
-                        <polygon points="160,272 257,104 63,104" stroke="rgba(110,168,214,0.32)" />
+                    </g>
+                    <g class="spin-rev" stroke="rgba(110,168,214,0.32)" stroke-width="1">
+                        <polygon points="160,272 257,104 63,104" />
                     </g>
                     <g class="spin-rev" stroke="rgba(177,138,224,0.45)" stroke-width="1">
                         <rect x="106" y="106" width="108" height="108" transform="rotate(45 160 160)" />
@@ -132,7 +137,8 @@
             <a class="cell cell--compact col-4 index-card" href="#armitage">
                 <div class="index-meta"><span>III · Python 3.14</span><span>Agent, Skillset &amp; CLI</span></div>
                 <h2>Armitage <span class="arrow">↘</span></h2>
-                <p>Source-grounded agent for research and engineering: every claim cites your code, your Zotero library or its own memory.</p>
+                <p>Source-grounded agent for research and engineering: every claim cites your code, your Zotero library
+                    or its own memory.</p>
             </a>
         </section>
 
@@ -141,25 +147,33 @@
         <!-- ================================================================ -->
         <article id="nodens" class="chapter" data-tone="nodens">
             <header class="row chapter-header">
-                <div class="cell col-12 chapter-bar">
-                    <span class="roman">I</span>
-                    <span class="stack">C++23 · Linux · Static library</span>
-                    <span class="tag">experimental</span>
-                </div>
                 <div class="cell col-8 chapter-head">
+                    <div class="chapter-kicker">
+                        <span class="chapter-index"><span class="roman">I</span><span
+                                class="chapter-label">PROJECT</span></span>
+                        <span class="tag">experimental</span>
+                    </div>
                     <h2>Nodens</h2>
                     <p>
                         An experimental C++23 framework for building interactive desktop applications quickly, with an
                         optional immediate-mode GUI (Dear ImGui). Everything is exposed as C++ modules, so an app
                         starts with <code>import nodens;</code>, and the framework links as a single static library.
                     </p>
+                    <ul class="chapter-facts" aria-label="Project details">
+                        <li>C++23</li>
+                        <li>Linux</li>
+                        <li>Static library</li>
+                    </ul>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Nodens links">
                     <span class="aside-label">Links</span>
                     <ul class="chapter-links">
-                            <li><a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Repository</a></li>
-                            <li><a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank" rel="noopener">Wiki</a></li>
-                            <li><a href="https://github.com/eldritch-codex/template-nodens-app" target="_blank" rel="noopener">App template</a></li>
+                        <li><a href="https://github.com/eldritch-codex/nodens" target="_blank"
+                                rel="noopener">Repository</a></li>
+                        <li><a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank"
+                                rel="noopener">Wiki</a></li>
+                        <li><a href="https://github.com/eldritch-codex/template-nodens-app" target="_blank"
+                                rel="noopener">App template</a></li>
                     </ul>
                 </aside>
             </header>
@@ -173,7 +187,8 @@
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">02 · Lifetime</span>
                     <h4>Layer system</h4>
-                    <p>An app is a stack of layers. They update in order, draw back to front, and receive input from the top down.</p>
+                    <p>An app is a stack of layers. They update in order, draw back to front, and receive input from the
+                        top down.</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">03 · Messaging</span>
@@ -184,7 +199,8 @@
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">04 · Concurrency</span>
                     <h4>Job system</h4>
-                    <p>Runs heavy work, like simulation and data processing, on worker threads so the render thread stays responsive.</p>
+                    <p>Runs heavy work, like simulation and data processing, on worker threads so the render thread
+                        stays responsive.</p>
                 </div>
             </div>
 
@@ -194,7 +210,8 @@
                     <ul class="notes">
                         <li>An app inherits from <code>Nodens::Application</code>, pushes one or more layers, and calls
                             <code>Run()</code>. Every frame, each layer receives <code>OnEvent</code>,
-                            <code>OnUpdate(TimeStep)</code> and <code>OnImGuiRender(TimeStep)</code>.</li>
+                            <code>OnUpdate(TimeStep)</code> and <code>OnImGuiRender(TimeStep)</code>.
+                        </li>
                         <li>Two examples ship with it: <code>circularwave3d</code> (live 2D/3D plots with ImPlot and
                             ImPlot3D) and <code>planetaryscan</code> (the event bus and job system working together).
                         </li>
@@ -241,24 +258,30 @@
         <!-- ================================================================ -->
         <article id="nyar" class="chapter" data-tone="nyar">
             <header class="row chapter-header">
-                <div class="cell col-12 chapter-bar">
-                    <span class="roman">II</span>
-                    <span class="stack">Vulkan 1.3 · Slang · C++23</span>
-                    <span class="tag">experimental</span>
-                </div>
                 <div class="cell col-8 chapter-head">
+                    <div class="chapter-kicker">
+                        <span class="chapter-index"><span class="roman">II</span><span
+                                class="chapter-label">PROJECT</span></span>
+                        <span class="tag">experimental</span>
+                    </div>
                     <h2>Nyar</h2>
                     <p>
                         A Vulkan 1.3 real-time renderer built as a separate module for Nodens, and a learning
                         exercise in modern graphics APIs. It starts from the official Khronos "Drawing a triangle"
                         tutorial and is refactored step by step into a clean rendering API.
                     </p>
+                    <ul class="chapter-facts" aria-label="Project details">
+                        <li>Vulkan 1.3</li>
+                        <li>Slang</li>
+                        <li>C++23</li>
+                    </ul>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Nyar links">
                     <span class="aside-label">Links</span>
                     <ul class="chapter-links">
-                            <li><a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Repository</a></li>
-                            <li><a href="https://github.com/eldritch-codex/nyar/milestones" target="_blank" rel="noopener">Milestones</a></li>
+                        <li><a href="https://github.com/eldritch-codex/nyar" target="_blank"
+                                rel="noopener">Repository</a></li>
+
                     </ul>
                 </aside>
             </header>
@@ -305,6 +328,19 @@
                     </figure>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12 dep-strip">
+                    <span class="label">Stack:</span>
+                    <a href="https://en.cppreference.com/w/cpp/23" target="_blank" rel="noopener">C++<em>23</em></a>
+                    <a href="https://docs.vulkan.org/spec/latest/index.html" target="_blank"
+                        rel="noopener">Vulkan<em>1.3</em></a>
+                    <a href="https://github.com/shader-slang/slang" target="_blank" rel="noopener">Slang</a>
+                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>
+                    <a href="https://registry.khronos.org/SPIR-V/" target="_blank" rel="noopener">SPIR-V<em>1.4</em></a>
+                    <a href="https://github.com/EldritchCodex/Nodens" target="_blank" rel="noopener">Nodens</a>
+                </div>
+            </div>
         </article>
 
         <!-- ================================================================ -->
@@ -312,12 +348,12 @@
         <!-- ================================================================ -->
         <article id="armitage" class="chapter" data-tone="armitage">
             <header class="row chapter-header">
-                <div class="cell col-12 chapter-bar">
-                    <span class="roman">III</span>
-                    <span class="stack">Python 3.14 · Zotero · Obsidian</span>
-                    <span class="tag">private preview</span>
-                </div>
                 <div class="cell col-8 chapter-head">
+                    <div class="chapter-kicker">
+                        <span class="chapter-index"><span class="roman">III</span><span
+                                class="chapter-label">PROJECT</span></span>
+                        <span class="tag">private preview</span>
+                    </div>
                     <h2>Armitage</h2>
                     <p>
                         Armitage helps an AI coding agent answer from true sources. It is a set of skills (instructions
@@ -327,11 +363,16 @@
                         or it is cut or marked unverified. The CLI keeps the memory notes and searches your code and
                         Zotero library.
                     </p>
+                    <ul class="chapter-facts" aria-label="Project details">
+                        <li>Python 3.14</li>
+                        <li>Zotero</li>
+                        <li>Obsidian</li>
+                    </ul>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Armitage links">
                     <span class="aside-label">Links</span>
                     <ul class="chapter-links">
-                            <li class="is-note">Private repository · public release upcoming</li>
+                        <li class="is-note">Private repository · public release upcoming</li>
                     </ul>
                 </aside>
             </header>
@@ -354,12 +395,14 @@
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">01 · Ask</span>
                     <h4>One question</h4>
-                    <p>A single query searches its memory, your code and your papers together (<code>armitage search</code>).</p>
+                    <p>A single query searches its memory, your code and your papers together (<code>armitage
+                            search</code>).</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">02 · Match</span>
                     <h4>Meaning + keywords</h4>
-                    <p>Embedding search (Ollama) finds passages by meaning; SQLite full-text search finds exact words.</p>
+                    <p>Embedding search (Ollama) finds passages by meaning; SQLite full-text search finds exact words.
+                    </p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">03 · Rank</span>
@@ -409,10 +452,14 @@
                     <div class="skill-filters" role="group" aria-label="Filter skills by category" hidden>
                         <button type="button" class="skill-filter" data-filter="all" aria-pressed="true">All</button>
                         <button type="button" class="skill-filter" data-filter="core" aria-pressed="false">Core</button>
-                        <button type="button" class="skill-filter" data-filter="planning" aria-pressed="false">Planning</button>
-                        <button type="button" class="skill-filter" data-filter="research" aria-pressed="false">Research</button>
-                        <button type="button" class="skill-filter" data-filter="engineering" aria-pressed="false">Engineering</button>
-                        <button type="button" class="skill-filter" data-filter="memory" aria-pressed="false">Memory</button>
+                        <button type="button" class="skill-filter" data-filter="planning"
+                            aria-pressed="false">Planning</button>
+                        <button type="button" class="skill-filter" data-filter="research"
+                            aria-pressed="false">Research</button>
+                        <button type="button" class="skill-filter" data-filter="engineering"
+                            aria-pressed="false">Engineering</button>
+                        <button type="button" class="skill-filter" data-filter="memory"
+                            aria-pressed="false">Memory</button>
                     </div>
                     <table class="ledger-table">
                         <thead>
@@ -426,72 +473,89 @@
                             <tr data-cat="core">
                                 <td>armitage</td>
                                 <td>Agent</td>
-                                <td>The citation gate. Before answering a factual question, it searches its memory, your code and your papers first and cites every claim inline. A claim it cannot trace to a source is cut or marked unverified.</td>
+                                <td>The citation gate. Before answering a factual question, it searches its memory, your
+                                    code and your papers first and cites every claim inline. A claim it cannot trace to
+                                    a source is cut or marked unverified.</td>
                             </tr>
                             <tr data-cat="planning">
                                 <td>armitage-init</td>
                                 <td>Either</td>
-                                <td>Starts or resumes a working session: recalls prior work, attaches the right project and plan, then routes to the next skill.</td>
+                                <td>Starts or resumes a working session: recalls prior work, attaches the right project
+                                    and plan, then routes to the next skill.</td>
                             </tr>
                             <tr data-cat="planning">
                                 <td>armitage-project</td>
                                 <td>You</td>
-                                <td>Keeps a project file for a bigger goal: its aims, ideas, open questions and decisions, with its plans listed automatically.</td>
+                                <td>Keeps a project file for a bigger goal: its aims, ideas, open questions and
+                                    decisions, with its plans listed automatically.</td>
                             </tr>
                             <tr data-cat="planning">
                                 <td>armitage-plan</td>
                                 <td>You</td>
-                                <td>Keeps a plan for one piece of work: goal, timeline, reasoning and references. Checkpoints progress so a later session can pick up where you left off.</td>
+                                <td>Keeps a plan for one piece of work: goal, timeline, reasoning and references.
+                                    Checkpoints progress so a later session can pick up where you left off.</td>
                             </tr>
                             <tr data-cat="research">
                                 <td>armitage-research</td>
                                 <td>You</td>
-                                <td>Answers a hard question end to end: drafts a research plan, waits for your approval, reads each source, then writes a report citing the exact Zotero page behind every finding.</td>
+                                <td>Answers a hard question end to end: drafts a research plan, waits for your approval,
+                                    reads each source, then writes a report citing the exact Zotero page behind every
+                                    finding.</td>
                             </tr>
                             <tr data-cat="research">
                                 <td>armitage-consolidate</td>
                                 <td>You</td>
-                                <td>Turns a reviewed research report into linked notes in the memory cache, plus an Obsidian canvas. Shows you the changes first and writes only after you approve.</td>
+                                <td>Turns a reviewed research report into linked notes in the memory cache, plus an
+                                    Obsidian canvas. Shows you the changes first and writes only after you approve.</td>
                             </tr>
                             <tr data-cat="research">
                                 <td>armitage-tutor</td>
                                 <td>You</td>
-                                <td>Teaches you step by step instead of just writing the answer, grounded in your code, notes and papers.</td>
+                                <td>Teaches you step by step instead of just writing the answer, grounded in your code,
+                                    notes and papers.</td>
                             </tr>
                             <tr data-cat="engineering">
                                 <td>armitage-swe</td>
                                 <td>Agent</td>
-                                <td>Before a big code change (more than 3 files or 80 lines, a new feature, a migration), writes one design plan and asks its open questions. It implements only after you approve.</td>
+                                <td>Before a big code change (more than 3 files or 80 lines, a new feature, a
+                                    migration), writes one design plan and asks its open questions. It implements only
+                                    after you approve.</td>
                             </tr>
                             <tr data-cat="engineering">
                                 <td>armitage-issues</td>
                                 <td>You</td>
-                                <td>Writes, searches and triages GitHub issues as Armitage's own GitHub user. Nothing is sent until you approve it.</td>
+                                <td>Writes, searches and triages GitHub issues as Armitage's own GitHub user. Nothing is
+                                    sent until you approve it.</td>
                             </tr>
                             <tr data-cat="engineering">
                                 <td>armitage-maintain</td>
                                 <td>You</td>
-                                <td>Beginner-friendly advice on versioning, git workflow, changelogs, releases and roadmaps, based on the repository's real state.</td>
+                                <td>Beginner-friendly advice on versioning, git workflow, changelogs, releases and
+                                    roadmaps, based on the repository's real state.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-learn</td>
                                 <td>Agent</td>
-                                <td>Saves findings as citation-backed notes in the memory cache, so later sessions can recall what is true and what to do next.</td>
+                                <td>Saves findings as citation-backed notes in the memory cache, so later sessions can
+                                    recall what is true and what to do next.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-decide</td>
                                 <td>Agent</td>
-                                <td>The moment you settle something ("never X", "keep Y"), records it with the reason and your own words, so no later session proposes the opposite.</td>
+                                <td>The moment you settle something ("never X", "keep Y"), records it with the reason
+                                    and your own words, so no later session proposes the opposite.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-user</td>
                                 <td>Agent</td>
-                                <td>Maintains your profile: preferences, corrections, goals and deadlines. Records a fact the turn you state it.</td>
+                                <td>Maintains your profile: preferences, corrections, goals and deadlines. Records a
+                                    fact the turn you state it.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-obsidian</td>
                                 <td>Agent</td>
-                                <td>Formats notes for Obsidian and builds tables, boards and canvas views of the memory when you ask for a map or dashboard.</td>
+                                <td>Formats notes for Obsidian and builds tables, boards and canvas views of the memory
+                                    when you ask for a map or dashboard.</td>
                             </tr>
                             <tr data-cat="core">
                                 <td>armitage-help</td>
@@ -511,6 +575,20 @@
                         <code>caveman</code>, <code>caveman-commit</code> and <code>caveman-review</code> (terse
                         writing and review helpers). They are not part of Armitage's citation system.
                     </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 dep-strip">
+                    <span class="label">Stack:</span>
+                    <a href="https://www.python.org/" target="_blank" rel="noopener">Python<em>3.14</em></a>
+                    <a href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB<em>≥1.5.9</em></a>
+                    <a href="https://ollama.com/" target="_blank" rel="noopener">Ollama<em>≥0.6.2</em></a>
+                    <a href="https://pypi.org/project/pyzotero/" target="_blank"
+                        rel="noopener">PyZotero<em>≥1.15.2</em></a>
+                    <a href="https://sqlite.org/fts5.html" target="_blank" rel="noopener">SQLite FTS5</a>
+                    <a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a>
+                    <a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian</a>
                 </div>
             </div>
         </article>
@@ -539,7 +617,8 @@
 
     <footer class="site-footer">
         <div class="wrap footer-inner">
-            <span>© 2026 EldritchCodex · A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan Bomtempo</a> · Released under the MIT License</span>
+            <span>© 2026 EldritchCodex · A project by <a href="https://renanbomtempo.me" target="_blank"
+                    rel="noopener">Renan Bomtempo</a> · Released under the MIT License</span>
             <div class="footer-links">
                 <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Nodens</a>
                 <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Nyar</a>
