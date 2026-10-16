@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Security: restrict what the page can load; GitHub Pages cannot set response headers. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-U2Wd7xW3hMQFTRAe3Ers/r5SYwYyFn139FixyL7glpA=' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCW76VM10Y"></script>
     <script>
@@ -117,9 +121,9 @@
                 <p>Real-time Vulkan renderer designed as a separate module for Nodens, using Slang shaders.</p>
             </a>
             <a class="cell cell--compact col-4 index-card" href="#armitage">
-                <div class="index-meta"><span>III · Python 3.14</span><span>Skillset &amp; CLI</span></div>
+                <div class="index-meta"><span>III · Python 3.14</span><span>Agent, Skillset &amp; CLI</span></div>
                 <h2>Armitage <span class="arrow">↘</span></h2>
-                <p>Citation-gated research and engineering skillset backed by Zotero RAG and an Obsidian vault.</p>
+                <p>Source-grounded research and engineering agent: a citation-gated skillset and CLI backed by Zotero RAG and an Obsidian vault.</p>
             </a>
         </section>
 
@@ -127,26 +131,14 @@
         <!-- I · NODENS                                                        -->
         <!-- ================================================================ -->
         <article id="nodens" class="chapter" data-tone="nodens">
-            <header class="row">
-                <div class="cell col-4 chapter-meta">
-                    <div>
-                        <div class="roman">I</div>
-                        <div>C++23 · Linux · Static library</div>
-                    </div>
-                    <div class="chapter-links">
-                        <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Repository
-                            ↗</a>
-                        <a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank" rel="noopener">Wiki
-                            ↗</a>
-                        <a href="https://github.com/eldritch-codex/template-nodens-app" target="_blank"
-                            rel="noopener">App template ↗</a>
-                    </div>
+            <header class="row chapter-header">
+                <div class="cell col-12 chapter-bar">
+                    <span class="roman">I</span>
+                    <span class="stack">C++23 · Linux · Static library</span>
                     <span class="tag">experimental</span>
                 </div>
                 <div class="cell col-8 chapter-head">
-                    <div class="chapter-title-row">
-                        <h2>Nodens</h2>
-                    </div>
+                    <h2>Nodens</h2>
                     <p>
                         An experimental C++23 framework for rapidly building interactive desktop applications
                         with an optional immediate-mode GUI. Public APIs are C++ module interfaces
@@ -154,6 +146,14 @@
                         fragment, and the whole framework links as a single static library.
                     </p>
                 </div>
+                <aside class="cell col-4 chapter-aside" aria-label="Nodens links">
+                    <span class="aside-label">Links</span>
+                    <ul class="chapter-links">
+                            <li><a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Repository</a></li>
+                            <li><a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank" rel="noopener">Wiki</a></li>
+                            <li><a href="https://github.com/eldritch-codex/template-nodens-app" target="_blank" rel="noopener">App template</a></li>
+                    </ul>
+                </aside>
             </header>
 
             <div class="row">
@@ -234,30 +234,27 @@
         <!-- II · NYAR                                                         -->
         <!-- ================================================================ -->
         <article id="nyar" class="chapter" data-tone="nyar">
-            <header class="row">
-                <div class="cell col-4 chapter-meta">
-                    <div>
-                        <div class="roman">II</div>
-                        <div>Vulkan 1.3 · Slang · C++23</div>
-                    </div>
-                    <div class="chapter-links">
-                        <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Repository
-                            ↗</a>
-                        <a href="https://github.com/eldritch-codex/nyar/milestones" target="_blank"
-                            rel="noopener">Milestones ↗</a>
-                    </div>
+            <header class="row chapter-header">
+                <div class="cell col-12 chapter-bar">
+                    <span class="roman">II</span>
+                    <span class="stack">Vulkan 1.3 · Slang · C++23</span>
                     <span class="tag">experimental</span>
                 </div>
                 <div class="cell col-8 chapter-head">
-                    <div class="chapter-title-row">
-                        <h2>Nyar</h2>
-                    </div>
+                    <h2>Nyar</h2>
                     <p>
                         A Vulkan real-time renderer built to serve as a dedicated module for Nodens. It is
                         being grown from first principles, starting with the Khronos Vulkan tutorial baseline
                         and refactoring step by step into a clean rendering API.
                     </p>
                 </div>
+                <aside class="cell col-4 chapter-aside" aria-label="Nyar links">
+                    <span class="aside-label">Links</span>
+                    <ul class="chapter-links">
+                            <li><a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Repository</a></li>
+                            <li><a href="https://github.com/eldritch-codex/nyar/milestones" target="_blank" rel="noopener">Milestones</a></li>
+                    </ul>
+                </aside>
             </header>
 
             <div class="row">
@@ -308,27 +305,29 @@
         <!-- III · ARMITAGE                                                    -->
         <!-- ================================================================ -->
         <article id="armitage" class="chapter" data-tone="armitage">
-            <header class="row">
-                <div class="cell col-4 chapter-meta">
-                    <div>
-                        <div class="roman">III</div>
-                        <div>Python 3.14 · Zotero · Obsidian</div>
-                    </div>
-                    <div class="chapter-links"><span>Private repository · public release upcoming</span></div>
+            <header class="row chapter-header">
+                <div class="cell col-12 chapter-bar">
+                    <span class="roman">III</span>
+                    <span class="stack">Python 3.14 · Zotero · Obsidian</span>
                     <span class="tag">private preview</span>
                 </div>
                 <div class="cell col-8 chapter-head">
-                    <div class="chapter-title-row">
-                        <h2>Armitage</h2>
-                    </div>
+                    <h2>Armitage</h2>
                     <p>
-                        A skillset and a CLI for source-disciplined development, work, and research.
-                        The <code>armitage-*</code> skillset enforces a citation gate on the model; the
-                        <code>armitage</code> CLI runs the memory cache, the code index, and the Zotero
-                        RAG pipeline. Any claim that cannot be traced to the workspace, the Archive
+                        A source-grounded agent for development, work, and research: a skillset and a CLI
+                        that work with any coding agent, plus a custom Pi harness, with an ACP adapter for
+                        Zed, on which it works best. The <code>armitage-*</code> skillset enforces a citation
+                        gate on the model; the <code>armitage</code> CLI runs the memory cache, the code
+                        index, and the Zotero RAG pipeline. Any claim that cannot be traced to the workspace, the Archive
                         (Zotero), or the Ledger (Obsidian) is cut or marked unverified.
                     </p>
                 </div>
+                <aside class="cell col-4 chapter-aside" aria-label="Armitage links">
+                    <span class="aside-label">Links</span>
+                    <ul class="chapter-links">
+                            <li class="is-note">Private repository · public release upcoming</li>
+                    </ul>
+                </aside>
             </header>
 
             <div class="row" aria-label="Retrieval pipeline">
@@ -366,9 +365,9 @@
                         <li><strong>Code index</strong> (<code>armitage code</code>): a content-addressed tree-sitter
                             index shared across branches and worktrees; <code>symbol</code> and <code>refs</code> need
                             no model.</li>
-                        <li><strong>Pi persona</strong> (<code>armitage pi</code>): the agent installed to
-                            <code>~/.armitage/pi</code> and run in the terminal or Zed's Agent Panel: system prompt,
-                            extensions, roles, prompts and the ACP adapter.
+                        <li><strong>Pi agent harness</strong> (<code>armitage pi</code>): the custom harness Armitage works
+                            best on, installed to <code>~/.armitage/pi</code> and run in the terminal or Zed's
+                            Agent Panel: system prompt, extensions, roles, prompts and the ACP adapter.
                         </li>
                     </ul>
                 </div>
@@ -494,14 +493,14 @@
         <section class="row">
             <div class="cell col-7">
                 <h3>Shared Arch Linux toolchain</h3>
-                <p style="margin:0">
+                <p class="flush-text">
                     Nodens and Nyar share a single container image with Clang, CMake, Ninja, Vulkan SDK,
                     Slang, and Tracy preconfigured, ready for NVIDIA Container Toolkit or
                     <code>/dev/dri</code> passthrough.
                 </p>
             </div>
-            <div class="cell col-5" style="display:flex;align-items:center">
-                <div class="pull-box" style="width:100%">
+            <div class="cell col-5 cell--center">
+                <div class="pull-box">
                     <span id="pull-cmd">ghcr.io/eldritch-codex/arch-dev:main</span>
                     <button type="button" data-copy="#pull-cmd">copy</button>
                 </div>
