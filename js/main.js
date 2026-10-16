@@ -149,6 +149,18 @@
     }
   }
 
+  const filterBar = $(".skill-filters");
+  if (filterBar) {
+    const rows = $$(".ledger-table tbody tr");
+    filterBar.hidden = false;
+    filterBar.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-filter]");
+      if (!btn) return;
+      $$("[data-filter]", filterBar).forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      rows.forEach((r) => { r.hidden = btn.dataset.filter !== "all" && r.dataset.cat !== btn.dataset.filter; });
+    });
+  }
+
   $$("[data-copy]").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const text = $(btn.dataset.copy)?.textContent ?? "";

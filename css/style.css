@@ -271,6 +271,17 @@ li {
     text-wrap: pretty;
 }
 
+.kicker a {
+    color: inherit;
+    border-bottom: 1px solid var(--rule-strong);
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.kicker a:hover {
+    color: var(--ink);
+    border-color: var(--armitage);
+}
+
 .hero-copy h1 {
     font-family: var(--font-display);
     font-weight: 300;
@@ -292,6 +303,13 @@ li {
     max-width: 62ch;
     font-size: 16px;
     color: var(--text);
+}
+
+.hero-copy .hero-note {
+    margin: -12px 0 28px;
+    max-width: 62ch;
+    font-size: 13.5px;
+    color: var(--muted);
 }
 
 .hero-links {
@@ -869,6 +887,70 @@ li {
     white-space: nowrap;
 }
 
+.table-head {
+    padding: 22px var(--pad-x) 4px;
+}
+
+.table-head h3 {
+    margin: 0 0 6px;
+}
+
+.table-head p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--muted);
+}
+
+.skill-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px var(--pad-x);
+    border-bottom: 1px solid var(--rule);
+}
+
+.skill-filters[hidden] {
+    display: none;
+}
+
+.skill-filter {
+    padding: 4px 11px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 3px;
+    background: none;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.skill-filter:hover {
+    color: var(--ink);
+}
+
+.skill-filter[aria-pressed="true"] {
+    color: var(--armitage);
+    border-color: color-mix(in srgb, var(--armitage) 45%, transparent);
+}
+
+.ledger-table td:last-child {
+    color: var(--text);
+}
+
+.ledger-legend {
+    margin: 0;
+    padding: 13px var(--pad-x);
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.ledger-legend strong {
+    font-weight: 500;
+    color: var(--text);
+}
+
 .ledger-note {
     margin: 0;
     padding: 13px var(--pad-x) 15px;
@@ -926,6 +1008,14 @@ li {
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
+}
+
+.footer-inner a:not(.footer-links a) {
+    border-bottom: 1px solid var(--rule-strong);
+}
+
+.footer-inner a:not(.footer-links a):hover {
+    color: var(--ink);
 }
 
 .footer-links {
@@ -1006,4 +1096,26 @@ li {
 
 .cell--center .pull-box {
     width: 100%;
+}
+
+/* Honest-context note under a chapter header */
+.callout {
+    border-left: 2px solid var(--tone);
+}
+
+.callout-label {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tone);
+}
+
+.callout p {
+    margin: 0;
+    max-width: 78ch;
+    font-size: 14px;
+    color: var(--text);
 }

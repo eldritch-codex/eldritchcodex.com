@@ -27,11 +27,12 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
     <title>EldritchCodex · Nodens, Nyar, Armitage</title>
+    <meta name="author" content="Renan Bomtempo">
     <meta name="description"
-        content="A development environment for rendering, simulation, and source-grounded agentic workflows. Home of Nodens, Nyar, and Armitage.">
+        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both).">
     <meta property="og:title" content="EldritchCodex" />
     <meta property="og:description"
-        content="A development environment for rendering, simulation, and source-grounded agentic workflows. Home of Nodens, Nyar, and Armitage." />
+        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both)." />
     <meta property="og:url" content="https://eldritchcodex.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="EldritchCodex" />
@@ -67,16 +68,24 @@
         <!-- ================================================================ -->
         <section class="row row--first">
             <div class="cell col-8 hero-copy">
-                <div class="kicker">Index of works · Est. MMXXVI</div>
-                <h1>Crafted for <em>rendering</em>, <em>simulation</em>,<br>and <em>source-grounded</em> agents.</h1>
+                <div class="kicker">A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan Bomtempo</a> · Est. MMXXVI</div>
+                <h1>Learning <em>rendering</em> and <em>simulation</em><br>from <em>first principles</em>.</h1>
                 <p>
-                    An open-source Linux development environment uniting C++23 application
-                    architecture, Vulkan rendering, and citation-gated agentic workflows.
+                    EldritchCodex is my open-source learning and passion project: a C++23 application framework (Nodens),
+                    a Vulkan renderer (Nyar), and an agent that helps me work on both (Armitage). I build
+                    from books, documentation and papers, because I want to understand how it all works.
+                </p>
+                <p class="hero-note">
+                    Armitage is a personal tool, built largely with AI coding agents and tailored to how I
+                    learn. Agent tooling is outside my area of expertise.
                 </p>
                 <div class="hero-links">
-                    <a class="btn" href="#nodens">Read the index ↓</a>
+                    <a class="btn" href="#projects">See the projects ↓</a>
                     <a class="link-quiet" href="https://github.com/eldritch-codex" target="_blank" rel="noopener">
                         github.com/eldritch-codex ↗
+                    </a>
+                    <a class="link-quiet" href="https://renanbomtempo.me" target="_blank" rel="noopener">
+                        renanbomtempo.me ↗
                     </a>
                 </div>
             </div>
@@ -109,7 +118,7 @@
         <!-- ================================================================ -->
         <!-- Three-entry index (4 + 4 + 4)                                     -->
         <!-- ================================================================ -->
-        <section class="row" aria-label="Projects">
+        <section class="row" id="projects" aria-label="Projects">
             <a class="cell cell--compact col-4 index-card" href="#nodens">
                 <div class="index-meta"><span>I · C++23</span><span>Framework</span></div>
                 <h2>Nodens <span class="arrow">↘</span></h2>
@@ -123,7 +132,7 @@
             <a class="cell cell--compact col-4 index-card" href="#armitage">
                 <div class="index-meta"><span>III · Python 3.14</span><span>Agent, Skillset &amp; CLI</span></div>
                 <h2>Armitage <span class="arrow">↘</span></h2>
-                <p>Source-grounded research and engineering agent: a citation-gated skillset and CLI backed by Zotero RAG and an Obsidian vault.</p>
+                <p>Source-grounded agent for research and engineering: every claim cites your code, your Zotero library or its own memory.</p>
             </a>
         </section>
 
@@ -140,10 +149,9 @@
                 <div class="cell col-8 chapter-head">
                     <h2>Nodens</h2>
                     <p>
-                        An experimental C++23 framework for rapidly building interactive desktop applications
-                        with an optional immediate-mode GUI. Public APIs are C++ module interfaces
-                        (<code>.cppm</code>), third-party headers stay isolated inside the global module
-                        fragment, and the whole framework links as a single static library.
+                        An experimental C++23 framework for building interactive desktop applications quickly, with an
+                        optional immediate-mode GUI (Dear ImGui). Everything is exposed as C++ modules, so an app
+                        starts with <code>import nodens;</code>, and the framework links as a single static library.
                     </p>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Nodens links">
@@ -160,42 +168,40 @@
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">01 · Windowing</span>
                     <h4>GLFW windows</h4>
-                    <p>Window, context, and input management with both OpenGL and Vulkan backends.</p>
+                    <p>Creates the window, graphics context and input handling, with OpenGL or Vulkan backends.</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">02 · Lifetime</span>
                     <h4>Layer system</h4>
-                    <p>Governs execution order, visual rendering priority, and top-to-bottom input routing.</p>
+                    <p>An app is a stack of layers. They update in order, draw back to front, and receive input from the top down.</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">03 · Messaging</span>
                     <h4>Event system</h4>
-                    <p>Input events route down the <code>LayerStack</code>; a thread-safe pub/sub <code>EventBus</code>
-                        dispatches custom events immediately or queued.</p>
+                    <p>Input events pass down the layers. A thread-safe event bus lets any part of the app publish and
+                        subscribe to custom events, handled immediately or queued.</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
                     <span class="idx">04 · Concurrency</span>
                     <h4>Job system</h4>
-                    <p>Multithreaded task execution so simulation and data work stay off the render thread.</p>
+                    <p>Runs heavy work, like simulation and data processing, on worker threads so the render thread stays responsive.</p>
                 </div>
             </div>
 
             <div class="row">
                 <div class="cell col-5">
-                    <h3>Consumer code starts with <code>import nodens;</code></h3>
-                    <p>
-                        Applications inherit from <code>Nodens::Application</code>, push one or more layers,
-                        and call <code>Run()</code>. Each layer receives <code>OnEvent</code>,
-                        <code>OnUpdate(TimeStep)</code>, and <code>OnImGuiRender(TimeStep)</code> every frame.
-                    </p>
+                    <h3>Writing an app</h3>
                     <ul class="notes">
-                        <li>Ships with two examples: <code>circularwave3d</code> (live 2D/3D plotting with ImPlot and
-                            ImPlot3D) and <code>planetaryscan</code> (event bus + multithreaded job system).</li>
-                        <li>Built-in <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy</a>
-                            frame and GPU profiling: drop <code>ZoneScoped</code> into a layer method to trace it.</li>
-                        <li>All dependencies are fetched and compiled from source at configure time via CMake
-                            <code>FetchContent</code>.
+                        <li>An app inherits from <code>Nodens::Application</code>, pushes one or more layers, and calls
+                            <code>Run()</code>. Every frame, each layer receives <code>OnEvent</code>,
+                            <code>OnUpdate(TimeStep)</code> and <code>OnImGuiRender(TimeStep)</code>.</li>
+                        <li>Two examples ship with it: <code>circularwave3d</code> (live 2D/3D plots with ImPlot and
+                            ImPlot3D) and <code>planetaryscan</code> (the event bus and job system working together).
                         </li>
+                        <li>Tracy profiling is built in: add <code>ZoneScoped</code> inside any layer method to see
+                            it in the profiler.</li>
+                        <li>CMake downloads and builds every dependency from source, so there is nothing to install by
+                            hand.</li>
                     </ul>
                 </div>
                 <div class="cell col-7">
@@ -243,9 +249,9 @@
                 <div class="cell col-8 chapter-head">
                     <h2>Nyar</h2>
                     <p>
-                        A Vulkan real-time renderer built to serve as a dedicated module for Nodens. It is
-                        being grown from first principles, starting with the Khronos Vulkan tutorial baseline
-                        and refactoring step by step into a clean rendering API.
+                        A Vulkan 1.3 real-time renderer built as a separate module for Nodens, and a learning
+                        exercise in modern graphics APIs. It starts from the official Khronos "Drawing a triangle"
+                        tutorial and is refactored step by step into a clean rendering API.
                     </p>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Nyar links">
@@ -261,21 +267,21 @@
                 <div class="cell cell--compact col-4 pillar">
                     <span class="idx">01 · Shaders</span>
                     <h4>Slang to SPIR-V</h4>
-                    <p>Shaders are authored in Slang and compiled directly to SPIR-V 1.4 by a custom CMake target
-                        invoking <code>slangc</code>.</p>
+                    <p>Shaders are written in Slang, a shading language, and compiled to SPIR-V (the format Vulkan
+                        loads) by a custom CMake target.</p>
                 </div>
                 <div class="cell cell--compact col-4 pillar">
                     <span class="idx">02 · Pipeline</span>
                     <h4>Modern Vulkan 1.3</h4>
-                    <p>Uses <code>import vulkan;</code> along with <code>dynamicRendering</code>,
-                        <code>synchronization2</code>, and extended dynamic state.
+                    <p>Uses Vulkan's current features: dynamic rendering (no render pass objects),
+                        <code>synchronization2</code> and extended dynamic state.
                     </p>
                 </div>
                 <div class="cell cell--compact col-4 pillar">
                     <span class="idx">03 · Direction</span>
                     <h4>Nodens integration</h4>
-                    <p>Packaged as <code>export module nyar;</code> so Nodens applications can import it as their
-                        rendering backend.</p>
+                    <p>Packaged as a C++ module (<code>export module nyar;</code>) that Nodens applications import
+                        as their rendering backend.</p>
                 </div>
             </div>
 
@@ -314,12 +320,12 @@
                 <div class="cell col-8 chapter-head">
                     <h2>Armitage</h2>
                     <p>
-                        A source-grounded agent for development, work, and research: a skillset and a CLI
-                        that work with any coding agent, plus a custom Pi harness, with an ACP adapter for
-                        Zed, on which it works best. The <code>armitage-*</code> skillset enforces a citation
-                        gate on the model; the <code>armitage</code> CLI runs the memory cache, the code
-                        index, and the Zotero RAG pipeline. Any claim that cannot be traced to the workspace, the Archive
-                        (Zotero), or the Ledger (Obsidian) is cut or marked unverified.
+                        Armitage helps an AI coding agent answer from true sources. It is a set of skills (instructions
+                        the agent follows) plus a command-line tool, and it works with any coding agent. A custom Pi
+                        harness, with a Zed integration (ACP), is where it works best. The skills enforce one rule:
+                        every factual claim must point to your workspace, your Zotero library or the agent's memory,
+                        or it is cut or marked unverified. The CLI keeps the memory notes and searches your code and
+                        Zotero library.
                     </p>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Armitage links">
@@ -330,52 +336,64 @@
                 </aside>
             </header>
 
-            <div class="row" aria-label="Retrieval pipeline">
+            <div class="row">
+                <div class="cell cell--compact col-12 callout">
+                    <span class="callout-label">About Armitage</span>
+                    <p>
+                        I love understanding things from first principles, grounded in true sources: books,
+                        documentation and papers. Armitage is how I take advantage of agentic workflows while
+                        keeping that habit: a tool tailored to my own use case, built to help me learn and develop
+                        Nodens and Nyar with every claim traceable to its source. It is built largely with AI
+                        coding agents, and agent tooling is outside my area of expertise (my background is graphics
+                        and numerical simulation), so treat it as a personal, experimental tool.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" aria-label="How Armitage answers a question">
                 <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">01 · Intake</span>
-                    <h4>armitage search</h4>
-                    <p>One query spans memory, code, and Zotero together.</p>
+                    <span class="idx">01 · Ask</span>
+                    <h4>One question</h4>
+                    <p>A single query searches its memory, your code and your papers together (<code>armitage search</code>).</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">02 · Hybrid recall</span>
-                    <h4>Dense + FTS5</h4>
-                    <p>Ollama <code>qwen3-embedding-rag</code> vectors paired with SQLite FTS5 keyword search.</p>
+                    <span class="idx">02 · Match</span>
+                    <h4>Meaning + keywords</h4>
+                    <p>Embedding search (Ollama) finds passages by meaning; SQLite full-text search finds exact words.</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">03 · Fusion &amp; rerank</span>
-                    <h4>RRF → Qwen3</h4>
-                    <p>Reciprocal rank fusion scored by a Qwen3 cross-encoder reranker.</p>
+                    <span class="idx">03 · Rank</span>
+                    <h4>Best passages first</h4>
+                    <p>Both result lists are merged, then a reranking model (Qwen3) puts the most relevant first.</p>
                 </div>
                 <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">04 · The gate</span>
-                    <h4>Cited claim</h4>
-                    <p>Every factual statement carries an inline <code>[^n]</code> footnote to its source.</p>
+                    <span class="idx">04 · Cite</span>
+                    <h4>Every claim sourced</h4>
+                    <p>Each factual statement carries an inline <code>[^n]</code> footnote to its source.</p>
                 </div>
             </div>
 
             <div class="row">
                 <div class="cell col-5">
-                    <h3>Three corpora, one discipline</h3>
+                    <h3>Where it looks</h3>
                     <ul class="notes">
-                        <li><strong>The Ledger</strong> (<code>armitage memory</code>): a plain-Markdown vault in
-                            Obsidian holding plans, standing decisions, concept notes, and user profile.</li>
-                        <li><strong>The Archive</strong> (<code>armitage zotero</code>): a read-only local Zotero 7+
-                            library with PDF extraction via <code>pdf-inspector</code>, layout-aware OCR with
-                            PaddleOCR-VL, and resumable indexing.</li>
-                        <li><strong>Code index</strong> (<code>armitage code</code>): a content-addressed tree-sitter
-                            index shared across branches and worktrees; <code>symbol</code> and <code>refs</code> need
-                            no model.</li>
-                        <li><strong>Pi agent harness</strong> (<code>armitage pi</code>): the custom harness Armitage works
-                            best on, installed to <code>~/.armitage/pi</code> and run in the terminal or Zed's
-                            Agent Panel: system prompt, extensions, roles, prompts and the ACP adapter.
-                        </li>
+                        <li><strong>Memory</strong> (<code>armitage memory</code>): the agent's own notes, written and
+                            maintained by the agent as plain Markdown in an Obsidian vault: plans, decisions, concepts
+                            and your profile.</li>
+                        <li><strong>Papers and books</strong> (<code>armitage zotero</code>): your local Zotero 7+
+                            library, read-only, with PDF text extraction and OCR for scanned pages.</li>
+                        <li><strong>Code</strong> (<code>armitage code</code>): an index of your repositories, shared
+                            across branches and worktrees. Looking up a symbol or where it is used needs no AI
+                            model.</li>
+                        <li><strong>Pi harness</strong> (<code>armitage pi</code>): the agent environment Armitage
+                            works best in, run in the terminal or in Zed's Agent Panel.</li>
                     </ul>
                 </div>
                 <div class="cell col-7">
                     <div class="figure">
                         <div class="figure-bar">
-                            <span>Quick start</span>
-                            <span>uv · python ≥ 3.14</span>
+                            <span>Example commands</span>
+                            <span>papers need Zotero + Ollama</span>
                         </div>
                         <pre class="shell" data-shell="armitage-cli"></pre>
                     </div>
@@ -384,104 +402,114 @@
 
             <div class="row">
                 <div class="cell cell--flush col-12">
+                    <div class="table-head">
+                        <h3>The skills</h3>
+                        <p>Instructions the agent follows. Filter them by what they are for.</p>
+                    </div>
+                    <div class="skill-filters" role="group" aria-label="Filter skills by category" hidden>
+                        <button type="button" class="skill-filter" data-filter="all" aria-pressed="true">All</button>
+                        <button type="button" class="skill-filter" data-filter="core" aria-pressed="false">Core</button>
+                        <button type="button" class="skill-filter" data-filter="planning" aria-pressed="false">Planning</button>
+                        <button type="button" class="skill-filter" data-filter="research" aria-pressed="false">Research</button>
+                        <button type="button" class="skill-filter" data-filter="engineering" aria-pressed="false">Engineering</button>
+                        <button type="button" class="skill-filter" data-filter="memory" aria-pressed="false">Memory</button>
+                    </div>
                     <table class="ledger-table">
                         <thead>
                             <tr>
                                 <th>Skill</th>
-                                <th>Fires</th>
-                                <th>Job</th>
+                                <th>Starts</th>
+                                <th>What it does</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr data-cat="core">
                                 <td>armitage</td>
-                                <td>model</td>
-                                <td>The gate: source hierarchy, recall-first intake, inline <code>[^n]</code> citations
-                                </td>
+                                <td>Agent</td>
+                                <td>The citation gate. Before answering a factual question, it searches its memory, your code and your papers first and cites every claim inline. A claim it cannot trace to a source is cut or marked unverified.</td>
                             </tr>
-                            <tr>
+                            <tr data-cat="planning">
                                 <td>armitage-init</td>
-                                <td>model / user</td>
-                                <td>Open a project and its plans; route</td>
+                                <td>Either</td>
+                                <td>Starts or resumes a working session: recalls prior work, attaches the right project and plan, then routes to the next skill.</td>
                             </tr>
-                            <tr>
-                                <td>armitage-research</td>
-                                <td>user</td>
-                                <td>Draft a research plan for approval, read each primary reference, write a report with
-                                    exact Zotero citations</td>
-                            </tr>
-                            <tr>
-                                <td>armitage-swe</td>
-                                <td>model</td>
-                                <td>Design a non-trivial code change as one SWE plan, ask its open questions, implement
-                                    only after approval</td>
-                            </tr>
-                            <tr>
-                                <td>armitage-consolidate</td>
-                                <td>user</td>
-                                <td>Consolidate a reviewed report or the concept queue into <code>concepts/</code>
-                                    pointer
-                                    notes, links and a canvas</td>
-                            </tr>
-                            <tr>
+                            <tr data-cat="planning">
                                 <td>armitage-project</td>
-                                <td>user</td>
-                                <td>Open, update or navigate a project</td>
+                                <td>You</td>
+                                <td>Keeps a project file for a bigger goal: its aims, ideas, open questions and decisions, with its plans listed automatically.</td>
                             </tr>
-                            <tr>
+                            <tr data-cat="planning">
                                 <td>armitage-plan</td>
-                                <td>user</td>
-                                <td>Maintain a plan; checkpoint work</td>
+                                <td>You</td>
+                                <td>Keeps a plan for one piece of work: goal, timeline, reasoning and references. Checkpoints progress so a later session can pick up where you left off.</td>
                             </tr>
-                            <tr>
-                                <td>armitage-learn</td>
-                                <td>model</td>
-                                <td>Cache notes: what is true, what to do next</td>
+                            <tr data-cat="research">
+                                <td>armitage-research</td>
+                                <td>You</td>
+                                <td>Answers a hard question end to end: drafts a research plan, waits for your approval, reads each source, then writes a report citing the exact Zotero page behind every finding.</td>
                             </tr>
-                            <tr>
-                                <td>armitage-decide</td>
-                                <td>model</td>
-                                <td>Record a standing decision with its rationale and the user's exact words; injected
-                                    into every session</td>
+                            <tr data-cat="research">
+                                <td>armitage-consolidate</td>
+                                <td>You</td>
+                                <td>Turns a reviewed research report into linked notes in the memory cache, plus an Obsidian canvas. Shows you the changes first and writes only after you approve.</td>
                             </tr>
-                            <tr>
-                                <td>armitage-user</td>
-                                <td>model</td>
-                                <td>The profile: who the user is, focus, preferences, corrections, topics, areas</td>
-                            </tr>
-                            <tr>
-                                <td>armitage-obsidian</td>
-                                <td>model</td>
-                                <td>Obsidian Markdown, Bases and Canvas views in <code>views/</code></td>
-                            </tr>
-                            <tr>
-                                <td>armitage-issues</td>
-                                <td>user</td>
-                                <td>GitHub issues as Armitage's own user: write, triage, draft, send; each send approved
-                                </td>
-                            </tr>
-                            <tr>
+                            <tr data-cat="research">
                                 <td>armitage-tutor</td>
-                                <td>user</td>
-                                <td>Source-grounded, step-by-step teaching in chat</td>
+                                <td>You</td>
+                                <td>Teaches you step by step instead of just writing the answer, grounded in your code, notes and papers.</td>
                             </tr>
-                            <tr>
+                            <tr data-cat="engineering">
+                                <td>armitage-swe</td>
+                                <td>Agent</td>
+                                <td>Before a big code change (more than 3 files or 80 lines, a new feature, a migration), writes one design plan and asks its open questions. It implements only after you approve.</td>
+                            </tr>
+                            <tr data-cat="engineering">
+                                <td>armitage-issues</td>
+                                <td>You</td>
+                                <td>Writes, searches and triages GitHub issues as Armitage's own GitHub user. Nothing is sent until you approve it.</td>
+                            </tr>
+                            <tr data-cat="engineering">
                                 <td>armitage-maintain</td>
-                                <td>user</td>
-                                <td>Versioning, git, changelog, issues, release and roadmap advice</td>
+                                <td>You</td>
+                                <td>Beginner-friendly advice on versioning, git workflow, changelogs, releases and roadmaps, based on the repository's real state.</td>
                             </tr>
-                            <tr>
+                            <tr data-cat="memory">
+                                <td>armitage-learn</td>
+                                <td>Agent</td>
+                                <td>Saves findings as citation-backed notes in the memory cache, so later sessions can recall what is true and what to do next.</td>
+                            </tr>
+                            <tr data-cat="memory">
+                                <td>armitage-decide</td>
+                                <td>Agent</td>
+                                <td>The moment you settle something ("never X", "keep Y"), records it with the reason and your own words, so no later session proposes the opposite.</td>
+                            </tr>
+                            <tr data-cat="memory">
+                                <td>armitage-user</td>
+                                <td>Agent</td>
+                                <td>Maintains your profile: preferences, corrections, goals and deadlines. Records a fact the turn you state it.</td>
+                            </tr>
+                            <tr data-cat="memory">
+                                <td>armitage-obsidian</td>
+                                <td>Agent</td>
+                                <td>Formats notes for Obsidian and builds tables, boards and canvas views of the memory when you ask for a map or dashboard.</td>
+                            </tr>
+                            <tr data-cat="core">
                                 <td>armitage-help</td>
-                                <td>user</td>
-                                <td>The quick-reference card</td>
+                                <td>You</td>
+                                <td>Shows the quick-reference card for all the skills.</td>
                             </tr>
                         </tbody>
                     </table>
+                    <p class="ledger-legend">
+                        <strong>Starts</strong> says who triggers a skill: <em>You</em> invoke it by name,
+                        <em>Agent</em> means the model loads it on its own when the situation matches, and
+                        <em>Either</em> works both ways.
+                    </p>
                     <p class="ledger-note">
-                        Four skills vendored from Caveman (MIT) ship alongside them: <code>work-patterns</code>
-                        (the six work patterns folded into one file) and the compression tools
-                        <code>caveman</code>, <code>caveman-commit</code> and <code>caveman-review</code>. They are
-                        not part of the family: no charter, no citations, no vault.
+                        Four more skills are bundled from the Caveman project (MIT): <code>work-patterns</code> (six
+                        working habits, such as investigate-first and surgical-patch) and
+                        <code>caveman</code>, <code>caveman-commit</code> and <code>caveman-review</code> (terse
+                        writing and review helpers). They are not part of Armitage's citation system.
                     </p>
                 </div>
             </div>
@@ -511,7 +539,7 @@
 
     <footer class="site-footer">
         <div class="wrap footer-inner">
-            <span>© 2026 EldritchCodex · Released under the MIT License</span>
+            <span>© 2026 EldritchCodex · A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan Bomtempo</a> · Released under the MIT License</span>
             <div class="footer-links">
                 <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Nodens</a>
                 <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Nyar</a>
@@ -611,16 +639,11 @@ float4 fragMain(VertexOutput inVert)
 </script>
 
     <script type="text/plain" id="sh-armitage-cli">
-uv tool install armitage-cli
-armitage skills install        # -> ~/.armitage/skills
-armitage install pi            # optional: the Pi persona -> ~/.armitage/pi
-armitage zotero init           # index dirs, BTRFS, Zotero data dir, local API
-armitage zotero index          # resumable; Ctrl-C is safe
-armitage zotero query "mip levels in VkImageCreateInfo"
-armitage code index && armitage code symbol validate_token
-armitage memory index          # semantic index over the memory cache
-armitage search "image creation"   # memory, code and Zotero in one pass
-armitage doctor                # deployed skills/persona vs packaged copies
+armitage skills install               # give your agent the skills
+armitage memory recall "retrieval"    # what past sessions saved about this
+armitage zotero query "mip levels"    # search my papers and books
+armitage code symbol validate_token   # where is this defined?
+armitage search "image creation"      # memory, code and papers at once
 </script>
 
     <script src="js/main.js" defer></script>
