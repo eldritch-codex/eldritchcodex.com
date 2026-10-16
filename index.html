@@ -2,450 +2,476 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCW76VM10Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-JCW76VM10Y');
-  </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCW76VM10Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JCW76VM10Y');
+    </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-  <title>EldritchCodex — Nodens, Nyar, Armitage</title>
-  <meta name="description"
-    content="Interactive graphics, engine architecture, and source-disciplined research. Home of Nodens, Nyar, and Armitage.">
-  <meta property="og:title" content="EldritchCodex" />
-  <meta property="og:description"
-    content="Interactive graphics, engine architecture, and source-disciplined research. Home of Nodens, Nyar, and Armitage." />
-  <meta property="og:url" content="https://eldritchcodex.com/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="EldritchCodex" />
-  <meta name="theme-color" content="#0c0d10">
+    <title>EldritchCodex · Nodens, Nyar, Armitage</title>
+    <meta name="description"
+        content="A development environment for rendering, simulation, and source-grounded agentic workflows. Home of Nodens, Nyar, and Armitage.">
+    <meta property="og:title" content="EldritchCodex" />
+    <meta property="og:description"
+        content="A development environment for rendering, simulation, and source-grounded agentic workflows. Home of Nodens, Nyar, and Armitage." />
+    <meta property="og:url" content="https://eldritchcodex.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EldritchCodex" />
+    <meta name="theme-color" content="#0c0d10">
 </head>
 
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="wordmark" href="#top">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.2" />
-          <polygon points="12,4.5 18.5,16 5.5,16" stroke="currentColor" stroke-width="1.1" fill="none" />
-          <circle cx="12" cy="12.2" r="2" fill="currentColor" />
-        </svg>
-        EldritchCodex
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#nodens"><span class="num">I.</span>Nodens</a>
-        <a href="#nyar"><span class="num">II.</span>Nyar</a>
-        <a href="#armitage"><span class="num">III.</span>Armitage</a>
-        <a class="ext hide-sm" href="https://github.com/eldritch-codex" target="_blank" rel="noopener">GitHub ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap" id="top">
-
-    <!-- ================================================================ -->
-    <!-- Hero (8 + 4)                                                      -->
-    <!-- ================================================================ -->
-    <section class="row row--first">
-      <div class="cell col-8 hero-copy">
-        <div class="kicker">Index of works · Est. MMXXVI</div>
-        <h1>A workshop for <em>real-time</em> rendering, simulation, and cited research.</h1>
-        <p>
-          EldritchCodex is an ongoing study in engine design, computer graphics, and
-          research tooling. Everything here is open-source, written for Linux, and built
-          from primary literature.
-        </p>
-        <div class="hero-links">
-          <a class="btn" href="#nodens">Read the index ↓</a>
-          <a class="link-quiet" href="https://github.com/eldritch-codex" target="_blank" rel="noopener">
-            github.com/eldritch-codex ↗
-          </a>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="wordmark" href="#top">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.2" />
+                    <polygon points="12,4.5 18.5,16 5.5,16" stroke="currentColor" stroke-width="1.1" fill="none" />
+                    <circle cx="12" cy="12.2" r="2" fill="currentColor" />
+                </svg>
+                EldritchCodex
+            </a>
+            <nav class="nav" aria-label="Primary">
+                <a href="#nodens"><span class="num">I.</span>Nodens</a>
+                <a href="#nyar"><span class="num">II.</span>Nyar</a>
+                <a href="#armitage"><span class="num">III.</span>Armitage</a>
+                <a class="ext hide-sm" href="https://github.com/eldritch-codex" target="_blank" rel="noopener">GitHub
+                    ↗</a>
+            </nav>
         </div>
-      </div>
+    </header>
 
-      <div class="cell col-4 hero-art" aria-hidden="true">
-        <svg class="astrolabe" viewBox="0 0 320 320" fill="none">
-          <g stroke="rgba(236,232,223,0.16)" stroke-width="1">
-            <circle cx="160" cy="160" r="142" />
-            <circle cx="160" cy="160" r="112" stroke-dasharray="2 5" />
-            <circle cx="160" cy="160" r="76" />
-            <line x1="160" y1="8" x2="160" y2="312" />
-            <line x1="8" y1="160" x2="312" y2="160" />
-          </g>
-          <g class="spin-slow" stroke="rgba(217,167,92,0.42)" stroke-width="1">
-            <polygon points="160,48 257,216 63,216" />
-            <polygon points="160,272 257,104 63,104" stroke="rgba(110,168,214,0.32)" />
-          </g>
-          <g class="spin-rev" stroke="rgba(177,138,224,0.45)" stroke-width="1">
-            <rect x="106" y="106" width="108" height="108" transform="rotate(45 160 160)" />
-            <circle cx="160" cy="48" r="3" fill="#d9a75c" stroke="none" />
-            <circle cx="257" cy="216" r="3" fill="#6ea8d6" stroke="none" />
-            <circle cx="63" cy="216" r="3" fill="#b18ae0" stroke="none" />
-          </g>
-          <circle cx="160" cy="160" r="18" stroke="rgba(236,232,223,0.35)" />
-          <circle cx="160" cy="160" r="3.5" fill="#ece8df" />
-        </svg>
-      </div>
-    </section>
+    <main class="wrap" id="top">
 
-    <!-- ================================================================ -->
-    <!-- Three-entry index (4 + 4 + 4)                                     -->
-    <!-- ================================================================ -->
-    <section class="row" aria-label="Projects">
-      <a class="cell cell--compact col-4 index-card" href="#nodens">
-        <div class="index-meta"><span>I · C++23</span><span>Framework</span></div>
-        <h2>Nodens <span class="arrow">↘</span></h2>
-        <p>Module-first desktop application framework with layers, an event bus, a job system, and ImGui.</p>
-      </a>
-      <a class="cell cell--compact col-4 index-card" href="#nyar">
-        <div class="index-meta"><span>II · Vulkan 1.3 &amp; Slang</span><span>Renderer</span></div>
-        <h2>Nyar <span class="arrow">↘</span></h2>
-        <p>Real-time Vulkan renderer designed as a separate module for Nodens, using Slang shaders.</p>
-      </a>
-      <a class="cell cell--compact col-4 index-card" href="#armitage">
-        <div class="index-meta"><span>III · Python 3.14</span><span>Skillset &amp; CLI</span></div>
-        <h2>Armitage <span class="arrow">↘</span></h2>
-        <p>Citation-gated research and engineering skillset backed by Zotero RAG and an Obsidian vault.</p>
-      </a>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- I · NODENS                                                        -->
-    <!-- ================================================================ -->
-    <article id="nodens" class="chapter" data-tone="nodens">
-      <header class="row">
-        <div class="cell col-4 chapter-meta">
-          <div>
-            <div class="roman">I</div>
-            <div>C++23 · Linux · Static library</div>
-          </div>
-          <span class="tag">experimental</span>
-        </div>
-        <div class="cell col-8 chapter-head">
-          <div class="chapter-title-row">
-            <h2>Nodens</h2>
-            <div class="chapter-links">
-              <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Repository ↗</a>
-              <a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank" rel="noopener">Wiki ↗</a>
-              <a href="https://github.com/eldritch-codex/template-nodens-app" target="_blank" rel="noopener">App template ↗</a>
+        <!-- ================================================================ -->
+        <!-- Hero (8 + 4)                                                      -->
+        <!-- ================================================================ -->
+        <section class="row row--first">
+            <div class="cell col-8 hero-copy">
+                <div class="kicker">Index of works · Est. MMXXVI</div>
+                <h1>Crafted for <em>rendering</em>, <em>simulation</em>,<br>and <em>source-grounded</em> agents.</h1>
+                <p>
+                    An open-source Linux development environment uniting C++23 application
+                    architecture, Vulkan rendering, and citation-gated agentic workflows.
+                </p>
+                <div class="hero-links">
+                    <a class="btn" href="#nodens">Read the index ↓</a>
+                    <a class="link-quiet" href="https://github.com/eldritch-codex" target="_blank" rel="noopener">
+                        github.com/eldritch-codex ↗
+                    </a>
+                </div>
             </div>
-          </div>
-          <p>
-            An experimental C++23 framework for rapidly building interactive desktop applications
-            with an optional immediate-mode GUI. Public APIs are C++ module interfaces
-            (<code>.cppm</code>), third-party headers stay isolated inside the global module
-            fragment, and the whole framework links as a single static library.
-          </p>
-        </div>
-      </header>
 
-      <div class="row">
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">01 · Windowing</span>
-          <h4>GLFW windows</h4>
-          <p>Window, context, and input management with both OpenGL and Vulkan backends.</p>
-        </div>
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">02 · Lifetime</span>
-          <h4>Layer system</h4>
-          <p>Governs execution order, visual rendering priority, and top-to-bottom input routing.</p>
-        </div>
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">03 · Messaging</span>
-          <h4>Event system</h4>
-          <p>Input events route down the <code>LayerStack</code>; a thread-safe pub/sub <code>EventBus</code> dispatches custom events immediately or queued.</p>
-        </div>
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">04 · Concurrency</span>
-          <h4>Job system</h4>
-          <p>Multithreaded task execution so simulation and data work stay off the render thread.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="cell col-5">
-          <h3>Consumer code starts with <code>import nodens;</code></h3>
-          <p>
-            Applications inherit from <code>Nodens::Application</code>, push one or more layers,
-            and call <code>Run()</code>. Each layer receives <code>OnEvent</code>,
-            <code>OnUpdate(TimeStep)</code>, and <code>OnImGuiRender(TimeStep)</code> every frame.
-          </p>
-          <ul class="notes">
-            <li>Ships with two examples: <code>circularwave3d</code> (live 2D/3D plotting with ImPlot and ImPlot3D) and <code>planetaryscan</code> (event bus + multithreaded job system).</li>
-            <li>Built-in <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy</a> frame and GPU profiling — drop <code>ZoneScoped</code> into a layer method to trace it.</li>
-            <li>All dependencies are fetched and compiled from source at configure time via CMake <code>FetchContent</code>.</li>
-          </ul>
-        </div>
-        <div class="cell col-7">
-          <figure class="figure" data-tabgroup>
-            <figcaption class="figure-bar">
-              <div class="figure-tabs" role="tablist">
-                <button class="figure-tab active" type="button" data-show="nodens-app">CircularWave3DApp.cpp</button>
-                <button class="figure-tab" type="button" data-show="nodens-layer">CircularWave3DLayer.cppm</button>
-              </div>
-              <span>examples/circularwave3d</span>
-            </figcaption>
-            <pre class="code" data-src="nodens-app"></pre>
-          </figure>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-12 dep-strip">
-          <span class="label">Stack:</span>
-          <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW<em>3.4</em></a>
-          <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD<em>0.1.35</em></a>
-          <a href="https://github.com/ocornut/imgui" target="_blank" rel="noopener">ImGui<em>1.92.9b-docking</em></a>
-          <a href="https://github.com/epezent/implot" target="_blank" rel="noopener">ImPlot<em>1.0</em></a>
-          <a href="https://github.com/brenocq/implot3d" target="_blank" rel="noopener">ImPlot3D<em>0.4</em></a>
-          <a href="https://github.com/gabime/spdlog" target="_blank" rel="noopener">spdlog<em>1.17.0</em></a>
-          <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy<em>0.14.1</em></a>
-        </div>
-      </div>
-    </article>
-
-    <!-- ================================================================ -->
-    <!-- II · NYAR                                                         -->
-    <!-- ================================================================ -->
-    <article id="nyar" class="chapter" data-tone="nyar">
-      <header class="row">
-        <div class="cell col-4 chapter-meta">
-          <div>
-            <div class="roman">II</div>
-            <div>Vulkan 1.3 · Slang · C++23</div>
-          </div>
-          <span class="tag">experimental</span>
-        </div>
-        <div class="cell col-8 chapter-head">
-          <div class="chapter-title-row">
-            <h2>Nyar</h2>
-            <div class="chapter-links">
-              <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Repository ↗</a>
-              <a href="https://github.com/eldritch-codex/nyar/milestones" target="_blank" rel="noopener">Milestones ↗</a>
+            <div class="cell col-4 hero-art" aria-hidden="true">
+                <svg class="astrolabe" viewBox="0 0 320 320" fill="none">
+                    <g stroke="rgba(236,232,223,0.16)" stroke-width="1">
+                        <circle cx="160" cy="160" r="142" />
+                        <circle cx="160" cy="160" r="112" stroke-dasharray="2 5" />
+                        <circle cx="160" cy="160" r="76" />
+                        <line x1="160" y1="8" x2="160" y2="312" />
+                        <line x1="8" y1="160" x2="312" y2="160" />
+                    </g>
+                    <g class="spin-slow" stroke="rgba(217,167,92,0.42)" stroke-width="1">
+                        <polygon points="160,48 257,216 63,216" />
+                        <polygon points="160,272 257,104 63,104" stroke="rgba(110,168,214,0.32)" />
+                    </g>
+                    <g class="spin-rev" stroke="rgba(177,138,224,0.45)" stroke-width="1">
+                        <rect x="106" y="106" width="108" height="108" transform="rotate(45 160 160)" />
+                        <circle cx="160" cy="48" r="3" fill="#d9a75c" stroke="none" />
+                        <circle cx="257" cy="216" r="3" fill="#6ea8d6" stroke="none" />
+                        <circle cx="63" cy="216" r="3" fill="#b18ae0" stroke="none" />
+                    </g>
+                    <circle cx="160" cy="160" r="18" stroke="rgba(236,232,223,0.35)" />
+                    <circle cx="160" cy="160" r="3.5" fill="#ece8df" />
+                </svg>
             </div>
-          </div>
-          <p>
-            A Vulkan real-time renderer built to serve as a dedicated module for Nodens. It is
-            being grown from first principles — starting with the Khronos Vulkan tutorial baseline
-            and refactoring step by step into a clean rendering API.
-          </p>
-        </div>
-      </header>
+        </section>
 
-      <div class="row">
-        <div class="cell cell--compact col-4 pillar">
-          <span class="idx">01 · Shaders</span>
-          <h4>Slang to SPIR-V</h4>
-          <p>Shaders are authored in Slang and compiled directly to SPIR-V 1.4 by a custom CMake target invoking <code>slangc</code>.</p>
-        </div>
-        <div class="cell cell--compact col-4 pillar">
-          <span class="idx">02 · Pipeline</span>
-          <h4>Modern Vulkan 1.3</h4>
-          <p>Uses <code>import vulkan;</code> along with <code>dynamicRendering</code>, <code>synchronization2</code>, and extended dynamic state.</p>
-        </div>
-        <div class="cell cell--compact col-4 pillar">
-          <span class="idx">03 · Direction</span>
-          <h4>Nodens integration</h4>
-          <p>Packaged as <code>export module nyar;</code> so Nodens applications can import it as their rendering backend.</p>
-        </div>
-      </div>
+        <!-- ================================================================ -->
+        <!-- Three-entry index (4 + 4 + 4)                                     -->
+        <!-- ================================================================ -->
+        <section class="row" aria-label="Projects">
+            <a class="cell cell--compact col-4 index-card" href="#nodens">
+                <div class="index-meta"><span>I · C++23</span><span>Framework</span></div>
+                <h2>Nodens <span class="arrow">↘</span></h2>
+                <p>Module-first desktop application framework with layers, an event bus, a job system, and ImGui.</p>
+            </a>
+            <a class="cell cell--compact col-4 index-card" href="#nyar">
+                <div class="index-meta"><span>II · Vulkan 1.3 &amp; Slang</span><span>Renderer</span></div>
+                <h2>Nyar <span class="arrow">↘</span></h2>
+                <p>Real-time Vulkan renderer designed as a separate module for Nodens, using Slang shaders.</p>
+            </a>
+            <a class="cell cell--compact col-4 index-card" href="#armitage">
+                <div class="index-meta"><span>III · Python 3.14</span><span>Skillset &amp; CLI</span></div>
+                <h2>Armitage <span class="arrow">↘</span></h2>
+                <p>Citation-gated research and engineering skillset backed by Zotero RAG and an Obsidian vault.</p>
+            </a>
+        </section>
 
-      <div class="row">
-        <div class="cell col-5">
-          <div class="stage-box">
-            <canvas id="triangle" aria-label="Live triangle preview"></canvas>
-            <div class="stage-caption">
-              <span>hello-triangle · vertMain → fragMain</span>
-              <span id="fps"></span>
+        <!-- ================================================================ -->
+        <!-- I · NODENS                                                        -->
+        <!-- ================================================================ -->
+        <article id="nodens" class="chapter" data-tone="nodens">
+            <header class="row">
+                <div class="cell col-4 chapter-meta">
+                    <div>
+                        <div class="roman">I</div>
+                        <div>C++23 · Linux · Static library</div>
+                    </div>
+                    <span class="tag">experimental</span>
+                </div>
+                <div class="cell col-8 chapter-head">
+                    <div class="chapter-title-row">
+                        <h2>Nodens</h2>
+                        <div class="chapter-links">
+                            <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Repository
+                                ↗</a>
+                            <a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank" rel="noopener">Wiki
+                                ↗</a>
+                            <a href="https://github.com/eldritch-codex/template-nodens-app" target="_blank"
+                                rel="noopener">App template ↗</a>
+                        </div>
+                    </div>
+                    <p>
+                        An experimental C++23 framework for rapidly building interactive desktop applications
+                        with an optional immediate-mode GUI. Public APIs are C++ module interfaces
+                        (<code>.cppm</code>), third-party headers stay isolated inside the global module
+                        fragment, and the whole framework links as a single static library.
+                    </p>
+                </div>
+            </header>
+
+            <div class="row">
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">01 · Windowing</span>
+                    <h4>GLFW windows</h4>
+                    <p>Window, context, and input management with both OpenGL and Vulkan backends.</p>
+                </div>
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">02 · Lifetime</span>
+                    <h4>Layer system</h4>
+                    <p>Governs execution order, visual rendering priority, and top-to-bottom input routing.</p>
+                </div>
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">03 · Messaging</span>
+                    <h4>Event system</h4>
+                    <p>Input events route down the <code>LayerStack</code>; a thread-safe pub/sub <code>EventBus</code>
+                        dispatches custom events immediately or queued.</p>
+                </div>
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">04 · Concurrency</span>
+                    <h4>Job system</h4>
+                    <p>Multithreaded task execution so simulation and data work stay off the render thread.</p>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="cell col-7">
-          <figure class="figure">
-            <figcaption class="figure-bar">
-              <span>shaders/shader.slang</span>
-              <span>slangc → spirv_1_4</span>
-            </figcaption>
-            <pre class="code" data-src="nyar-shader"></pre>
-          </figure>
-        </div>
-      </div>
-    </article>
 
-    <!-- ================================================================ -->
-    <!-- III · ARMITAGE                                                    -->
-    <!-- ================================================================ -->
-    <article id="armitage" class="chapter" data-tone="armitage">
-      <header class="row">
-        <div class="cell col-4 chapter-meta">
-          <div>
-            <div class="roman">III</div>
-            <div>Python 3.14 · Zotero · Obsidian</div>
-          </div>
-          <span class="tag">v0.3.0</span>
-        </div>
-        <div class="cell col-8 chapter-head">
-          <div class="chapter-title-row">
-            <h2>Armitage</h2>
-            <div class="chapter-links">
-              <a href="https://github.com/eldritch-codex/armitage" target="_blank" rel="noopener">Repository ↗</a>
-              <a href="https://github.com/eldritch-codex/armitage/tree/main/docs" target="_blank" rel="noopener">Engineering docs ↗</a>
-              <a href="https://github.com/eldritch-codex/armitage/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog ↗</a>
+            <div class="row">
+                <div class="cell col-5">
+                    <h3>Consumer code starts with <code>import nodens;</code></h3>
+                    <p>
+                        Applications inherit from <code>Nodens::Application</code>, push one or more layers,
+                        and call <code>Run()</code>. Each layer receives <code>OnEvent</code>,
+                        <code>OnUpdate(TimeStep)</code>, and <code>OnImGuiRender(TimeStep)</code> every frame.
+                    </p>
+                    <ul class="notes">
+                        <li>Ships with two examples: <code>circularwave3d</code> (live 2D/3D plotting with ImPlot and
+                            ImPlot3D) and <code>planetaryscan</code> (event bus + multithreaded job system).</li>
+                        <li>Built-in <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy</a>
+                            frame and GPU profiling: drop <code>ZoneScoped</code> into a layer method to trace it.</li>
+                        <li>All dependencies are fetched and compiled from source at configure time via CMake
+                            <code>FetchContent</code>.
+                        </li>
+                    </ul>
+                </div>
+                <div class="cell col-7">
+                    <figure class="figure" data-tabgroup>
+                        <figcaption class="figure-bar">
+                            <div class="figure-tabs" role="tablist">
+                                <button class="figure-tab active" type="button"
+                                    data-show="nodens-app">CircularWave3DApp.cpp</button>
+                                <button class="figure-tab" type="button"
+                                    data-show="nodens-layer">CircularWave3DLayer.cppm</button>
+                            </div>
+                            <span>examples/circularwave3d</span>
+                        </figcaption>
+                        <pre class="code" data-src="nodens-app"></pre>
+                    </figure>
+                </div>
             </div>
-          </div>
-          <p>
-            A skillset and a CLI for source-disciplined development, work, and research.
-            The <code>armitage-*</code> skillset enforces a citation gate on the model; the
-            <code>armitage</code> CLI runs the memory cache, the code index, and the Zotero
-            RAG pipeline. Any claim that cannot be traced to the workspace, the Archive
-            (Zotero), or the Ledger (Obsidian) is cut or marked unverified.
-          </p>
-        </div>
-      </header>
 
-      <div class="row" aria-label="Retrieval pipeline">
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">01 · Intake</span>
-          <h4>armitage search</h4>
-          <p>One query spans memory, code, and Zotero together.</p>
-        </div>
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">02 · Hybrid recall</span>
-          <h4>Dense + FTS5</h4>
-          <p>Ollama <code>qwen3-embedding-rag</code> vectors paired with SQLite FTS5 keyword search.</p>
-        </div>
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">03 · Fusion &amp; rerank</span>
-          <h4>RRF → Qwen3</h4>
-          <p>Reciprocal rank fusion scored by a Qwen3 cross-encoder reranker.</p>
-        </div>
-        <div class="cell cell--compact col-3 pillar">
-          <span class="idx">04 · The gate</span>
-          <h4>Cited claim</h4>
-          <p>Every factual statement carries an inline <code>[^n]</code> footnote to its source.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="cell col-5">
-          <h3>Three corpora, one discipline</h3>
-          <ul class="notes">
-            <li><strong>The Ledger</strong> (<code>armitage memory</code>) — plain-Markdown vault in Obsidian holding plans, standing decisions, concept notes, and user profile.</li>
-            <li><strong>The Archive</strong> (<code>armitage zotero</code>) — local Zotero 7+ library with PDF extraction via <code>pdf-inspector</code>, layout-aware OCR with PaddleOCR-VL, and resumable indexing.</li>
-            <li><strong>Code index</strong> (<code>armitage code</code>) — content-addressed tree-sitter index shared across branches and worktrees; <code>symbol</code> and <code>refs</code> need no model.</li>
-            <li><strong>Pi persona</strong> (<code>armitage pi</code>) — bundles extensions, roles, and an ACP adapter for Zed.</li>
-          </ul>
-        </div>
-        <div class="cell col-7">
-          <div class="figure">
-            <div class="figure-bar">
-              <span>Quick start</span>
-              <span>uv · python ≥ 3.14</span>
+            <div class="row">
+                <div class="col-12 dep-strip">
+                    <span class="label">Stack:</span>
+                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW<em>3.4</em></a>
+                    <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD<em>0.1.35</em></a>
+                    <a href="https://github.com/ocornut/imgui" target="_blank"
+                        rel="noopener">ImGui<em>1.92.9b-docking</em></a>
+                    <a href="https://github.com/epezent/implot" target="_blank" rel="noopener">ImPlot<em>1.0</em></a>
+                    <a href="https://github.com/brenocq/implot3d" target="_blank"
+                        rel="noopener">ImPlot3D<em>0.4</em></a>
+                    <a href="https://github.com/gabime/spdlog" target="_blank" rel="noopener">spdlog<em>1.17.0</em></a>
+                    <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy<em>0.14.1</em></a>
+                </div>
             </div>
-            <pre class="shell" data-shell="armitage-cli"></pre>
-          </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="row">
-        <div class="cell cell--flush col-12">
-          <table class="ledger-table">
-            <thead>
-              <tr>
-                <th>Selected skill</th>
-                <th>Trigger</th>
-                <th>Responsibility</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>armitage</td>
-                <td>model</td>
-                <td>The gate: source hierarchy, recall-first intake, inline <code>[^n]</code> citations</td>
-              </tr>
-              <tr>
-                <td>armitage-research</td>
-                <td>user</td>
-                <td>Draft a research plan for approval, read each primary reference, write a report with exact Zotero citations</td>
-              </tr>
-              <tr>
-                <td>armitage-swe</td>
-                <td>model</td>
-                <td>Design a non-trivial code change as one SWE plan, resolve open questions, implement only after approval</td>
-              </tr>
-              <tr>
-                <td>armitage-consolidate</td>
-                <td>user</td>
-                <td>Distill a reviewed research report into concept pointer notes, links, and an Obsidian Canvas</td>
-              </tr>
-              <tr>
-                <td>armitage-decide</td>
-                <td>model</td>
-                <td>Record a standing decision with its rationale and the user's exact words; injected into every session</td>
-              </tr>
-              <tr>
-                <td>armitage-tutor</td>
-                <td>user</td>
-                <td>Source-grounded, step-by-step teaching in chat</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- ================================================================ -->
+        <!-- II · NYAR                                                         -->
+        <!-- ================================================================ -->
+        <article id="nyar" class="chapter" data-tone="nyar">
+            <header class="row">
+                <div class="cell col-4 chapter-meta">
+                    <div>
+                        <div class="roman">II</div>
+                        <div>Vulkan 1.3 · Slang · C++23</div>
+                    </div>
+                    <span class="tag">experimental</span>
+                </div>
+                <div class="cell col-8 chapter-head">
+                    <div class="chapter-title-row">
+                        <h2>Nyar</h2>
+                        <div class="chapter-links">
+                            <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Repository
+                                ↗</a>
+                            <a href="https://github.com/eldritch-codex/nyar/milestones" target="_blank"
+                                rel="noopener">Milestones ↗</a>
+                        </div>
+                    </div>
+                    <p>
+                        A Vulkan real-time renderer built to serve as a dedicated module for Nodens. It is
+                        being grown from first principles, starting with the Khronos Vulkan tutorial baseline
+                        and refactoring step by step into a clean rendering API.
+                    </p>
+                </div>
+            </header>
+
+            <div class="row">
+                <div class="cell cell--compact col-4 pillar">
+                    <span class="idx">01 · Shaders</span>
+                    <h4>Slang to SPIR-V</h4>
+                    <p>Shaders are authored in Slang and compiled directly to SPIR-V 1.4 by a custom CMake target
+                        invoking <code>slangc</code>.</p>
+                </div>
+                <div class="cell cell--compact col-4 pillar">
+                    <span class="idx">02 · Pipeline</span>
+                    <h4>Modern Vulkan 1.3</h4>
+                    <p>Uses <code>import vulkan;</code> along with <code>dynamicRendering</code>,
+                        <code>synchronization2</code>, and extended dynamic state.
+                    </p>
+                </div>
+                <div class="cell cell--compact col-4 pillar">
+                    <span class="idx">03 · Direction</span>
+                    <h4>Nodens integration</h4>
+                    <p>Packaged as <code>export module nyar;</code> so Nodens applications can import it as their
+                        rendering backend.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell col-5">
+                    <div class="stage-box">
+                        <canvas id="triangle" aria-label="Live triangle preview"></canvas>
+                        <div class="stage-caption">
+                            <span>hello-triangle · vertMain → fragMain</span>
+                            <span id="fps"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell col-7">
+                    <figure class="figure">
+                        <figcaption class="figure-bar">
+                            <span>shaders/shader.slang</span>
+                            <span>slangc → spirv_1_4</span>
+                        </figcaption>
+                        <pre class="code" data-src="nyar-shader"></pre>
+                    </figure>
+                </div>
+            </div>
+        </article>
+
+        <!-- ================================================================ -->
+        <!-- III · ARMITAGE                                                    -->
+        <!-- ================================================================ -->
+        <article id="armitage" class="chapter" data-tone="armitage">
+            <header class="row">
+                <div class="cell col-4 chapter-meta">
+                    <div>
+                        <div class="roman">III</div>
+                        <div>Python 3.14 · Zotero · Obsidian</div>
+                    </div>
+                    <span class="tag">private preview</span>
+                </div>
+                <div class="cell col-8 chapter-head">
+                    <div class="chapter-title-row">
+                        <h2>Armitage</h2>
+                        <div class="chapter-links"><span>Private repository · public release upcoming</span></div>
+                    </div>
+                    <p>
+                        A skillset and a CLI for source-disciplined development, work, and research.
+                        The <code>armitage-*</code> skillset enforces a citation gate on the model; the
+                        <code>armitage</code> CLI runs the memory cache, the code index, and the Zotero
+                        RAG pipeline. Any claim that cannot be traced to the workspace, the Archive
+                        (Zotero), or the Ledger (Obsidian) is cut or marked unverified.
+                    </p>
+                </div>
+            </header>
+
+            <div class="row" aria-label="Retrieval pipeline">
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">01 · Intake</span>
+                    <h4>armitage search</h4>
+                    <p>One query spans memory, code, and Zotero together.</p>
+                </div>
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">02 · Hybrid recall</span>
+                    <h4>Dense + FTS5</h4>
+                    <p>Ollama <code>qwen3-embedding-rag</code> vectors paired with SQLite FTS5 keyword search.</p>
+                </div>
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">03 · Fusion &amp; rerank</span>
+                    <h4>RRF → Qwen3</h4>
+                    <p>Reciprocal rank fusion scored by a Qwen3 cross-encoder reranker.</p>
+                </div>
+                <div class="cell cell--compact col-3 pillar">
+                    <span class="idx">04 · The gate</span>
+                    <h4>Cited claim</h4>
+                    <p>Every factual statement carries an inline <code>[^n]</code> footnote to its source.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell col-5">
+                    <h3>Three corpora, one discipline</h3>
+                    <ul class="notes">
+                        <li><strong>The Ledger</strong> (<code>armitage memory</code>): a plain-Markdown vault in
+                            Obsidian holding plans, standing decisions, concept notes, and user profile.</li>
+                        <li><strong>The Archive</strong> (<code>armitage zotero</code>): a local Zotero 7+ library with
+                            PDF extraction via <code>pdf-inspector</code>, layout-aware OCR with PaddleOCR-VL, and
+                            resumable indexing.</li>
+                        <li><strong>Code index</strong> (<code>armitage code</code>): a content-addressed tree-sitter
+                            index shared across branches and worktrees; <code>symbol</code> and <code>refs</code> need
+                            no model.</li>
+                        <li><strong>Pi persona</strong> (<code>armitage pi</code>): bundles extensions, roles, and an
+                            ACP adapter for Zed.</li>
+                    </ul>
+                </div>
+                <div class="cell col-7">
+                    <div class="figure">
+                        <div class="figure-bar">
+                            <span>Quick start</span>
+                            <span>uv · python ≥ 3.14</span>
+                        </div>
+                        <pre class="shell" data-shell="armitage-cli"></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell cell--flush col-12">
+                    <table class="ledger-table">
+                        <thead>
+                            <tr>
+                                <th>Selected skill</th>
+                                <th>Trigger</th>
+                                <th>Responsibility</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>armitage</td>
+                                <td>model</td>
+                                <td>The gate: source hierarchy, recall-first intake, inline <code>[^n]</code> citations
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>armitage-research</td>
+                                <td>user</td>
+                                <td>Draft a research plan for approval, read each primary reference, write a report with
+                                    exact Zotero citations</td>
+                            </tr>
+                            <tr>
+                                <td>armitage-swe</td>
+                                <td>model</td>
+                                <td>Design a non-trivial code change as one SWE plan, resolve open questions, implement
+                                    only after approval</td>
+                            </tr>
+                            <tr>
+                                <td>armitage-consolidate</td>
+                                <td>user</td>
+                                <td>Distill a reviewed research report into concept pointer notes, links, and an
+                                    Obsidian Canvas</td>
+                            </tr>
+                            <tr>
+                                <td>armitage-decide</td>
+                                <td>model</td>
+                                <td>Record a standing decision with its rationale and the user's exact words; injected
+                                    into every session</td>
+                            </tr>
+                            <tr>
+                                <td>armitage-tutor</td>
+                                <td>user</td>
+                                <td>Source-grounded, step-by-step teaching in chat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+
+        <!-- ================================================================ -->
+        <!-- Shared Dev Container (7 + 5)                                      -->
+        <!-- ================================================================ -->
+        <section class="row">
+            <div class="cell col-7">
+                <h3>Shared Arch Linux toolchain</h3>
+                <p style="margin:0">
+                    Nodens and Nyar share a single container image with Clang, CMake, Ninja, Vulkan SDK,
+                    Slang, and Tracy preconfigured, ready for NVIDIA Container Toolkit or
+                    <code>/dev/dri</code> passthrough.
+                </p>
+            </div>
+            <div class="cell col-5" style="display:flex;align-items:center">
+                <div class="pull-box" style="width:100%">
+                    <span id="pull-cmd">ghcr.io/eldritch-codex/arch-dev:main</span>
+                    <button type="button" data-copy="#pull-cmd">copy</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-inner">
+            <span>© 2026 EldritchCodex · Released under the MIT License</span>
+            <div class="footer-links">
+                <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Nodens</a>
+                <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Nyar</a>
+                <a href="#armitage">Armitage</a>
+                <a href="https://github.com/eldritch-codex/devcontainers" target="_blank"
+                    rel="noopener">Devcontainers</a>
+            </div>
         </div>
-      </div>
-    </article>
+    </footer>
 
     <!-- ================================================================ -->
-    <!-- Shared Dev Container (7 + 5)                                      -->
+    <!-- Code & shell templates                                            -->
     <!-- ================================================================ -->
-    <section class="row">
-      <div class="cell col-7">
-        <h3>Shared Arch Linux toolchain</h3>
-        <p style="margin:0">
-          Nodens and Nyar share a single container image with Clang, CMake, Ninja, Vulkan SDK,
-          Slang, and Tracy preconfigured — ready for NVIDIA Container Toolkit or
-          <code>/dev/dri</code> passthrough.
-        </p>
-      </div>
-      <div class="cell col-5" style="display:flex;align-items:center">
-        <div class="pull-box" style="width:100%">
-          <span id="pull-cmd">ghcr.io/eldritch-codex/arch-dev:main</span>
-          <button type="button" data-copy="#pull-cmd">copy</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <span>© 2026 EldritchCodex · Released under the MIT License</span>
-      <div class="footer-links">
-        <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Nodens</a>
-        <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Nyar</a>
-        <a href="https://github.com/eldritch-codex/armitage" target="_blank" rel="noopener">Armitage</a>
-        <a href="https://github.com/eldritch-codex/devcontainers" target="_blank" rel="noopener">Devcontainers</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ================================================================ -->
-  <!-- Code & shell templates                                            -->
-  <!-- ================================================================ -->
-  <script type="text/plain" id="src-nodens-app" data-lang="cpp">
+    <script type="text/plain" id="src-nodens-app" data-lang="cpp">
 import nodens;
 import Example.CircularWave3DLayer;
 import std;
@@ -473,7 +499,7 @@ int main()
 }
 </script>
 
-  <script type="text/plain" id="src-nodens-layer" data-lang="cpp">
+    <script type="text/plain" id="src-nodens-layer" data-lang="cpp">
 export module Example.CircularWave3DLayer;
 
 import nodens;
@@ -495,7 +521,7 @@ private:
 };
 </script>
 
-  <script type="text/plain" id="src-nyar-shader" data-lang="slang">
+    <script type="text/plain" id="src-nyar-shader" data-lang="slang">
 static float2 positions[3] = {
     float2(0.0, -0.5),
     float2(0.5, 0.5),
@@ -530,7 +556,7 @@ float4 fragMain(VertexOutput inVert)
 }
 </script>
 
-  <script type="text/plain" id="sh-armitage-cli">
+    <script type="text/plain" id="sh-armitage-cli">
 uv tool install armitage-cli
 armitage skills install        # -> ~/.armitage/skills
 armitage zotero init           # check storage & local API
@@ -541,7 +567,7 @@ armitage search "image creation"
 armitage doctor                # check installed skills for drift
 </script>
 
-  <script src="js/main.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>

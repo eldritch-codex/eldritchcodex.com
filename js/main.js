@@ -1,4 +1,4 @@
-/* EldritchCodex — syntax highlighting, shell renderer, tab switcher, WebGL triangle, copy button. */
+/* EldritchCodex · syntax highlighting, shell renderer, tab switcher, WebGL triangle, copy button. */
 (() => {
   "use strict";
 

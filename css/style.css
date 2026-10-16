@@ -1,5 +1,5 @@
 /* ==========================================================================
-   EldritchCodex — unified 12-column editorial layout
+   EldritchCodex · unified 12-column editorial layout
    Fraunces (display) · IBM Plex Sans (prose) · IBM Plex Mono (code & meta)
    ========================================================================== */
 
@@ -209,15 +209,22 @@ code {
   margin-bottom: 18px;
 }
 
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
 .hero-copy h1 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(36px, 4.6vw, 52px);
-  line-height: 1.08;
+  font-size: clamp(32px, 3.6vw, 44px);
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--ink);
-  margin: 0 0 20px;
-  max-width: 18ch;
+  margin: 0 0 18px;
 }
 
 .hero-copy h1 em {
@@ -228,7 +235,7 @@ code {
 
 .hero-copy p {
   margin: 0 0 28px;
-  max-width: 54ch;
+  max-width: 62ch;
   font-size: 16px;
   color: var(--text);
 }
@@ -481,7 +488,7 @@ code {
 }
 
 .notes li::before {
-  content: "—";
+  content: "·";
   position: absolute;
   left: 0;
   color: var(--dim);
