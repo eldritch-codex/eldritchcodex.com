@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="glyph" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3efe6"/>
+      <stop offset="60%" stop-color="#ece8df"/>
+      <stop offset="100%" stop-color="#ddd7ca"/>
+    </linearGradient>
+  </defs>
+
+  <!-- bracket + A, traced from the reference mark; same position and size -->
+  <g transform="translate(66.4935 1019.013) scale(0.3324675 -0.3324675)" fill="url(#glyph)">
+    <path d="M410 1520 l0 -980 305 0 305 0 0 105 0 105 -195 0 -195 0 0 765 0 765 195 0 196 0 -3 108 -3 107 -302 3 -303 2 0 -980z M1710 2390 l0 -110 190 0 190 0 0 -765 0 -765 -190 0 -190 0 0 -105 0 -105 305 0 305 0 0 980 0 980 -305 0 -305 0 0 -110z M1031 1920 c-101 -243 -182 -442 -180 -444 2 -1 31 -17 64 -36 33 -18 78 -43 101 -56 l41 -24 144 350 c98 239 148 350 157 348 8 -2 77 -157 155 -348 77 -190 141 -346 142 -347 4 -7 215 113 215 122 0 6 -80 204 -178 440 l-178 430 -150 3 -149 2 -184 -440z"/>
+  </g>
+</svg>
