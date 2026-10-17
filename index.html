@@ -30,10 +30,10 @@
     <title>EldritchCodex · Nodens, Nyar, Armitage</title>
     <meta name="author" content="Renan Bomtempo">
     <meta name="description"
-        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both).">
+        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both, best used in Zed through ACP and Pi).">
     <meta property="og:title" content="EldritchCodex" />
     <meta property="og:description"
-        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both)." />
+        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both, best used in Zed through ACP and Pi)." />
     <meta property="og:url" content="https://eldritchcodex.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="EldritchCodex" />
@@ -128,8 +128,8 @@
             <a class="cell cell--compact col-4 index-card" href="#armitage">
                 <div class="index-meta"><span>III. Python 3.14</span><span>Agent, Skillset &amp; CLI</span></div>
                 <h2>Armitage <span class="arrow">↘</span></h2>
-                <p>Source-grounded agent tooling: skills and CLI, with an optional custom Pi harness and Zed ACP
-                    integration for research and engineering.</p>
+                <p>Source-grounded agent tooling: skills and CLI, best used inside Zed through the Agent Client
+                    Protocol and the custom Pi harness, where it is most thoroughly tested.</p>
             </a>
         </section>
 
@@ -383,9 +383,10 @@
                         grounded in books, documentation and papers. It brings source-grounded research and
                         engineering to coding agents through skills, a command-line tool, a custom Pi harness and a
                         Zed integration via ACP. Every factual claim must point to your workspace, your Zotero
-                        library or the agent's memory, or it is cut or marked unverified. The Pi harness and the Zed
-                        integration are optional but central, and the skills and CLI also work with other coding
-                        agents.
+                        library or the agent's memory, or it is cut or marked unverified. The skills and CLI are
+                        portable and work with other coding agents, but Armitage is at its best inside Zed, running
+                        the custom Pi harness through the Agent Client Protocol. That is where it is most thoroughly
+                        tested.
                     </p>
                     <p class="chapter-note">
                         Tailored to my own use case and built largely with AI coding agents, to help me learn and
@@ -412,7 +413,8 @@
                 <div class="cell cell--flush col-12">
                     <div class="table-head table-head--row">
                         <h3>Ways to use it</h3>
-                        <p>Start with the skills and CLI; the other two are optional.</p>
+                        <p>The skills and CLI are the portable base; the best way to use Armitage is
+                            inside Zed, through the Pi harness and the Agent Client Protocol.</p>
                     </div>
                 </div>
             </div>
@@ -425,16 +427,17 @@
                         and searches your code and Zotero library. No Pi harness or Zed integration required.</p>
                 </div>
                 <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">Optional</span>
+                    <span class="idx">Optional · powers Zed</span>
                     <h4>Custom Pi environment</h4>
                     <p>A dedicated agent environment built around Armitage's source-grounded workflow. Run it in the
-                        terminal with <code>armitage pi</code>; this is where Armitage works best.</p>
+                        terminal with <code>armitage pi</code>, or drive it from Zed through ACP (see right).</p>
                 </div>
                 <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">Optional · needs Pi</span>
+                    <span class="idx">Best · needs Pi</span>
                     <h4>Zed via ACP</h4>
                     <p>Run the Pi harness inside Zed's Agent Panel through the Agent Client Protocol, instead of a
-                        separate terminal.</p>
+                        separate terminal. This is the best way to use Armitage, and the integration that is most
+                        thoroughly tested.</p>
                 </div>
             </div>
 
