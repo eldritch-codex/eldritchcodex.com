@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+  <!-- "::" set in IBM Plex Mono Bold (SIL OFL), tightened and converted to outlines. Standalone (as an image or favicon) it follows the light/dark preference; inlined, it takes the page's text colour. -->
+  <style>svg { color-scheme: light dark; }</style>
+  <g transform="translate(1.385 11.483) scale(0.01350 -0.01350)" fill="currentColor">
+    <path transform="translate(0 0)" d="M300 -12Q244 -12 219.5 12.5Q195 37 195 71V106Q195 140 219.5 164.5Q244 189 300 189Q356 189 380.5 164.5Q405 140 405 106V71Q405 37 380.5 12.5Q356 -12 300 -12ZM300 327Q244 327 219.5 351.5Q195 376 195 410V445Q195 479 219.5 503.5Q244 528 300 528Q356 528 380.5 503.5Q405 479 405 445V410Q405 376 380.5 351.5Q356 327 300 327Z"/>
+    <path transform="translate(380 0)" d="M300 -12Q244 -12 219.5 12.5Q195 37 195 71V106Q195 140 219.5 164.5Q244 189 300 189Q356 189 380.5 164.5Q405 140 405 106V71Q405 37 380.5 12.5Q356 -12 300 -12ZM300 327Q244 327 219.5 351.5Q195 376 195 410V445Q195 479 219.5 503.5Q244 528 300 528Q356 528 380.5 503.5Q405 479 405 445V410Q405 376 380.5 351.5Q356 327 300 327Z"/>
+  </g>
+</svg>

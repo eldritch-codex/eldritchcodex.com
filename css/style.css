@@ -931,10 +931,34 @@ li {
     color: var(--ink);
 }
 
+/* A glyph before the chapter name, in the chapter's tone. */
+.chapter-head h2.has-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.28em;
+}
+
+.chapter-mark {
+    flex: none;
+    width: 1.1em;
+    height: 1.1em;
+    color: var(--tone);
+}
+
 .chapter-head p {
     margin: 0;
     font-size: 15.5px;
     color: var(--text);
+}
+
+.chapter-head p+p {
+    margin-top: 12px;
+}
+
+/* A quieter second paragraph under the chapter description. */
+.chapter-head .chapter-note {
+    font-size: 13.5px;
+    color: var(--muted);
 }
 
 .cell h3 {
