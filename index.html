@@ -232,11 +232,20 @@
                         optional immediate-mode GUI (Dear ImGui). Everything is exposed as C++ modules, so an app
                         starts with <code>import nodens;</code>, and the framework links as a single static library.
                     </p>
-                    <ul class="chapter-facts" aria-label="Project details">
-                        <li>C++23</li>
-                        <li>Linux</li>
-                        <li>Static library</li>
-                    </ul>
+                </div>
+                <div class="chapter-stack dep-strip">
+                    <span class="label">Stack:</span>
+                    <a href="https://www.opengl.org/" target="_blank" rel="noopener">OpenGL<em>4.6</em></a>
+                    <a href="https://www.vulkan.org/" target="_blank" rel="noopener">Vulkan</a>
+                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW<em>3.4</em></a>
+                    <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD<em>0.1.36</em></a>
+                    <a href="https://github.com/ocornut/imgui" target="_blank"
+                        rel="noopener">ImGui<em>1.92.9b-docking</em></a>
+                    <a href="https://github.com/epezent/implot" target="_blank" rel="noopener">ImPlot<em>1.0</em></a>
+                    <a href="https://github.com/brenocq/implot3d" target="_blank"
+                        rel="noopener">ImPlot3D<em>0.4</em></a>
+                    <a href="https://github.com/gabime/spdlog" target="_blank" rel="noopener">spdlog<em>1.17.0</em></a>
+                    <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy<em>0.14.1</em></a>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Nodens links">
                     <span class="aside-label">Links</span>
@@ -309,23 +318,6 @@
                     </figure>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-12 dep-strip">
-                    <span class="label">Stack:</span>
-                    <a href="https://www.opengl.org/" target="_blank" rel="noopener">OpenGL<em>4.6</em></a>
-                    <a href="https://www.vulkan.org/" target="_blank" rel="noopener">Vulkan</a>
-                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW<em>3.4</em></a>
-                    <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD<em>0.1.36</em></a>
-                    <a href="https://github.com/ocornut/imgui" target="_blank"
-                        rel="noopener">ImGui<em>1.92.9b-docking</em></a>
-                    <a href="https://github.com/epezent/implot" target="_blank" rel="noopener">ImPlot<em>1.0</em></a>
-                    <a href="https://github.com/brenocq/implot3d" target="_blank"
-                        rel="noopener">ImPlot3D<em>0.4</em></a>
-                    <a href="https://github.com/gabime/spdlog" target="_blank" rel="noopener">spdlog<em>1.17.0</em></a>
-                    <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy<em>0.14.1</em></a>
-                </div>
-            </div>
         </article>
 
         <!-- ================================================================ -->
@@ -359,11 +351,17 @@
                         exercise in modern graphics APIs. It starts from the official Khronos "Drawing a triangle"
                         tutorial and is refactored step by step into a clean rendering API.
                     </p>
-                    <ul class="chapter-facts" aria-label="Project details">
-                        <li>Vulkan 1.3</li>
-                        <li>Slang</li>
-                        <li>C++23</li>
-                    </ul>
+                </div>
+                <div class="chapter-stack dep-strip">
+                    <span class="label">Stack:</span>
+                    <a href="https://en.cppreference.com/w/cpp/23" target="_blank" rel="noopener">C++<em>23</em></a>
+                    <a href="https://docs.vulkan.org/spec/latest/index.html" target="_blank"
+                        rel="noopener">Vulkan<em>1.3</em></a>
+                    <a href="https://github.com/KhronosGroup/Vulkan-Hpp" target="_blank" rel="noopener">Vulkan-Hpp</a>
+                    <a href="https://github.com/shader-slang/slang" target="_blank" rel="noopener">Slang</a>
+                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>
+                    <a href="https://registry.khronos.org/SPIR-V/" target="_blank" rel="noopener">SPIR-V<em>1.4</em></a>
+                    <a href="https://github.com/EldritchCodex/Nodens" target="_blank" rel="noopener">Nodens</a>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Nyar links">
                     <span class="aside-label">Links</span>
@@ -418,20 +416,6 @@
                     </figure>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-12 dep-strip">
-                    <span class="label">Stack:</span>
-                    <a href="https://en.cppreference.com/w/cpp/23" target="_blank" rel="noopener">C++<em>23</em></a>
-                    <a href="https://docs.vulkan.org/spec/latest/index.html" target="_blank"
-                        rel="noopener">Vulkan<em>1.3</em></a>
-                    <a href="https://github.com/KhronosGroup/Vulkan-Hpp" target="_blank" rel="noopener">Vulkan-Hpp</a>
-                    <a href="https://github.com/shader-slang/slang" target="_blank" rel="noopener">Slang</a>
-                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>
-                    <a href="https://registry.khronos.org/SPIR-V/" target="_blank" rel="noopener">SPIR-V<em>1.4</em></a>
-                    <a href="https://github.com/EldritchCodex/Nodens" target="_blank" rel="noopener">Nodens</a>
-                </div>
-            </div>
         </article>
 
         <!-- ================================================================ -->
@@ -457,27 +441,32 @@
                         Armitage
                     </h2>
                     <p>
-                        Armitage is how I use agentic workflows without giving up learning from first principles,
-                        grounded in books, documentation and papers. It brings source-grounded research and
-                        engineering to coding agents through skills, a command-line tool, a custom Pi harness and a
-                        Zed integration via ACP. Every factual claim must point to your workspace, your Zotero
-                        library or the agent's memory, or it is cut or marked unverified. The skills and CLI are
-                        portable and work with other coding agents, but Armitage is at its best inside Zed, running
-                        the custom Pi harness through the Agent Client Protocol. That is where it is most thoroughly
-                        tested.
+                        Armitage is how I use coding agents without giving up learning from first principles. Every
+                        factual claim must point to your workspace, your Zotero library or the agent's memory, or it
+                        is cut or marked unverified. Skills and a CLI work with any coding agent, but it is at its
+                        best in Zed, through the Pi harness and ACP, where it is most thoroughly tested.
                     </p>
                     <p class="chapter-note">
-                        Tailored to my own use case and built largely with AI coding agents, to help me learn and
-                        develop Nodens and Nyar. Agent tooling is outside my area of expertise (my background is
-                        graphics and numerical simulation), so treat it as a personal, experimental tool.
+                        A personal, experimental tool, built largely with AI coding agents to help me develop Nodens
+                        and Nyar. Agent tooling is outside my area of expertise.
                     </p>
-                    <ul class="chapter-facts" aria-label="Project details">
-                        <li>Python 3.14</li>
-                        <li>Pi harness</li>
-                        <li>Zed ACP</li>
-                        <li>Zotero</li>
-                        <li>Obsidian</li>
-                    </ul>
+                </div>
+                <div class="chapter-stack dep-strip">
+                    <span class="label">Stack:</span>
+                    <a href="https://www.python.org/" target="_blank" rel="noopener">Python<em>3.14</em></a>
+                    <a href="https://github.com/earendil-works/pi" target="_blank" rel="noopener">Pi</a>
+                    <a href="https://zed.dev/" target="_blank" rel="noopener">Zed</a>
+                    <a href="https://agentclientprotocol.com/" target="_blank" rel="noopener">ACP</a>
+                    <a href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB<em>≥1.5.9</em></a>
+                    <a href="https://ollama.com/" target="_blank" rel="noopener">Ollama<em>≥0.6.2</em></a>
+                    <a href="https://github.com/QwenLM/Qwen3" target="_blank" rel="noopener">Qwen3</a>
+                    <a href="https://tree-sitter.github.io/" target="_blank"
+                        rel="noopener">tree-sitter<em>≥0.25</em></a>
+                    <a href="https://pypi.org/project/pyzotero/" target="_blank"
+                        rel="noopener">PyZotero<em>≥1.15.2</em></a>
+                    <a href="https://sqlite.org/fts5.html" target="_blank" rel="noopener">SQLite FTS5</a>
+                    <a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a>
+                    <a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian</a>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Armitage links">
                     <span class="aside-label">Links</span>
@@ -886,26 +875,6 @@
                         surgical-patch), <code>caveman</code>, <code>caveman-commit</code> and
                         <code>caveman-review</code> (terse writing and review helpers).
                     </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 dep-strip">
-                    <span class="label">Stack:</span>
-                    <a href="https://www.python.org/" target="_blank" rel="noopener">Python<em>3.14</em></a>
-                    <a href="https://github.com/earendil-works/pi" target="_blank" rel="noopener">Pi</a>
-                    <a href="https://zed.dev/" target="_blank" rel="noopener">Zed</a>
-                    <a href="https://agentclientprotocol.com/" target="_blank" rel="noopener">ACP</a>
-                    <a href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB<em>≥1.5.9</em></a>
-                    <a href="https://ollama.com/" target="_blank" rel="noopener">Ollama<em>≥0.6.2</em></a>
-                    <a href="https://github.com/QwenLM/Qwen3" target="_blank" rel="noopener">Qwen3</a>
-                    <a href="https://tree-sitter.github.io/" target="_blank"
-                        rel="noopener">tree-sitter<em>≥0.25</em></a>
-                    <a href="https://pypi.org/project/pyzotero/" target="_blank"
-                        rel="noopener">PyZotero<em>≥1.15.2</em></a>
-                    <a href="https://sqlite.org/fts5.html" target="_blank" rel="noopener">SQLite FTS5</a>
-                    <a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a>
-                    <a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian</a>
                 </div>
             </div>
         </article>
