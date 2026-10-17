@@ -1181,12 +1181,6 @@ li {
     color: var(--ink);
 }
 
-.dep-strip em {
-    font-style: normal;
-    color: var(--dim);
-    margin-left: 4px;
-}
-
 /* ---------- Nyar canvas ------------------------------------------------- */
 
 .stage-box {
