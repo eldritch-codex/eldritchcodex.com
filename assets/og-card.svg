@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="78%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#191c24"/>
+      <stop offset="55%" stop-color="#101218"/>
+      <stop offset="100%" stop-color="#0c0d10"/>
+    </radialGradient>
+    <linearGradient id="veil" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0c0d10" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#0c0d10" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- faint astrolabe geometry, echoing the hero art -->
+  <g fill="none" stroke="#d6d2c4" stroke-opacity="0.06">
+    <circle cx="985" cy="215" r="300"/>
+    <circle cx="985" cy="215" r="190"/>
+    <circle cx="985" cy="215" r="110"/>
+    <line x1="685" y1="215" x2="1285" y2="215"/>
+    <line x1="985" y1="-85" x2="985" y2="515"/>
+    <polygon points="985,65 1115,285 855,285"/>
+  </g>
+  <rect width="1200" height="630" fill="url(#veil)"/>
+
+  <!-- kicker -->
+  <text x="72" y="128" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74">A PROJECT BY&#160;&#160;<tspan fill="#b7b4ac">RENAN BOMTEMPO</tspan></text>
+  <rect x="245" y="136" width="174" height="1" fill="#55534e" fill-opacity="0.8"/>
+
+  <!-- headline -->
+  <text font-family="Fraunces, IBM Plex Serif" font-weight="300" font-size="59" fill="#ece8df" letter-spacing="-1.1">
+    <tspan x="70" y="222">Exploring <tspan font-style="italic" fill="#d9a75c">rendering</tspan> and <tspan font-style="italic" fill="#d9a75c">simulation</tspan></tspan>
+    <tspan x="70" y="291">from <tspan font-style="italic" fill="#d9a75c">first principles</tspan>.</tspan>
+  </text>
+
+  <!-- body -->
+  <text font-family="IBM Plex Sans" font-size="22" fill="#b7b4ac">
+    <tspan x="72" y="366">EldritchCodex is an open-source project where I build what I want to understand:</tspan>
+    <tspan x="72" y="400">Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, an</tspan>
+    <tspan x="72" y="434">agent that keeps my work grounded in books, documentation and papers.</tspan>
+  </text>
+
+  <!-- button -->
+  <rect x="72" y="482" width="252" height="54" rx="1" fill="#0f1116" stroke="#55534e" stroke-opacity="0.85"/>
+  <text x="98" y="516" font-family="IBM Plex Mono" font-size="16" letter-spacing="0.6" fill="#ece8df">See the projects &#8595;</text>
+</svg>

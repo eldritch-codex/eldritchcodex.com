@@ -40,13 +40,17 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="EldritchCodex" />
     <meta property="og:locale" content="en" />
-    <meta property="og:image" content="https://eldritchcodex.com/assets/eldritchcodex-avatar.png" />
-    <meta property="og:image:alt" content="The EldritchCodex sigil" />
+    <meta property="og:image" content="https://eldritchcodex.com/assets/og-card.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EldritchCodex: exploring rendering and simulation from first principles." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="EldritchCodex · Nodens, Nyar, Armitage" />
     <meta name="twitter:description"
         content="Open-source projects by Renan Bomtempo: Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, a source-grounded agent." />
-    <meta name="twitter:image" content="https://eldritchcodex.com/assets/eldritchcodex-avatar.png" />
+    <meta name="twitter:image" content="https://eldritchcodex.com/assets/og-card.png" />
+    <meta name="twitter:image:alt" content="EldritchCodex: exploring rendering and simulation from first principles." />
     <meta name="theme-color" content="#0c0d10">
     <script type="application/ld+json">
     {
@@ -138,7 +142,8 @@
             <div class="cell col-8 hero-copy">
                 <div class="kicker">A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan
                         Bomtempo</a></div>
-                <h1><span class="sr-only">EldritchCodex: </span>Exploring <em>rendering</em> and <em>simulation</em><br>from <em>first principles</em>.</h1>
+                <h1><span class="sr-only">EldritchCodex: </span>Exploring <em>rendering</em> and
+                    <em>simulation</em><br>from <em>first principles</em>.</h1>
                 <p>
                     EldritchCodex is an open-source project where I build what I want to understand: Nodens, a
                     C++23 application framework; Nyar, a Vulkan renderer; and Armitage, an agent that keeps my
@@ -556,7 +561,8 @@
                                             the lock.<sup class="zed-fn">2</sup> <code>Subscribe</code>,
                                             <code>Unsubscribe</code> and <code>QueueEvent</code> may be called from any
                                             thread; <code>Dispatch</code> and <code>Flush</code> are meant for the main
-                                            thread.<sup class="zed-fn">3</sup></p>
+                                            thread.<sup class="zed-fn">3</sup>
+                                        </p>
                                         <p><strong>Unsourced.</strong> How the single buffer mutex behaves under heavy
                                             contention: none of the code, docs or papers searched measure it.</p>
                                         <ol class="zed-notes">
@@ -649,7 +655,8 @@
                                             the GPU, empties the CUDA cache and logs the release.<sup
                                                 class="zed-fn">3</sup> The query embedding uses
                                             <code>keep_alive=0</code>, which is what unloads that model.<sup
-                                                class="zed-fn">4</sup></p>
+                                                class="zed-fn">4</sup>
+                                        </p>
                                         <p><strong>Unsourced.</strong> How much VRAM the loaded reranker takes in total:
                                             the docs bound it but give no measured figure.</p>
                                         <ol class="zed-notes">
