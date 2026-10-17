@@ -449,6 +449,122 @@
                 </div>
             </div>
 
+            <div class="row" aria-label="Example question and answer">
+                <div class="cell cell--flush col-12">
+                    <div class="table-head">
+                        <h3>What an answer looks like</h3>
+                        <p>Three illustrative threads in Zed: a question about code, one about free online Vulkan documentation in Zotero, and one answered
+                            from memory and checked against the code. Every claim is footnoted to its source, and what it
+                            cannot source is marked. The references are clickable: a code reference opens the file in
+                            Zed at the cited line, and a Zotero reference opens the paper at the cited page, or a saved web page at the cited passage.</p>
+                    </div>
+                    <div class="zed-wrap">
+                        <div class="zed-deck" id="zed-deck">
+                            <article class="zed" aria-label="Example 1 of 3: the Nodens EventBus">
+                                <div class="zed-bar">
+                                    <span class="zed-title">EventBus and producer threads</span>
+                                    <span class="zed-meta">Armitage · illustrative</span>
+                                </div>
+                                <div class="zed-thread">
+                                    <div class="zed-user">
+                                        <span class="zed-role">You</span>
+                                        <p>How does the Nodens EventBus keep producer threads from blocking while events are being dispatched?</p>
+                                    </div>
+                                    <div class="zed-agent">
+                                        <span class="zed-role">Armitage</span>
+                                        <ul class="zed-tools">
+                                        <li><code>armitage code symbol QueueEvent</code><span>1 definition</span></li>
+                                        <li><code>armitage code symbol EventBus::Flush</code><span>1 definition</span></li>
+                                        <li><code>armitage search "EventBus thread safety"</code><span>3 passages</span></li>
+                                        </ul>
+                                        <p>Producers never wait for handlers. <code>QueueEvent</code> takes a short mutex, appends the event's bytes to the active write buffer and returns.<sup class="zed-fn">1</sup> <code>Flush()</code> holds that mutex only to swap the two buffers, then runs the handlers on the retired buffer outside the lock.<sup class="zed-fn">2</sup> <code>Subscribe</code>, <code>Unsubscribe</code> and <code>QueueEvent</code> may be called from any thread; <code>Dispatch</code> and <code>Flush</code> are meant for the main thread.<sup class="zed-fn">3</sup></p>
+                                        <p><strong>Unsourced.</strong> How the single buffer mutex behaves under heavy contention: none of the code, docs or papers searched measure it.</p>
+                                        <ol class="zed-notes">
+                                        <li><code>Nodens/Events/EventBus.cppm:108-112</code> · QueueEvent locks the buffer mutex, appends the bytes to the active buffer and returns</li>
+                                        <li><code>Nodens/Events/EventBus.cpp:66-69, 95</code> · Flush swaps the buffer index under the lock; handlers run after it is released</li>
+                                        <li><code>Nodens/Events/EventBus.cppm:37-39</code> · thread-safety note on the class</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="zed-input">
+                                    <span>Message Armitage… <em>@</em> to add context</span>
+                                    <span class="zed-model">Armitage · Pi</span>
+                                </div>
+                            </article>
+                            <article class="zed" aria-label="Example 2 of 3: free Vulkan documentation in Zotero">
+                                <div class="zed-bar">
+                                    <span class="zed-title">Vulkan synchronization</span>
+                                    <span class="zed-meta">Armitage · illustrative</span>
+                                </div>
+                                <div class="zed-thread">
+                                    <div class="zed-user">
+                                        <span class="zed-role">You</span>
+                                        <p>How can a Vulkan renderer like Nyar cut down on synchronization bookkeeping?</p>
+                                    </div>
+                                    <div class="zed-agent">
+                                        <span class="zed-role">Armitage</span>
+                                        <ul class="zed-tools">
+                                        <li><code>armitage zotero query "image layout transitions and pipeline barriers with synchronization2" -c vulkan</code><span>5 passages · 2 sources</span></li>
+                                        <li><code>armitage zotero cite 4YKVG2VK -q "Synchronization2"</code><span>verified · p. 100</span></li>
+                                        </ul>
+                                        <p>The SIGGRAPH 2026 Vulkan slides name three tools. Timeline semaphores let one semaphore stand for many increasing milestone values that the CPU and GPU can wait on, although swapchain acquire and present still use binary semaphores. Synchronization2, core since Vulkan 1.3, gives clearer dependency and submission structures. Unified image layouts mean fewer layout transitions.<sup class="zed-fn">1</sup> The Khronos Vulkan Tutorial shows the step they simplify: a pipeline barrier that commits an image layout transition to the command buffer together with its source and destination stages.<sup class="zed-fn">2</sup></p>
+                                        <p><strong>Unsourced.</strong> How much these changes save: the slides present them as less bookkeeping, not as measured speedups.</p>
+                                        <ol class="zed-notes">
+                                        <li><code>Zotero 4YKVG2VK · p. 100</code> · Potter et al. 2026, SIGGRAPH 2026: How to Write a Vulkan Application in 2026 (Vulkan Documentation Project, free online)</li>
+                                        <li><code>Zotero 9N33QNXL · §46.1.14</code> · Khronos Vulkan Tutorial, Image Layout Transition: Barrier Execution and GPU Synchronization (free online)</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="zed-input">
+                                    <span>Message Armitage… <em>@</em> to add context</span>
+                                    <span class="zed-model">Armitage · Pi</span>
+                                </div>
+                            </article>
+                            <article class="zed" aria-label="Example 3 of 3: memory checked against code">
+                                <div class="zed-bar">
+                                    <span class="zed-title">Why the reranker is released</span>
+                                    <span class="zed-meta">Armitage · illustrative</span>
+                                </div>
+                                <div class="zed-thread">
+                                    <div class="zed-user">
+                                        <span class="zed-role">You</span>
+                                        <p>Why does Armitage release the reranker after every query?</p>
+                                    </div>
+                                    <div class="zed-agent">
+                                        <span class="zed-role">Armitage</span>
+                                        <ul class="zed-tools">
+                                        <li><code>armitage memory recall "reranker"</code><span>2 notes · both stale</span></li>
+                                        <li><code>armitage code symbol Reranker.close</code><span>1 definition</span></li>
+                                        <li><code>armitage search "reranker keep_alive"</code><span>3 passages</span></li>
+                                        </ul>
+                                        <p>Memory has the answer but marks it stale, so I rechecked it against the docs and code, and it still holds. The reranker is loaded for one query and then released, and the query path unloads the embedding model first, so the two models never sit in VRAM together.<sup class="zed-fn">1</sup> In code, <code>Reranker</code> is a context manager whose <code>__exit__</code> calls <code>close()</code>,<sup class="zed-fn">2</sup> which moves the model off the GPU, empties the CUDA cache and logs the release.<sup class="zed-fn">3</sup> The query embedding uses <code>keep_alive=0</code>, which is what unloads that model.<sup class="zed-fn">4</sup></p>
+                                        <p><strong>Unsourced.</strong> How much VRAM the loaded reranker takes in total: the docs bound it but give no measured figure.</p>
+                                        <ol class="zed-notes">
+                                        <li><code>docs/03-retrieval-pipeline.md:207-210</code> · bounded VRAM: reranker loaded for one query then released, embedding model unloaded</li>
+                                        <li><code>armitage_cli/retriever.py:191-196</code> · context manager; __exit__ calls close()</li>
+                                        <li><code>armitage_cli/retriever.py:290-305</code> · close() frees the model and the CUDA cache, then logs the release</li>
+                                        <li><code>armitage_cli/retriever.py:380, 453</code> · embedding call defaults to keep_alive=0</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="zed-input">
+                                    <span>Message Armitage… <em>@</em> to add context</span>
+                                    <span class="zed-model">Armitage · Pi</span>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="zed-pager" hidden>
+                            <button type="button" class="zed-next">Next question <span aria-hidden="true">→</span></button>
+                            <span class="zed-dots" role="group" aria-label="Choose an example">
+                                <button type="button" aria-label="Example 1: code" aria-pressed="true"></button>
+                                <button type="button" aria-label="Example 2: free Vulkan docs in Zotero" aria-pressed="false"></button>
+                                <button type="button" aria-label="Example 3: memory checked against code" aria-pressed="false"></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="cell col-5">
                     <h3>Where it looks</h3>
@@ -456,8 +572,9 @@
                         <li><strong>Memory</strong> (<code>armitage memory</code>): the agent's own notes, written and
                             maintained by the agent as plain Markdown in an Obsidian vault: plans, decisions, concepts
                             and your profile.</li>
-                        <li><strong>Papers and books</strong> (<code>armitage zotero</code>): your local Zotero 7+
-                            library, read-only, with PDF text extraction and OCR for scanned pages.</li>
+                        <li><strong>Papers, books and web pages</strong> (<code>armitage zotero</code>): your local
+                            Zotero 7+ library, read-only. It reads PDFs (with OCR for scanned pages), EPUBs chapter by
+                            chapter, and saved HTML snapshots.</li>
                         <li><strong>Code</strong> (<code>armitage code</code>): an index of your repositories, shared
                             across branches and worktrees. Looking up a symbol or where it is used needs no AI
                             model.</li>
@@ -757,6 +874,7 @@ armitage search "image creation"      # memory, code and papers at once
 </script>
 
     <script src="js/bg-field.js" defer></script>
+    <script src="js/zed-deck.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 
