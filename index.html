@@ -27,17 +27,84 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-    <title>EldritchCodex · Nodens, Nyar, Armitage</title>
+    <title>EldritchCodex · Nodens, Nyar, Armitage by Renan Bomtempo</title>
     <meta name="author" content="Renan Bomtempo">
     <meta name="description"
-        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both, best used in Zed through ACP and Pi).">
+        content="Open-source projects by Renan Bomtempo: Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, a source-grounded agent.">
+    <link rel="canonical" href="https://eldritchcodex.com/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta property="og:title" content="EldritchCodex" />
     <meta property="og:description"
-        content="An open-source learning and passion project by Renan Bomtempo: Nodens (a C++23 application framework), Nyar (a Vulkan renderer) and Armitage (a source-grounded agent for working on both, best used in Zed through ACP and Pi)." />
+        content="Open-source projects by Renan Bomtempo: Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, a source-grounded agent." />
     <meta property="og:url" content="https://eldritchcodex.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="EldritchCodex" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:image" content="https://eldritchcodex.com/assets/eldritchcodex-avatar.png" />
+    <meta property="og:image:alt" content="The EldritchCodex sigil" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EldritchCodex · Nodens, Nyar, Armitage" />
+    <meta name="twitter:description"
+        content="Open-source projects by Renan Bomtempo: Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, a source-grounded agent." />
+    <meta name="twitter:image" content="https://eldritchcodex.com/assets/eldritchcodex-avatar.png" />
     <meta name="theme-color" content="#0c0d10">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://eldritchcodex.com/#website",
+          "url": "https://eldritchcodex.com/",
+          "name": "EldritchCodex",
+          "description": "Open-source projects by Renan Bomtempo: Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, a source-grounded agent.",
+          "inLanguage": "en",
+          "author": { "@id": "https://eldritchcodex.com/#person" },
+          "hasPart": [
+            { "@id": "https://eldritchcodex.com/#nodens" },
+            { "@id": "https://eldritchcodex.com/#nyar" },
+            { "@id": "https://eldritchcodex.com/#armitage" }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://eldritchcodex.com/#person",
+          "name": "Renan Bomtempo",
+          "url": "https://renanbomtempo.me/"
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "@id": "https://eldritchcodex.com/#nodens",
+          "name": "Nodens",
+          "description": "Module-first C++23 desktop application framework with layers, an event bus, a job system and ImGui.",
+          "programmingLanguage": "C++",
+          "url": "https://eldritchcodex.com/#nodens",
+          "author": { "@id": "https://eldritchcodex.com/#person" },
+          "isPartOf": { "@id": "https://eldritchcodex.com/#website" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "@id": "https://eldritchcodex.com/#nyar",
+          "name": "Nyar",
+          "description": "Real-time Vulkan renderer designed as a separate module for Nodens, using Slang shaders.",
+          "programmingLanguage": "C++",
+          "url": "https://eldritchcodex.com/#nyar",
+          "author": { "@id": "https://eldritchcodex.com/#person" },
+          "isPartOf": { "@id": "https://eldritchcodex.com/#website" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "@id": "https://eldritchcodex.com/#armitage",
+          "name": "Armitage",
+          "description": "Source-grounded agent tooling: skills and CLI, best used inside Zed through the Agent Client Protocol and the custom Pi harness.",
+          "programmingLanguage": "Python",
+          "url": "https://eldritchcodex.com/#armitage",
+          "author": { "@id": "https://eldritchcodex.com/#person" },
+          "isPartOf": { "@id": "https://eldritchcodex.com/#website" }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -71,7 +138,7 @@
             <div class="cell col-8 hero-copy">
                 <div class="kicker">A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan
                         Bomtempo</a></div>
-                <h1>Exploring <em>rendering</em> and <em>simulation</em><br>from <em>first principles</em>.</h1>
+                <h1><span class="sr-only">EldritchCodex: </span>Exploring <em>rendering</em> and <em>simulation</em><br>from <em>first principles</em>.</h1>
                 <p>
                     EldritchCodex is an open-source project where I build what I want to understand: Nodens, a
                     C++23 application framework; Nyar, a Vulkan renderer; and Armitage, an agent that keeps my

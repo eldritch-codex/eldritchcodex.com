@@ -1489,6 +1489,19 @@ li {
     width: 100%;
 }
 
+/* Visually hidden, still read by screen readers and crawlers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Honest-context note under a chapter header */
 .callout {
     border-left: 2px solid var(--tone);

@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /
-
-User-agent: Googlebot
 Allow: /
+
+Sitemap: https://eldritchcodex.com/sitemap.xml
