@@ -1,16 +1,16 @@
-// Deck of example threads: the front window dips down, slides behind the others,
-// and the next one comes forward. Without this script the windows just stack.
+// Deck of example threads, with a list of their questions beside it: choosing a question dips the
+// front window down, slides it behind the others, and brings the chosen one forward. Without this script the windows just stack.
 (() => {
     const deck = document.getElementById('zed-deck');
     if (!deck) return;
     const cards = [...deck.querySelectorAll('.zed')];
-    const pager = document.querySelector('.zed-pager');
-    if (cards.length < 2 || !pager) return;
+    const list = document.querySelector('.zed-list');
+    if (cards.length < 2 || !list) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const dots = [...pager.querySelectorAll('.zed-dots button')];
+    const items = [...list.querySelectorAll('button')];
     const DIP_MS = 260;
-    const AUTO_MS = 11000;
+    const AUTO_MS = 20000;
 
     let order = cards.map((_, i) => i); // order[0] is the front card
     let busy = false;
@@ -24,7 +24,7 @@
             card.toggleAttribute('inert', pos !== 0);
             card.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true');
         });
-        dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === order[0])));
+        items.forEach((item, i) => item.setAttribute('aria-pressed', String(i === order[0])));
     }
 
     function rotate(times) {
@@ -57,15 +57,15 @@
         timer = setTimeout(() => { advance(); schedule(); }, AUTO_MS);
     }
 
-    pager.querySelector('.zed-next').addEventListener('click', () => { advance(); schedule(); });
-    dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); schedule(); }));
+    items.forEach((item, i) => item.addEventListener('click', () => { show(i); schedule(); }));
     for (const ev of ['pointerenter', 'focusin']) deck.addEventListener(ev, () => { paused = true; clearTimeout(timer); });
     for (const ev of ['pointerleave', 'focusout']) deck.addEventListener(ev, () => { paused = false; schedule(); });
-    pager.addEventListener('pointerenter', () => { paused = true; clearTimeout(timer); });
-    pager.addEventListener('pointerleave', () => { paused = false; schedule(); });
+    for (const ev of ['pointerenter', 'focusin']) list.addEventListener(ev, () => { paused = true; clearTimeout(timer); });
+    for (const ev of ['pointerleave', 'focusout']) list.addEventListener(ev, () => { paused = false; schedule(); });
 
     deck.classList.add('is-deck');
-    pager.hidden = false;
+    deck.closest('.zed-layout').classList.add('has-list');
+    list.hidden = false;
     render();
     schedule();
 })();

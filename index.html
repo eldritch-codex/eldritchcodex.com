@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-    <title>EldritchCodex · Nodens, Nyar, Armitage by Renan Bomtempo</title>
+    <title>EldritchCodex</title>
     <meta name="author" content="Renan Bomtempo">
     <meta name="description"
         content="Open-source projects by Renan Bomtempo: Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, a source-grounded agent.">
@@ -44,13 +44,13 @@
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="EldritchCodex: exploring rendering and simulation from first principles." />
+    <meta property="og:image:alt" content="EldritchCodex: exploring the engineering and mathematics of rendering and simulation tools." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="EldritchCodex · Nodens, Nyar, Armitage" />
+    <meta name="twitter:title" content="EldritchCodex" />
     <meta name="twitter:description"
         content="Open-source projects by Renan Bomtempo: Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, a source-grounded agent." />
     <meta name="twitter:image" content="https://eldritchcodex.com/assets/og-card.png" />
-    <meta name="twitter:image:alt" content="EldritchCodex: exploring rendering and simulation from first principles." />
+    <meta name="twitter:image:alt" content="EldritchCodex: exploring the engineering and mathematics of rendering and simulation tools." />
     <meta name="theme-color" content="#0c0d10">
     <script type="application/ld+json">
     {
@@ -65,9 +65,9 @@
           "inLanguage": "en",
           "author": { "@id": "https://eldritchcodex.com/#person" },
           "hasPart": [
-            { "@id": "https://eldritchcodex.com/#nodens" },
-            { "@id": "https://eldritchcodex.com/#nyar" },
-            { "@id": "https://eldritchcodex.com/#armitage" }
+            { "@id": "https://eldritchcodex.com/nodens/" },
+            { "@id": "https://eldritchcodex.com/nyar/" },
+            { "@id": "https://eldritchcodex.com/armitage/" }
           ]
         },
         {
@@ -78,44 +78,45 @@
         },
         {
           "@type": "SoftwareSourceCode",
-          "@id": "https://eldritchcodex.com/#nodens",
+          "@id": "https://eldritchcodex.com/nodens/",
           "name": "Nodens",
           "description": "Module-first C++23 desktop application framework with layers, an event bus, a job system and ImGui.",
           "programmingLanguage": "C++",
-          "url": "https://eldritchcodex.com/#nodens",
+          "url": "https://eldritchcodex.com/nodens/",
           "author": { "@id": "https://eldritchcodex.com/#person" },
           "isPartOf": { "@id": "https://eldritchcodex.com/#website" }
         },
         {
           "@type": "SoftwareSourceCode",
-          "@id": "https://eldritchcodex.com/#nyar",
+          "@id": "https://eldritchcodex.com/nyar/",
           "name": "Nyar",
           "description": "Real-time Vulkan renderer designed as a separate module for Nodens, using Slang shaders.",
           "programmingLanguage": "C++",
-          "url": "https://eldritchcodex.com/#nyar",
+          "url": "https://eldritchcodex.com/nyar/",
           "author": { "@id": "https://eldritchcodex.com/#person" },
           "isPartOf": { "@id": "https://eldritchcodex.com/#website" }
         },
         {
           "@type": "SoftwareSourceCode",
-          "@id": "https://eldritchcodex.com/#armitage",
+          "@id": "https://eldritchcodex.com/armitage/",
           "name": "Armitage",
           "description": "Source-grounded agent tooling: skills and CLI, best used inside Zed through the Agent Client Protocol and the custom Pi harness.",
           "programmingLanguage": "Python",
-          "url": "https://eldritchcodex.com/#armitage",
+          "url": "https://eldritchcodex.com/armitage/",
           "author": { "@id": "https://eldritchcodex.com/#person" },
           "isPartOf": { "@id": "https://eldritchcodex.com/#website" }
         }
       ]
     }
     </script>
+
 </head>
 
 <body>
 
     <header class="site-header">
         <div class="header-inner">
-            <a class="wordmark" href="#top">
+            <a class="wordmark" href="./">
                 <svg viewBox="190 145 640 720" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd"
                         d="M240 195 Q512 167 784 195 Q819 420 784 647 Q512 675 240 647 Q205 420 240 195 Z M324 281 Q512 270 700 281 L704 375 Q512 372 320 375 Z M320 469 Q416 472 512 469 L512 566 Q416 566 324 562 Z" />
@@ -124,9 +125,9 @@
                 EldritchCodex
             </a>
             <nav class="nav" aria-label="Primary">
-                <a href="#nodens"><span class="num">I.</span>Nodens</a>
-                <a href="#nyar"><span class="num">II.</span>Nyar</a>
-                <a href="#armitage"><span class="num">III.</span>Armitage</a>
+                <a href="nodens/"><span class="num">I.</span>Nodens</a>
+                <a href="nyar/"><span class="num">II.</span>Nyar</a>
+                <a href="armitage/"><span class="num">III.</span>Armitage</a>
                 <a class="ext hide-sm" href="https://github.com/eldritch-codex" target="_blank" rel="noopener">GitHub
                     ↗</a>
             </nav>
@@ -135,15 +136,11 @@
 
     <main class="wrap" id="top">
 
-        <!-- ================================================================ -->
-        <!-- Hero (8 + 4)                                                      -->
-        <!-- ================================================================ -->
         <section class="row row--first">
             <div class="cell col-8 hero-copy">
                 <div class="kicker">A project by <a href="https://renanbomtempo.me" target="_blank" rel="noopener">Renan
                         Bomtempo</a></div>
-                <h1><span class="sr-only">EldritchCodex: </span>Exploring <em>rendering</em> and
-                    <em>simulation</em><br>from <em>first principles</em>.
+                <h1><span class="sr-only">EldritchCodex: </span>Exploring the <span class="mono-word">engineering</span> and <em>mathematics</em><br>of rendering and simulation tools.
                 </h1>
                 <p>
                     EldritchCodex is an open-source project where I build what I want to understand: Nodens, a
@@ -151,20 +148,34 @@
                     work grounded in books, documentation and papers.
                 </p>
                 <div class="hero-links">
-                    <a class="btn" href="#projects">See the projects ↓</a>
+                    <a class="btn" href="#nodens">See the projects ↓</a>
                 </div>
             </div>
 
             <div class="cell col-4 hero-art" aria-hidden="true">
                 <svg class="astrolabe" viewBox="0 0 320 320" fill="none">
-                    <g stroke="rgba(236,232,223,0.16)" stroke-width="1">
+                    <g class="s-ink16" stroke-width="1">
                         <circle cx="160" cy="160" r="142" />
                         <circle cx="160" cy="160" r="76" />
                         <line x1="160" y1="8" x2="160" y2="312" />
                         <line x1="8" y1="160" x2="312" y2="160" />
                     </g>
-                    <g class="spin-ring" stroke="rgba(236,232,223,0.16)" stroke-width="1">
+                    <g class="spin-ring s-ink16" stroke-width="1">
                         <circle cx="160" cy="160" r="112" stroke-dasharray="2 5" />
+                    </g>
+                    <g class="spin-glyph s-ink35" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <path transform="rotate(0 160 160) translate(154 27) scale(0.5)" d="M2 12Q12 3 22 12Q12 21 2 12Z M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0 M12 8v8" />
+                        <path transform="rotate(30 160 160) translate(154 27) scale(0.5)" d="M12 12m0 0a2 2 0 1 1 3 1.7a4 4 0 1 1-6-3.4a6 6 0 1 1 9 5.2 M18 18l3 3" />
+                        <path transform="rotate(60 160 160) translate(154 27) scale(0.5)" d="M12 2v20M12 7l-6 6M12 12l6-5M12 17l-5 4" />
+                        <path transform="rotate(90 160 160) translate(154 27) scale(0.5)" d="M4 13a8 8 0 1 0 16 0a8 8 0 1 0-16 0 M7 6a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M11 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M15 6a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M4 13h16" />
+                        <path transform="rotate(120 160 160) translate(154 27) scale(0.5)" d="M4 10a8 8 0 0 0 16 0 M6 22l6-9 6 9z M10.8 5a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0" />
+                        <path transform="rotate(150 160 160) translate(154 27) scale(0.5)" d="M6 3v9q0 5 6 5t6-5V3M12 17v5M8 20h8" />
+                        <path transform="rotate(180 160 160) translate(154 27) scale(0.5)" d="M12 2l8 10-8 10-8-10z M12 7l4 5-4 5-4-5z M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0" />
+                        <path transform="rotate(210 160 160) translate(154 27) scale(0.5)" d="M17 4H8v8h9v8H7 M4 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M18 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0" />
+                        <path transform="rotate(240 160 160) translate(154 27) scale(0.5)" d="M3 12a9 9 0 0 1 18 0 M7 12a5 5 0 0 0 10 0 M10.8 12a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0 M12 17v5" />
+                        <path transform="rotate(270 160 160) translate(154 27) scale(0.5)" d="M4 4q4 8 8 8t8-8M12 12v9M8 17h8" />
+                        <path transform="rotate(300 160 160) translate(154 27) scale(0.5)" d="M10 4a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M7 9v13M12 9v9M17 9v5" />
+                        <path transform="rotate(330 160 160) translate(154 27) scale(0.5)" d="M12 3v18M12 8L8 5M12 8l4-3M12 14l-5-3M12 14l5-3M12 19l-3-2M12 19l3-2" />
                     </g>
                     <g class="spin-slow" stroke="rgba(217,167,92,0.42)" stroke-width="1">
                         <polygon points="160,48 257,216 63,216" />
@@ -178,37 +189,12 @@
                         <circle cx="257" cy="216" r="3" fill="#6ea8d6" stroke="none" />
                         <circle cx="63" cy="216" r="3" fill="#b18ae0" stroke="none" />
                     </g>
-                    <circle cx="160" cy="160" r="18" stroke="rgba(236,232,223,0.35)" />
-                    <circle cx="160" cy="160" r="3.5" fill="#ece8df" />
+                    <circle cx="160" cy="160" r="18" class="s-ink35" />
+                    <circle cx="160" cy="160" r="3.5" class="f-ink" />
                 </svg>
             </div>
         </section>
 
-        <!-- ================================================================ -->
-        <!-- Three-entry index (4 + 4 + 4)                                     -->
-        <!-- ================================================================ -->
-        <section class="row" id="projects" aria-label="Projects">
-            <a class="cell cell--compact col-4 index-card" href="#nodens">
-                <div class="index-meta"><span>I. C++23</span><span>Framework</span></div>
-                <h2>Nodens <span class="arrow">↘</span></h2>
-                <p>Module-first desktop application framework with layers, an event bus, a job system, and ImGui.</p>
-            </a>
-            <a class="cell cell--compact col-4 index-card" href="#nyar">
-                <div class="index-meta"><span>II. Vulkan 1.3 &amp; Slang</span><span>Renderer</span></div>
-                <h2>Nyar <span class="arrow">↘</span></h2>
-                <p>Real-time Vulkan renderer designed as a separate module for Nodens, using Slang shaders.</p>
-            </a>
-            <a class="cell cell--compact col-4 index-card" href="#armitage">
-                <div class="index-meta"><span>III. Python 3.14</span><span>Agent, Skillset &amp; CLI</span></div>
-                <h2>Armitage <span class="arrow">↘</span></h2>
-                <p>Source-grounded agent skills and CLI, best in Zed through the Pi harness and ACP, where it is most
-                    thoroughly tested.</p>
-            </a>
-        </section>
-
-        <!-- ================================================================ -->
-        <!-- I · NODENS                                                        -->
-        <!-- ================================================================ -->
         <article id="nodens" class="chapter" data-tone="nodens">
             <header class="row chapter-header">
                 <div class="cell col-8 chapter-head">
@@ -236,6 +222,7 @@
                 </div>
                 <div class="chapter-stack dep-strip">
                     <span class="label">Stack:</span>
+                    <a href="https://en.cppreference.com/w/cpp/23" target="_blank" rel="noopener">C++</a>
                     <a href="https://www.opengl.org/" target="_blank" rel="noopener">OpenGL</a>
                     <a href="https://www.vulkan.org/" target="_blank" rel="noopener">Vulkan</a>
                     <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>
@@ -249,77 +236,55 @@
                 <aside class="cell col-4 chapter-aside" aria-label="Nodens links">
                     <span class="aside-label">Links</span>
                     <ul class="chapter-links">
+                        <li><a href="nodens/">Full overview</a></li>
+
                         <li><a href="https://github.com/eldritch-codex/nodens" target="_blank"
                                 rel="noopener">Repository</a></li>
                         <li><a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank"
                                 rel="noopener">Wiki</a></li>
-                        <li><a href="https://github.com/eldritch-codex/template-nodens-app" target="_blank"
-                                rel="noopener">App template</a></li>
                     </ul>
                 </aside>
             </header>
 
-            <div class="row">
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">01 · Windowing</span>
-                    <h4>GLFW windows</h4>
-                    <p>Creates the window, graphics context and input handling, with OpenGL or Vulkan backends.</p>
+        <section class="sect sect--bare">
+                <div class="sect-body">
+<ul class="items"><li><span class="item-idx">01 · Windowing</span><div><h4>GLFW windows</h4><p>Creates the window, graphics context and input handling, with OpenGL or Vulkan backends.</p></div></li><li><span class="item-idx">02 · Lifetime</span><div><h4>Layer system</h4><p>An app is a stack of layers. They update in order, draw back to front, and receive input from the
+                        top down.</p></div></li><li><span class="item-idx">03 · Messaging</span><div><h4>Event system</h4><p>Input events pass down the layers. A thread-safe event bus lets any part publish and subscribe to
+                        custom events, handled immediately or queued.</p></div></li><li><span class="item-idx">04 · Concurrency</span><div><h4>Job system</h4><p>Runs heavy work, like simulation and data processing, on worker threads so the render thread
+                        stays responsive.</p></div></li></ul>
                 </div>
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">02 · Lifetime</span>
-                    <h4>Layer system</h4>
-                    <p>An app is a stack of layers. They update in order, draw back to front, and receive input from the
-                        top down.</p>
-                </div>
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">03 · Messaging</span>
-                    <h4>Event system</h4>
-                    <p>Input events pass down the layers. A thread-safe event bus lets any part publish and subscribe to
-                        custom events, handled immediately or queued.</p>
-                </div>
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">04 · Concurrency</span>
-                    <h4>Job system</h4>
-                    <p>Runs heavy work, like simulation and data processing, on worker threads so the render thread
-                        stays responsive.</p>
-                </div>
-            </div>
+        </section>
 
-            <div class="row">
-                <div class="cell col-5">
+        <section class="sect">
+                <div class="sect-intro">
                     <h3>Writing an app</h3>
                     <ul class="notes">
-                        <li>An app inherits from <code>Nodens::Application</code>, pushes one or more layers, and calls
+<li>An app inherits from <code>Nodens::Application</code>, pushes one or more layers, and calls
                             <code>Run()</code>. Every frame, each layer receives <code>OnEvent</code>,
                             <code>OnUpdate(TimeStep)</code> and <code>OnImGuiRender(TimeStep)</code>.
                         </li>
-                        <li>Two examples ship with it: <code>circularwave3d</code> (live 2D/3D plots with ImPlot and
+<li>Two examples ship with it: <code>circularwave3d</code> (live 2D/3D plots with ImPlot and
                             ImPlot3D) and <code>planetaryscan</code> (the event bus and job system working together).
                         </li>
-                        <li>Tracy profiling is built in: add <code>ZoneScoped</code> to any layer method.</li>
-                        <li>CMake builds every dependency from source, so there is nothing to install by hand.</li>
-                    </ul>
+<li>Tracy profiling is built in: add <code>ZoneScoped</code> to any layer method.</li>
+<li>CMake builds every dependency from source, so there is nothing to install by hand.</li>
+</ul>
                 </div>
-                <div class="cell col-7">
-                    <figure class="figure" data-tabgroup>
-                        <figcaption class="figure-bar">
-                            <div class="figure-tabs" role="tablist">
-                                <button class="figure-tab active" type="button"
-                                    data-show="nodens-app">CircularWave3DApp.cpp</button>
-                                <button class="figure-tab" type="button"
-                                    data-show="nodens-layer">CircularWave3DLayer.cppm</button>
-                            </div>
-                            <span>examples/circularwave3d</span>
-                        </figcaption>
-                        <pre class="code" data-src="nodens-app"></pre>
-                    </figure>
+                <div class="sect-body">
+<figure class="figure" data-tabgroup="">
+<figcaption class="figure-bar">
+<div class="figure-tabs" role="tablist">
+<button class="figure-tab active" data-show="nodens-app" type="button">HelloNodens.cpp</button>
+</div>
+<span>a minimal app</span>
+</figcaption>
+<pre class="code" data-src="nodens-app"></pre>
+</figure>
                 </div>
-            </div>
+        </section>
+        <div class="sect-cta"><a class="btn" href="nodens/">Read the Nodens overview →</a></div>
         </article>
 
-        <!-- ================================================================ -->
-        <!-- II · NYAR                                                         -->
-        <!-- ================================================================ -->
         <article id="nyar" class="chapter" data-tone="nyar">
             <header class="row chapter-header">
                 <div class="cell col-8 chapter-head">
@@ -362,6 +327,8 @@
                 <aside class="cell col-4 chapter-aside" aria-label="Nyar links">
                     <span class="aside-label">Links</span>
                     <ul class="chapter-links">
+                        <li><a href="nyar/">Full overview</a></li>
+
                         <li><a href="https://github.com/eldritch-codex/nyar" target="_blank"
                                 rel="noopener">Repository</a></li>
                         <li><a href="https://github.com/eldritch-codex/nyar/milestones" target="_blank"
@@ -370,28 +337,13 @@
                 </aside>
             </header>
 
-            <div class="row">
-                <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">01 · Shaders</span>
-                    <h4>Slang to SPIR-V</h4>
-                    <p>Shaders are written in Slang, a shading language, and compiled to SPIR-V (the format Vulkan
-                        loads) by a custom CMake target.</p>
-                </div>
-                <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">02 · Pipeline</span>
-                    <h4>Modern Vulkan 1.3</h4>
-                    <p>Uses Vulkan's current features: dynamic rendering (no render pass objects),
+        <section class="sect sect--bare">
+                <div class="sect-body">
+<ul class="items"><li><span class="item-idx">01 · Shaders</span><div><h4>Slang to SPIR-V</h4><p>Shaders are written in Slang, a shading language, and compiled to SPIR-V (the format Vulkan
+                        loads) by a custom CMake target.</p></div></li><li><span class="item-idx">02 · Pipeline</span><div><h4>Modern Vulkan 1.3</h4><p>Uses Vulkan's current features: dynamic rendering (no render pass objects),
                         <code>synchronization2</code> and extended dynamic state.
-                    </p>
-                </div>
-                <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">03 · Direction</span>
-                    <h4>Nodens integration</h4>
-                    <p>Packaged as a C++ module (<code>export module nyar;</code>) that Nodens applications import
-                        as their rendering backend.</p>
-                </div>
-            </div>
-
+                    </p></div></li><li><span class="item-idx">03 · Direction</span><div><h4>Nodens integration</h4><p>Packaged as a C++ module (<code>export module nyar;</code>) that Nodens applications import
+                        as their rendering backend.</p></div></li></ul>
             <div class="row">
                 <div class="cell col-5">
                     <div class="stage-box">
@@ -412,11 +364,11 @@
                     </figure>
                 </div>
             </div>
+                </div>
+        </section>
+        <div class="sect-cta"><a class="btn" href="nyar/">Read the Nyar overview →</a></div>
         </article>
 
-        <!-- ================================================================ -->
-        <!-- III · ARMITAGE                                                    -->
-        <!-- ================================================================ -->
         <article id="armitage" class="chapter" data-tone="armitage">
             <header class="row chapter-header">
                 <div class="cell col-8 chapter-head">
@@ -435,9 +387,7 @@
                         Armitage
                     </h2>
                     <p>
-                        Armitage is how I use coding agents without giving up learning from first principles. Every
-                        factual claim must point to your workspace, your Zotero library or the agent's memory, or it
-                        is cut or marked unverified. Skills and a CLI work with any coding agent, but it is at its
+                        Armitage is how I use coding agents without giving up learning from first principles. It works natively with Zotero, where your PDFs, EPUBs and saved web pages live, and with Zed, through the Agent Client Protocol. Every factual claim must point to your workspace, your Zotero library or the agent's memory, or it is cut or marked unverified. Skills and a CLI work with any coding agent, but it is at its
                         best in Zed, through the Pi harness and ACP, where it is most thoroughly tested.
                     </p>
                     <p class="chapter-note">
@@ -463,411 +413,191 @@
                 <aside class="cell col-4 chapter-aside" aria-label="Armitage links">
                     <span class="aside-label">Links</span>
                     <ul class="chapter-links">
+                        <li><a href="armitage/">Full overview</a></li>
+
                         <li class="is-note">Private repository · public release upcoming</li>
                     </ul>
                 </aside>
             </header>
 
-            <div class="row">
-                <div class="cell cell--flush col-12">
-                    <div class="table-head table-head--row">
-                        <h3>Ways to use it</h3>
-                        <p>The skills and CLI are the portable base; the best way to use Armitage is inside Zed, through
-                            Pi and ACP.</p>
-                    </div>
+        <section class="sect sect--bare">
+                <div class="sect-body">
+<ul class="items"><li><span class="item-idx">01 · Trustworthy</span><div><h4>Every claim has a source</h4><p>Each factual claim cites your workspace, your Zotero library or the agent's memory, or it is cut or marked unverified.</p></div></li><li><span class="item-idx">02 · Grounded</span><div><h4>One search, three places</h4><p>A single query searches memory, code and your Zotero library together, with the retrieval running fully on your machine. PDFs, EPUBs and saved web pages are all read.</p></div></li><li><span class="item-idx">03 · Focused</span><div><h4>Roles that fit the task</h4><p>Roles built on skills: researcher, tutor, planner, coder, debugger or devops, each with a workflow drawn from the literature. Read-only roles cannot edit your files.</p></div></li></ul>
                 </div>
-            </div>
+        </section>
 
-            <div class="row" aria-label="Ways to use Armitage">
-                <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">Core</span>
-                    <h4>Skills &amp; CLI</h4>
-                    <p>Instructions for your coding agent, plus a CLI that maintains memory and searches your code and
-                        Zotero library. No Pi or Zed required.</p>
-                </div>
-                <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">Optional · powers Zed</span>
-                    <h4>Custom Pi environment</h4>
-                    <p>A dedicated agent environment built around Armitage's workflow. Run it in the terminal with
-                        <code>armitage pi</code>, or from Zed through ACP.
-                    </p>
-                </div>
-                <div class="cell cell--compact col-4 pillar">
-                    <span class="idx">Best · needs Pi</span>
-                    <h4>Zed via ACP</h4>
-                    <p>Run the Pi harness in Zed's Agent Panel through the Agent Client Protocol instead of a terminal.
-                        The best way to use Armitage, and the most thoroughly tested.</p>
-                </div>
-            </div>
-
-            <div class="row" aria-label="Example question and answer">
-                <div class="cell cell--flush col-12">
-                    <div class="table-head">
-                        <h3>What an answer looks like</h3>
-                        <p>Three illustrative threads in Zed: a code question, a Vulkan question answered from Zotero,
+        <section class="sect sect--stack">
+                <div class="sect-intro">
+                    <h3>What an answer looks like</h3>
+                    <p>Three illustrative threads in Zed: a code question, a Vulkan question answered from Zotero,
                             and one answered from memory and checked against the code. Every claim is footnoted to its
                             source, and what it cannot source is marked. References are clickable: code opens the file
                             at the cited line, Zotero opens the paper at the cited page or the saved web page at the
                             passage.</p>
-                    </div>
-                    <div class="zed-wrap">
-                        <div class="zed-deck" id="zed-deck">
-                            <article class="zed" aria-label="Example 1 of 3: the Nodens EventBus">
-                                <div class="zed-bar">
-                                    <span class="zed-title">EventBus and producer threads</span>
-                                    <span class="zed-meta">Armitage · illustrative</span>
-                                </div>
-                                <div class="zed-thread">
-                                    <div class="zed-user">
-                                        <span class="zed-role">You</span>
-                                        <p>How does the Nodens EventBus keep producer threads from blocking while events
-                                            are being dispatched?</p>
-                                    </div>
-                                    <div class="zed-agent">
-                                        <span class="zed-role">Armitage</span>
-                                        <ul class="zed-tools">
-                                            <li><code>armitage code symbol QueueEvent</code><span>1 definition</span>
-                                            </li>
-                                            <li><code>armitage code symbol EventBus::Flush</code><span>1
-                                                    definition</span></li>
-                                            <li><code>armitage search "EventBus thread safety"</code><span>3
-                                                    passages</span></li>
-                                        </ul>
-                                        <p>Producers never wait for handlers. <code>QueueEvent</code> takes a short
-                                            mutex, appends the event's bytes to the active write buffer and returns.<sup
-                                                class="zed-fn">1</sup> <code>Flush()</code> holds that mutex only to
-                                            swap the two buffers, then runs the handlers on the retired buffer outside
-                                            the lock.<sup class="zed-fn">2</sup> <code>Subscribe</code>,
-                                            <code>Unsubscribe</code> and <code>QueueEvent</code> may be called from any
-                                            thread; <code>Dispatch</code> and <code>Flush</code> are meant for the main
-                                            thread.<sup class="zed-fn">3</sup>
-                                        </p>
-                                        <p><strong>Unsourced.</strong> How the single buffer mutex behaves under heavy
-                                            contention: none of the code, docs or papers searched measure it.</p>
-                                        <ol class="zed-notes">
-                                            <li><code>Nodens/Events/EventBus.cppm:108-112</code> · QueueEvent locks the
-                                                buffer mutex, appends the bytes to the active buffer and returns</li>
-                                            <li><code>Nodens/Events/EventBus.cpp:66-69, 95</code> · Flush swaps the
-                                                buffer index under the lock; handlers run after it is released</li>
-                                            <li><code>Nodens/Events/EventBus.cppm:37-39</code> · thread-safety note on
-                                                the class</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <div class="zed-input">
-                                    <span>Message Armitage… <em>@</em> to add context</span>
-                                    <span class="zed-model">Armitage · Pi</span>
-                                </div>
-                            </article>
-                            <article class="zed" aria-label="Example 2 of 3: free Vulkan documentation in Zotero">
-                                <div class="zed-bar">
-                                    <span class="zed-title">Vulkan synchronization</span>
-                                    <span class="zed-meta">Armitage · illustrative</span>
-                                </div>
-                                <div class="zed-thread">
-                                    <div class="zed-user">
-                                        <span class="zed-role">You</span>
-                                        <p>How can a Vulkan renderer like Nyar cut down on synchronization bookkeeping?
-                                        </p>
-                                    </div>
-                                    <div class="zed-agent">
-                                        <span class="zed-role">Armitage</span>
-                                        <ul class="zed-tools">
-                                            <li><code>armitage zotero query "image layout transitions and pipeline
-                                                    barriers with synchronization2" -c vulkan</code><span>5 passages · 2
-                                                    sources</span></li>
-                                            <li><code>armitage zotero cite 4YKVG2VK -q
-                                                    "Synchronization2"</code><span>verified · p. 100</span></li>
-                                        </ul>
-                                        <p>The SIGGRAPH 2026 Vulkan slides name three tools. Timeline semaphores let one
-                                            semaphore stand for many increasing milestone values that the CPU and GPU
-                                            can wait on, although swapchain acquire and present still use binary
-                                            semaphores. Synchronization2, core since Vulkan 1.3, gives clearer
-                                            dependency and submission structures. Unified image layouts mean fewer
-                                            layout transitions.<sup class="zed-fn">1</sup> The Khronos Vulkan Tutorial
-                                            shows the step they simplify: a pipeline barrier that commits an image
-                                            layout transition to the command buffer together with its source and
-                                            destination stages.<sup class="zed-fn">2</sup></p>
-                                        <p><strong>Unsourced.</strong> How much these changes save: the slides present
-                                            them as less bookkeeping, not as measured speedups.</p>
-                                        <ol class="zed-notes">
-                                            <li><code>Zotero 4YKVG2VK · p. 100</code> · Potter et al. 2026, SIGGRAPH
-                                                2026: How to Write a Vulkan Application in 2026 (Vulkan Documentation
-                                                Project, free online)</li>
-                                            <li><code>Zotero 9N33QNXL · §46.1.14</code> · Khronos Vulkan Tutorial, Image
-                                                Layout Transition: Barrier Execution and GPU Synchronization (free
-                                                online)</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <div class="zed-input">
-                                    <span>Message Armitage… <em>@</em> to add context</span>
-                                    <span class="zed-model">Armitage · Pi</span>
-                                </div>
-                            </article>
-                            <article class="zed" aria-label="Example 3 of 3: memory checked against code">
-                                <div class="zed-bar">
-                                    <span class="zed-title">Why the reranker is released</span>
-                                    <span class="zed-meta">Armitage · illustrative</span>
-                                </div>
-                                <div class="zed-thread">
-                                    <div class="zed-user">
-                                        <span class="zed-role">You</span>
-                                        <p>Why does Armitage release the reranker after every query?</p>
-                                    </div>
-                                    <div class="zed-agent">
-                                        <span class="zed-role">Armitage</span>
-                                        <ul class="zed-tools">
-                                            <li><code>armitage memory recall "reranker"</code><span>2 notes · both
-                                                    stale</span></li>
-                                            <li><code>armitage code symbol Reranker.close</code><span>1
-                                                    definition</span></li>
-                                            <li><code>armitage search "reranker keep_alive"</code><span>3
-                                                    passages</span></li>
-                                        </ul>
-                                        <p>Memory has the answer but marks it stale, so I rechecked it against the docs
-                                            and code, and it still holds. The reranker is loaded for one query and then
-                                            released, and the query path unloads the embedding model first, so the two
-                                            models never sit in VRAM together.<sup class="zed-fn">1</sup> In code,
-                                            <code>Reranker</code> is a context manager whose <code>__exit__</code> calls
-                                            <code>close()</code>,<sup class="zed-fn">2</sup> which moves the model off
-                                            the GPU, empties the CUDA cache and logs the release.<sup
-                                                class="zed-fn">3</sup> The query embedding uses
-                                            <code>keep_alive=0</code>, which is what unloads that model.<sup
-                                                class="zed-fn">4</sup>
-                                        </p>
-                                        <p><strong>Unsourced.</strong> How much VRAM the loaded reranker takes in total:
-                                            the docs bound it but give no measured figure.</p>
-                                        <ol class="zed-notes">
-                                            <li><code>docs/03-retrieval-pipeline.md:207-210</code> · bounded VRAM:
-                                                reranker loaded for one query then released, embedding model unloaded
-                                            </li>
-                                            <li><code>armitage_cli/retriever.py:191-196</code> · context manager;
-                                                __exit__ calls close()</li>
-                                            <li><code>armitage_cli/retriever.py:290-305</code> · close() frees the model
-                                                and the CUDA cache, then logs the release</li>
-                                            <li><code>armitage_cli/retriever.py:380, 453</code> · embedding call
-                                                defaults to keep_alive=0</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                                <div class="zed-input">
-                                    <span>Message Armitage… <em>@</em> to add context</span>
-                                    <span class="zed-model">Armitage · Pi</span>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="zed-pager" hidden>
-                            <button type="button" class="zed-next">Next question <span
-                                    aria-hidden="true">→</span></button>
-                            <span class="zed-dots" role="group" aria-label="Choose an example">
-                                <button type="button" aria-label="Example 1: code" aria-pressed="true"></button>
-                                <button type="button" aria-label="Example 2: free Vulkan docs in Zotero"
-                                    aria-pressed="false"></button>
-                                <button type="button" aria-label="Example 3: memory checked against code"
-                                    aria-pressed="false"></button>
-                            </span>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="cell cell--flush col-12">
-                    <div class="table-head table-head--row">
-                        <h3>How a question is answered</h3>
-                        <p>One search across your memory, code and papers, then four steps to an answer with a source
-                            for every claim.</p>
-                    </div>
+                <div class="sect-body">
+<div class="zed-wrap">
+<div class="zed-layout">
+<ol aria-label="Choose a question" class="zed-list" hidden="">
+<li><button aria-pressed="true" type="button">
+<span class="zed-source">Code</span>
+<span class="zed-q">How does the Nodens EventBus keep producer threads from blocking while events are being dispatched?</span>
+</button></li>
+<li><button aria-pressed="false" type="button">
+<span class="zed-source">Zotero papers</span>
+<span class="zed-q">How can a Vulkan renderer like Nyar cut down on synchronization bookkeeping?</span>
+</button></li>
+<li><button aria-pressed="false" type="button">
+<span class="zed-source">Memory and code</span>
+<span class="zed-q">Why does Armitage release the reranker after every query?</span>
+</button></li>
+</ol>
+<div class="zed-deck" id="zed-deck">
+<article aria-label="Example 1 of 3: the Nodens EventBus" class="zed">
+<div class="zed-bar">
+<span class="zed-title">EventBus and producer threads</span>
+<span class="zed-meta">Armitage · illustrative</span>
+</div>
+<div class="zed-thread">
+<div class="zed-user">
+<span class="zed-role">You</span>
+<p>How does the Nodens EventBus keep producer threads from blocking while events
+                                                are being dispatched?</p>
+</div>
+<div class="zed-agent">
+<span class="zed-role">Armitage</span>
+<ul class="zed-tools">
+<li><code>armitage code symbol QueueEvent</code><span>1 definition</span>
+</li>
+<li><code>armitage code symbol EventBus::Flush</code><span>1
+                                                        definition</span></li>
+<li><code>armitage search "EventBus thread safety"</code><span>3
+                                                        passages</span></li>
+</ul>
+<p>Producers never wait for handlers. <code>QueueEvent</code> takes a short
+                                                mutex, appends the event's bytes to the active write buffer and returns.<sup class="zed-fn">1</sup> <code>Flush()</code> holds that mutex only to
+                                                swap the two buffers, then runs the handlers on the retired buffer outside
+                                                the lock.<sup class="zed-fn">2</sup> <code>Subscribe</code>,
+                                                <code>Unsubscribe</code> and <code>QueueEvent</code> may be called from any
+                                                thread; <code>Dispatch</code> and <code>Flush</code> are meant for the main
+                                                thread.<sup class="zed-fn">3</sup>
+</p>
+<p><strong>Unsourced.</strong> How the single buffer mutex behaves under heavy
+                                                contention: none of the code, docs or papers searched measure it.</p>
+<ol class="zed-notes">
+<li><code>Nodens/Events/EventBus.cppm:108-112</code> · QueueEvent locks the
+                                                    buffer mutex, appends the bytes to the active buffer and returns</li>
+<li><code>Nodens/Events/EventBus.cpp:66-69, 95</code> · Flush swaps the
+                                                    buffer index under the lock; handlers run after it is released</li>
+<li><code>Nodens/Events/EventBus.cppm:37-39</code> · thread-safety note on
+                                                    the class</li>
+</ol>
+</div>
+</div>
+<div class="zed-input">
+<span>Message Armitage… <em>@</em> to add context</span>
+<span class="zed-model">Armitage · Pi</span>
+</div>
+</article>
+<article aria-label="Example 2 of 3: free Vulkan documentation in Zotero" class="zed">
+<div class="zed-bar">
+<span class="zed-title">Vulkan synchronization</span>
+<span class="zed-meta">Armitage · illustrative</span>
+</div>
+<div class="zed-thread">
+<div class="zed-user">
+<span class="zed-role">You</span>
+<p>How can a Vulkan renderer like Nyar cut down on synchronization bookkeeping?
+                                            </p>
+</div>
+<div class="zed-agent">
+<span class="zed-role">Armitage</span>
+<ul class="zed-tools">
+<li><code>armitage zotero query "image layout transitions and pipeline
+                                                        barriers with synchronization2" -c vulkan</code><span>5 passages · 2
+                                                        sources</span></li>
+<li><code>armitage zotero cite 4YKVG2VK -q
+                                                        "Synchronization2"</code><span>verified · p. 100</span></li>
+</ul>
+<p>The SIGGRAPH 2026 Vulkan slides name three tools. Timeline semaphores let one
+                                                semaphore stand for many increasing milestone values that the CPU and GPU
+                                                can wait on, although swapchain acquire and present still use binary
+                                                semaphores. Synchronization2, core since Vulkan 1.3, gives clearer
+                                                dependency and submission structures. Unified image layouts mean fewer
+                                                layout transitions.<sup class="zed-fn">1</sup> The Khronos Vulkan Tutorial
+                                                shows the step they simplify: a pipeline barrier that commits an image
+                                                layout transition to the command buffer together with its source and
+                                                destination stages.<sup class="zed-fn">2</sup></p>
+<p><strong>Unsourced.</strong> How much these changes save: the slides present
+                                                them as less bookkeeping, not as measured speedups.</p>
+<ol class="zed-notes">
+<li><code>How to Write a Vulkan Application in 2026 · p. 100</code> · Potter et al. 2026, SIGGRAPH 2026 (Vulkan Documentation Project, free online)</li>
+<li><code>Image Layout Transition · §46.1.14</code> · Khronos Vulkan Tutorial, Barrier Execution and GPU Synchronization (free online)</li>
+</ol>
+</div>
+</div>
+<div class="zed-input">
+<span>Message Armitage… <em>@</em> to add context</span>
+<span class="zed-model">Armitage · Pi</span>
+</div>
+</article>
+<article aria-label="Example 3 of 3: memory checked against code" class="zed">
+<div class="zed-bar">
+<span class="zed-title">Why the reranker is released</span>
+<span class="zed-meta">Armitage · illustrative</span>
+</div>
+<div class="zed-thread">
+<div class="zed-user">
+<span class="zed-role">You</span>
+<p>Why does Armitage release the reranker after every query?</p>
+</div>
+<div class="zed-agent">
+<span class="zed-role">Armitage</span>
+<ul class="zed-tools">
+<li><code>armitage memory recall "reranker"</code><span>2 notes · both
+                                                        stale</span></li>
+<li><code>armitage code symbol Reranker.close</code><span>1
+                                                        definition</span></li>
+<li><code>armitage search "reranker keep_alive"</code><span>3
+                                                        passages</span></li>
+</ul>
+<p>Memory has the answer but marks it stale, so I rechecked it against the docs
+                                                and code, and it still holds. The reranker is loaded for one query and then
+                                                released, and the query path unloads the embedding model first, so the two
+                                                models never sit in VRAM together.<sup class="zed-fn">1</sup> In code,
+                                                <code>Reranker</code> is a context manager whose <code>__exit__</code> calls
+                                                <code>close()</code>,<sup class="zed-fn">2</sup> which moves the model off
+                                                the GPU, empties the CUDA cache and logs the release.<sup class="zed-fn">3</sup> The query embedding uses
+                                                <code>keep_alive=0</code>, which is what unloads that model.<sup class="zed-fn">4</sup>
+</p>
+<p><strong>Unsourced.</strong> How much VRAM the loaded reranker takes in total:
+                                                the docs bound it but give no measured figure.</p>
+<ol class="zed-notes">
+<li><code>docs/03-retrieval-pipeline.md:207-210</code> · bounded VRAM:
+                                                    reranker loaded for one query then released, embedding model unloaded
+                                                </li>
+<li><code>armitage_cli/retriever.py:191-196</code> · context manager;
+                                                    __exit__ calls close()</li>
+<li><code>armitage_cli/retriever.py:290-305</code> · close() frees the model
+                                                    and the CUDA cache, then logs the release</li>
+<li><code>armitage_cli/retriever.py:380, 453</code> · embedding call
+                                                    defaults to keep_alive=0</li>
+</ol>
+</div>
+</div>
+<div class="zed-input">
+<span>Message Armitage… <em>@</em> to add context</span>
+<span class="zed-model">Armitage · Pi</span>
+</div>
+</article>
+</div>
+</div>
+</div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="cell col-5">
-                    <div class="kicker">Where it looks</div>
-                    <ul class="notes">
-                        <li><strong>Memory</strong> (<code>armitage memory</code>): the agent's own notes, kept as
-                            Markdown in an Obsidian vault: plans, decisions, concepts and your profile.</li>
-                        <li><strong>Papers, books and web pages</strong> (<code>armitage zotero</code>): your local
-                            Zotero 7+ library, read-only: PDFs (with OCR for scans), EPUBs by chapter, and saved HTML
-                            snapshots.</li>
-                        <li><strong>Code</strong> (<code>armitage code</code>): an index of your repositories, shared
-                            across branches and worktrees. Looking up a symbol or where it is used needs no AI
-                            model.</li>
-
-                    </ul>
-                </div>
-                <div class="cell col-7">
-                    <div class="figure">
-                        <div class="figure-bar">
-                            <span>Example commands</span>
-                            <span>papers need Zotero + Ollama</span>
-                        </div>
-                        <pre class="shell" data-shell="armitage-cli"></pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" aria-label="How Armitage answers a question">
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">01 · Ask</span>
-                    <h4>One question</h4>
-                    <p>A single query searches its memory, your code and your papers together (<code>armitage
-                            search</code>).</p>
-                </div>
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">02 · Match</span>
-                    <h4>Meaning + keywords</h4>
-                    <p>Embedding search (Ollama) finds passages by meaning; SQLite full-text search finds exact words.
-                    </p>
-                </div>
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">03 · Rank</span>
-                    <h4>Best passages first</h4>
-                    <p>Both result lists are merged, then a reranking model (Qwen3) puts the most relevant first.</p>
-                </div>
-                <div class="cell cell--compact col-3 pillar">
-                    <span class="idx">04 · Cite</span>
-                    <h4>Every claim sourced</h4>
-                    <p>Each factual statement carries an inline <code>[^n]</code> footnote to its source.</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="cell cell--flush col-12">
-                    <div class="table-head">
-                        <h3>The skills</h3>
-                        <p>Instructions the agent follows. <strong>Starts</strong> shows who triggers a skill:
-                            <em>You</em> invoke it by name, <em>Agent</em> means the model loads it itself,
-                            <em>Either</em> works both ways.
-                        </p>
-                    </div>
-                    <div class="skill-filters" role="group" aria-label="Filter skills by category" hidden>
-                        <button type="button" class="skill-filter" data-filter="all" aria-pressed="true">All</button>
-                        <button type="button" class="skill-filter" data-filter="core" aria-pressed="false">Core</button>
-                        <button type="button" class="skill-filter" data-filter="planning"
-                            aria-pressed="false">Planning</button>
-                        <button type="button" class="skill-filter" data-filter="research"
-                            aria-pressed="false">Research</button>
-                        <button type="button" class="skill-filter" data-filter="engineering"
-                            aria-pressed="false">Engineering</button>
-                        <button type="button" class="skill-filter" data-filter="memory"
-                            aria-pressed="false">Memory</button>
-                    </div>
-                    <table class="ledger-table">
-                        <thead>
-                            <tr>
-                                <th>Skill</th>
-                                <th>Starts</th>
-                                <th>What it does</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-cat="core">
-                                <td>armitage</td>
-                                <td>Agent</td>
-                                <td>The citation gate. Before answering a factual question, it searches memory, code and
-                                    papers and cites every claim inline. A claim with no source is cut or marked
-                                    unverified.</td>
-                            </tr>
-                            <tr data-cat="planning">
-                                <td>armitage-init</td>
-                                <td>Either</td>
-                                <td>Starts or resumes a working session: recalls prior work, attaches the right project
-                                    and plan, then routes to the next skill.</td>
-                            </tr>
-                            <tr data-cat="planning">
-                                <td>armitage-project</td>
-                                <td>You</td>
-                                <td>Keeps a project file for a bigger goal: its aims, ideas, open questions and
-                                    decisions, with its plans listed automatically.</td>
-                            </tr>
-                            <tr data-cat="planning">
-                                <td>armitage-plan</td>
-                                <td>You</td>
-                                <td>Keeps a plan for one piece of work: goal, timeline, reasoning and references.
-                                    Checkpoints progress so a later session can pick up where you left off.</td>
-                            </tr>
-                            <tr data-cat="research">
-                                <td>armitage-research</td>
-                                <td>You</td>
-                                <td>Answers a hard question end to end: plans the research, waits for your approval,
-                                    reads each source, and reports with the exact Zotero page behind every finding.</td>
-                            </tr>
-                            <tr data-cat="research">
-                                <td>armitage-consolidate</td>
-                                <td>You</td>
-                                <td>Turns a reviewed research report into linked memory notes and an Obsidian canvas,
-                                    written only after you approve.</td>
-                            </tr>
-                            <tr data-cat="research">
-                                <td>armitage-tutor</td>
-                                <td>You</td>
-                                <td>Teaches you step by step instead of just writing the answer, grounded in your code,
-                                    notes and papers.</td>
-                            </tr>
-                            <tr data-cat="engineering">
-                                <td>armitage-swe</td>
-                                <td>Agent</td>
-                                <td>Before a big change (over 3 files or 80 lines, a new feature, a migration), writes a
-                                    design plan and asks its open questions. Implements only after you approve.</td>
-                            </tr>
-                            <tr data-cat="engineering">
-                                <td>armitage-issues</td>
-                                <td>You</td>
-                                <td>Writes, searches and triages GitHub issues as Armitage's own GitHub user. Nothing is
-                                    sent until you approve it.</td>
-                            </tr>
-                            <tr data-cat="engineering">
-                                <td>armitage-maintain</td>
-                                <td>You</td>
-                                <td>Beginner-friendly advice on versioning, git workflow, changelogs, releases and
-                                    roadmaps, based on the repository's real state.</td>
-                            </tr>
-                            <tr data-cat="memory">
-                                <td>armitage-learn</td>
-                                <td>Agent</td>
-                                <td>Saves findings as citation-backed notes in the memory cache, so later sessions can
-                                    recall what is true and what to do next.</td>
-                            </tr>
-                            <tr data-cat="memory">
-                                <td>armitage-decide</td>
-                                <td>Agent</td>
-                                <td>The moment you settle something ("never X", "keep Y"), records it with the reason
-                                    and your own words, so no later session proposes the opposite.</td>
-                            </tr>
-                            <tr data-cat="memory">
-                                <td>armitage-user</td>
-                                <td>Agent</td>
-                                <td>Maintains your profile: preferences, corrections, goals and deadlines. Records a
-                                    fact the turn you state it.</td>
-                            </tr>
-                            <tr data-cat="memory">
-                                <td>armitage-obsidian</td>
-                                <td>Agent</td>
-                                <td>Formats notes for Obsidian and builds tables, boards and canvas views of the memory
-                                    when you ask for a map or dashboard.</td>
-                            </tr>
-                            <tr data-cat="core">
-                                <td>armitage-help</td>
-                                <td>You</td>
-                                <td>Shows the quick-reference card for all the skills.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="ledger-legend">
-                        Also bundled from the Caveman project (MIT), outside Armitage's citation system:
-                        <code>work-patterns</code> (six working habits, such as investigate-first and
-                        surgical-patch), <code>caveman</code>, <code>caveman-commit</code> and
-                        <code>caveman-review</code> (terse writing and review helpers).
-                    </p>
-                </div>
-            </div>
+        </section>
+        <div class="sect-cta"><a class="btn" href="armitage/">Read the Armitage overview →</a></div>
         </article>
 
-        <!-- ================================================================ -->
-        <!-- Shared Dev Container (7 + 5)                                      -->
-        <!-- ================================================================ -->
         <section class="row">
             <div class="cell col-7">
                 <h3>Shared Arch Linux toolchain</h3>
@@ -892,66 +622,74 @@
             <span>© 2026 EldritchCodex · A project by <a href="https://renanbomtempo.me" target="_blank"
                     rel="noopener">Renan Bomtempo</a> · Released under the MIT License</span>
             <div class="footer-links">
-                <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Nodens</a>
-                <a href="https://github.com/eldritch-codex/nyar" target="_blank" rel="noopener">Nyar</a>
-                <a href="#armitage">Armitage</a>
+                <a href="nodens/">Nodens</a>
+                <a href="nyar/">Nyar</a>
+                <a href="armitage/">Armitage</a>
                 <a href="https://github.com/eldritch-codex/devcontainers" target="_blank"
                     rel="noopener">Devcontainers</a>
             </div>
         </div>
     </footer>
 
-    <!-- ================================================================ -->
-    <!-- Code & shell templates                                            -->
-    <!-- ================================================================ -->
+    <!-- Code & shell templates -->
     <script type="text/plain" id="src-nodens-app" data-lang="cpp">
+#include <imgui.h>
+
 import nodens;
-import Example.CircularWave3DLayer;
 import std;
 
-class CircularWave3DApp : public Nodens::Application
-{
+class HelloLayer : public Nodens::ILayer {
 public:
-    static inline const Nodens::FApplicationSpecification spec = {
-        .Name = "[NodensApp] CircularWave3D",
-        .WindowWidth = 800,
-        .WindowHeight = 600,
-        .EnableGUI = true,
-    };
+    HelloLayer() : ILayer("Hello") {}
 
-    CircularWave3DApp() : Application(spec)
-    {
-        PushLayer(new CircularWave3DLayer());
+    void OnUpdate(Nodens::TimeStep ts) override {
+        m_Seconds += ts.GetSeconds();
+    }
+
+    void OnImGuiRender(Nodens::TimeStep ts) override {
+        ImGui::Begin("Hello, Nodens");
+        ImGui::Text("Running for %.1f s", m_Seconds);
+        ImGui::End();
+    }
+
+private:
+    float m_Seconds = 0.f;
+};
+
+class HelloApp : public Nodens::Application {
+public:
+    HelloApp() : Application({.Name = "Hello Nodens"}) {
+        PushLayer(new HelloLayer());
     }
 };
 
-int main()
-{
+int main() {
     Nodens::InitializeLoggers();
-    CircularWave3DApp{}.Run();
+    HelloApp{}.Run();
 }
 </script>
 
-    <script type="text/plain" id="src-nodens-layer" data-lang="cpp">
-export module Example.CircularWave3DLayer;
-
-import nodens;
-import std;
-
-export class CircularWave3DLayer : public Nodens::ILayer
-{
-public:
-    CircularWave3DLayer();
-
-    void OnUpdate(Nodens::TimeStep ts) override;
-    void OnImGuiRender(Nodens::TimeStep ts) override;
-
-private:
-    static constexpr std::size_t kPoints{1000};
-
-    float m_Frequency = 5.f * std::numbers::pi_v<float>;
-    float t[kPoints], xs[kPoints], ys[kPoints];
+    <script type="text/plain" id="src-nodens-events" data-lang="cpp">
+struct ScanDone {
+    static constexpr std::string_view Name = "ScanDone";
+    float Distance;
 };
+
+void ScanLayer::OnAttach() {
+    // Runs on the main thread, during Flush().
+    auto& bus = Nodens::Application::Get().GetEventBus();
+    m_Subscription = bus.Subscribe<ScanDone>(
+        [this](ScanDone& e) { m_Distances.push_back(e.Distance); });
+}
+
+void ScanLayer::StartScan() {
+    Nodens::Application::Get().GetJobSystem().Submit([] {
+        ScanDone result{.Distance = RunSimulation()};
+        // Safe from any thread: copied into the active buffer.
+        auto& bus = Nodens::Application::Get().GetEventBus();
+        bus.QueueEvent(result);
+    });
+}
 </script>
 
     <script type="text/plain" id="src-nyar-shader" data-lang="slang">
@@ -989,22 +727,22 @@ float4 fragMain(VertexOutput inVert)
 }
 </script>
 
-    <script type="text/plain" id="sh-armitage-cli">
-armitage skills install                  # give your agent the skills
-armitage pi                              # run the agent in a terminal
-armitage doctor                          # check installed skills
-armitage search "image creation"         # search all three at once
-armitage memory recall "retrieval"       # what past sessions saved
-armitage memory brief                    # resume open plans
-armitage memory lint                     # check the vault
-armitage zotero list-collections         # list indexed collections
-armitage zotero query "mip levels"       # search my papers and books
-armitage zotero cite KEY -q "mip chain"  # verified link to a quote
-armitage zotero ocr KEY                  # read a scanned PDF
-armitage code index                      # index this workspace
-armitage code query "token refresh"      # search the code by meaning
-armitage code symbol validate_token      # where is this defined?
-armitage code refs validate_token        # every use, with exact lines
+    <script type="text/plain" id="src-nyar-cmake" data-lang="cpp">
+function(add_slang_shader_target TARGET)
+  # ... parse SOURCES, pick an output directory ...
+  add_custom_command(
+    OUTPUT "${output_file}"
+    COMMAND "${SLANGC_EXECUTABLE}" ${SHADER_SOURCES}
+            -target spirv
+            -profile spirv_1_4
+            -emit-spirv-directly
+            -fvk-use-entrypoint-name
+            -entry vertMain
+            -entry fragMain
+            -o "${output_file}"
+    DEPENDS ${SHADER_SOURCES})
+  add_custom_target("${TARGET}" DEPENDS "${output_file}")
+endfunction()
 </script>
 
     <script src="js/bg-field.js" defer></script>

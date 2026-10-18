@@ -1,10 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Nodens — EldritchCodex</title>
-  <meta http-equiv="refresh" content="0; url=/#nodens">
-  <link rel="canonical" href="https://eldritchcodex.com/#nodens">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Security: restrict what the page can load; GitHub Pages cannot set response headers. -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'sha256-U2Wd7xW3hMQFTRAe3Ers/r5SYwYyFn139FixyL7glpA=' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCW76VM10Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JCW76VM10Y');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+    <title>Nodens · EldritchCodex</title>
+    <meta name="author" content="Renan Bomtempo">
+    <meta name="description"
+        content="Nodens is a module-first C++23 framework for building interactive desktop applications quickly: layers, an event bus, a job system and optional Dear ImGui.">
+    <link rel="canonical" href="https://eldritchcodex.com/nodens/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:title" content="Nodens · EldritchCodex" />
+    <meta property="og:description"
+        content="Nodens is a module-first C++23 framework for building interactive desktop applications quickly: layers, an event bus, a job system and optional Dear ImGui." />
+    <meta property="og:url" content="https://eldritchcodex.com/nodens/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EldritchCodex" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:image" content="https://eldritchcodex.com/assets/og-card.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nodens, part of EldritchCodex." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nodens · EldritchCodex" />
+    <meta name="twitter:description"
+        content="Nodens is a module-first C++23 framework for building interactive desktop applications quickly: layers, an event bus, a job system and optional Dear ImGui." />
+    <meta name="twitter:image" content="https://eldritchcodex.com/assets/og-card.png" />
+    <meta name="twitter:image:alt" content="Nodens, part of EldritchCodex." />
+    <meta name="theme-color" content="#0c0d10">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "@id": "https://eldritchcodex.com/nodens/",
+      "name": "Nodens",
+      "description": "Nodens is a module-first C++23 framework for building interactive desktop applications quickly: layers, an event bus, a job system and optional Dear ImGui.",
+      "programmingLanguage": "C++",
+      "url": "https://eldritchcodex.com/nodens/",
+      "author": { "@type": "Person", "name": "Renan Bomtempo", "url": "https://renanbomtempo.me/" },
+      "isPartOf": { "@type": "WebSite", "name": "EldritchCodex", "url": "https://eldritchcodex.com/" }
+    }
+    </script>
+
 </head>
-<body><a href="/#nodens">Nodens has moved to the EldritchCodex home page.</a></body>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="wordmark" href="../">
+                <svg viewBox="190 145 640 720" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M240 195 Q512 167 784 195 Q819 420 784 647 Q512 675 240 647 Q205 420 240 195 Z M324 281 Q512 270 700 281 L704 375 Q512 372 320 375 Z M320 469 Q416 472 512 469 L512 566 Q416 566 324 562 Z" />
+                    <path d="M240 738h363v90H240zM693 738h90v90h-90z" />
+                </svg>
+                EldritchCodex
+            </a>
+            <nav class="nav" aria-label="Primary">
+                <a href="../nodens/" aria-current="page"><span class="num">I.</span>Nodens</a>
+                <a href="../nyar/"><span class="num">II.</span>Nyar</a>
+                <a href="../armitage/"><span class="num">III.</span>Armitage</a>
+                <a class="ext hide-sm" href="https://github.com/eldritch-codex" target="_blank" rel="noopener">GitHub
+                    ↗</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap" id="top">
+
+        <h1 class="sr-only">Nodens</h1>
+        <p class="crumb"><a href="../#nodens">← All projects</a></p>
+
+        <article id="nodens" class="chapter" data-tone="nodens">
+            <header class="row chapter-header">
+                <div class="cell col-8 chapter-head">
+                    <div class="chapter-kicker">
+                        <span class="chapter-index"><span class="roman">I</span><span
+                                class="chapter-label">FRAMEWORK</span></span>
+                        <span class="tag">experimental</span>
+                    </div>
+                    <h2 class="has-mark">
+                        <svg class="chapter-mark" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <g transform="translate(1.385 11.483) scale(0.01350 -0.01350)" fill="currentColor">
+                                <path transform="translate(0 0)"
+                                    d="M300 -12Q244 -12 219.5 12.5Q195 37 195 71V106Q195 140 219.5 164.5Q244 189 300 189Q356 189 380.5 164.5Q405 140 405 106V71Q405 37 380.5 12.5Q356 -12 300 -12ZM300 327Q244 327 219.5 351.5Q195 376 195 410V445Q195 479 219.5 503.5Q244 528 300 528Q356 528 380.5 503.5Q405 479 405 445V410Q405 376 380.5 351.5Q356 327 300 327Z" />
+                                <path transform="translate(380 0)"
+                                    d="M300 -12Q244 -12 219.5 12.5Q195 37 195 71V106Q195 140 219.5 164.5Q244 189 300 189Q356 189 380.5 164.5Q405 140 405 106V71Q405 37 380.5 12.5Q356 -12 300 -12ZM300 327Q244 327 219.5 351.5Q195 376 195 410V445Q195 479 219.5 503.5Q244 528 300 528Q356 528 380.5 503.5Q405 479 405 445V410Q405 376 380.5 351.5Q356 327 300 327Z" />
+                            </g>
+                        </svg>
+                        Nodens
+                    </h2>
+                    <p>
+                        A C++23 framework for building interactive desktop applications quickly, with optional Dear
+                        ImGui. Everything is a C++ module, so an app starts with <code>import nodens;</code> and links
+                        one static library.
+                    </p>
+                </div>
+                <div class="chapter-stack dep-strip">
+                    <span class="label">Stack:</span>
+                    <a href="https://en.cppreference.com/w/cpp/23" target="_blank" rel="noopener">C++</a>
+                    <a href="https://www.opengl.org/" target="_blank" rel="noopener">OpenGL</a>
+                    <a href="https://www.vulkan.org/" target="_blank" rel="noopener">Vulkan</a>
+                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>
+                    <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">GLAD</a>
+                    <a href="https://github.com/ocornut/imgui" target="_blank" rel="noopener">ImGui</a>
+                    <a href="https://github.com/epezent/implot" target="_blank" rel="noopener">ImPlot</a>
+                    <a href="https://github.com/brenocq/implot3d" target="_blank" rel="noopener">ImPlot3D</a>
+                    <a href="https://github.com/gabime/spdlog" target="_blank" rel="noopener">spdlog</a>
+                    <a href="https://github.com/wolfpld/tracy" target="_blank" rel="noopener">Tracy</a>
+                </div>
+                <aside class="cell col-4 chapter-aside" aria-label="Nodens links">
+                    <span class="aside-label">Links</span>
+                    <ul class="chapter-links">
+                        <li><a href="https://github.com/eldritch-codex/nodens" target="_blank"
+                                rel="noopener">Repository</a></li>
+                        <li><a href="https://github.com/eldritch-codex/nodens/wiki" target="_blank"
+                                rel="noopener">Wiki</a></li>
+                    </ul>
+                </aside>
+            </header>
+
+        <section class="sect sect--bare">
+                <div class="sect-body">
+<ul class="items"><li><span class="item-idx">01 · Windowing</span><div><h4>GLFW windows</h4><p>Creates the window, graphics context and input handling, with OpenGL or Vulkan backends.</p></div></li><li><span class="item-idx">02 · Lifetime</span><div><h4>Layer system</h4><p>An app is a stack of layers. They update in order, draw back to front, and receive input from the
+                        top down.</p></div></li><li><span class="item-idx">03 · Messaging</span><div><h4>Event system</h4><p>Input events pass down the layers. A thread-safe event bus lets any part publish and subscribe to
+                        custom events, handled immediately or queued.</p></div></li><li><span class="item-idx">04 · Concurrency</span><div><h4>Job system</h4><p>Runs heavy work, like simulation and data processing, on worker threads so the render thread
+                        stays responsive.</p></div></li></ul>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Writing an app</h3>
+                    <ul class="notes">
+<li>An app inherits from <code>Nodens::Application</code>, pushes one or more layers, and calls
+                            <code>Run()</code>. Every frame, each layer receives <code>OnEvent</code>,
+                            <code>OnUpdate(TimeStep)</code> and <code>OnImGuiRender(TimeStep)</code>.
+                        </li>
+<li>Two examples ship with it: <code>circularwave3d</code> (live 2D/3D plots with ImPlot and
+                            ImPlot3D) and <code>planetaryscan</code> (the event bus and job system working together).
+                        </li>
+<li>Tracy profiling is built in: add <code>ZoneScoped</code> to any layer method.</li>
+<li>CMake builds every dependency from source, so there is nothing to install by hand.</li>
+</ul>
+                </div>
+                <div class="sect-body">
+<figure class="figure" data-tabgroup="">
+<figcaption class="figure-bar">
+<div class="figure-tabs" role="tablist">
+<button class="figure-tab active" data-show="nodens-app" type="button">HelloNodens.cpp</button>
+</div>
+<span>a minimal app</span>
+</figcaption>
+<pre class="code" data-src="nodens-app"></pre>
+</figure>
+<ul class="items"><li><span class="item-idx">01 · Modules</span><div><h4>Module-first</h4><p>Public APIs are C++ module interfaces (<code>.cppm</code>). Third-party headers stay in the global module fragment, so an app only ever writes <code>import nodens;</code>.</p></div></li><li><span class="item-idx">02 · Delivery</span><div><h4>One static library</h4><p>The framework builds into a single static library, so the final product is one portable executable.</p></div></li><li><span class="item-idx">03 · Platform</span><div><h4>Linux, on purpose</h4><p>The validated environment is Arch Linux, shared with Nyar through one dev container image. Native Windows and macOS builds are not supported.</p></div></li></ul>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Layer lifecycle</h3>
+                    <p>Every layer is a subclass of <code>ILayer</code> and overrides only the hooks it needs.</p>
+                </div>
+                <div class="sect-body">
+<table class="ledger-table ledger-table--text">
+<thead><tr><th>Hook</th><th>When it runs</th><th>Use it for</th></tr></thead>
+<tbody>
+<tr><td><code>OnAttach</code></td><td>Once, when the layer is pushed onto the stack</td><td>Allocating resources, subscribing to events</td></tr>
+<tr><td><code>OnUpdate(ts)</code></td><td>Every frame, with the time since the last frame</td><td>Simulation and application logic</td></tr>
+<tr><td><code>OnImGuiRender(ts)</code></td><td>Every frame, between the start and end of the ImGui frame</td><td>Windows, plots and debug tools</td></tr>
+<tr><td><code>OnInputEvent(event)</code></td><td>When an input or window event reaches the layer, back to front</td><td>Handling input; set <code>Handled</code> to stop it travelling further</td></tr>
+<tr><td><code>OnDetach</code></td><td>Once, when the layer is removed</td><td>Releasing resources, unsubscribing</td></tr>
+</tbody>
+</table>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Layers and overlays</h3>
+                    
+                </div>
+                <div class="sect-body">
+<p class="flush-text">The layer stack is one ordered list with a boundary in it. <code>PushLayer</code> inserts before the boundary and <code>PushOverlay</code> appends after it, so overlays such as the ImGui layer always update and draw after regular layers. The stack owns the layer pointers and deletes them on shutdown.</p>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Two event paths</h3>
+                    <p>Events that come from the window and events your own code defines take different routes.</p>
+                </div>
+                <div class="sect-body">
+<ul class="items"><li><span class="item-idx">Input and window events</span><div><h4>Layer stack</h4><p>They travel as one <code>std::variant</code>, back to front through the layers, until one handles it.</p></div></li><li><span class="item-idx">Events you define</span><div><h4>EventBus</h4><p>Subscribers register typed handlers. <code>Dispatch</code> calls them at once, in subscription order, on the calling thread. <code>QueueEvent</code> copies the event into a double-buffered byte array that <code>Flush()</code> drains once per frame on the main thread.</p></div></li></ul>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Event types</h3>
+                </div>
+                <div class="sect-body">
+<ul class="items"><li><span class="item-idx">01 · Plain data</span><div><h4>Events are POD</h4><p>An event is a standard-layout, trivially copyable struct with a <code>static constexpr std::string_view Name</code>. A C++ concept enforces it, so events can be copied straight into byte buffers.</p></div></li><li><span class="item-idx">02 · No RTTI</span><div><h4>Sequential type IDs</h4><p>Each event type gets the next integer from an atomic counter the first time it is used. No RTTI and no hashing.</p></div></li><li><span class="item-idx">03 · Threads</span><div><h4>Safe where it matters</h4><p><code>Subscribe</code>, <code>Unsubscribe</code> and <code>QueueEvent</code> may be called from any thread. <code>Dispatch</code> and <code>Flush</code> belong to the main thread.</p></div></li></ul>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Events and jobs together</h3>
+                    <ul class="notes">
+<li>The job system runs work on a pool of <code>std::jthread</code> workers, sized to the hardware thread count minus one so the main thread stays free.</li>
+<li><code>Submit</code> takes any callable and returns a <code>std::future</code>. Workers sleep on a condition variable that understands stop tokens, so shutdown cancels cooperatively and joins on its own.</li>
+<li>A job finishes by queueing an event. The next <code>Flush()</code> hands the result to subscribers on the main thread, so no handler needs a lock of its own.</li>
+<li>The <code>planetaryscan</code> example is this pattern with live plots.</li>
+</ul>
+                </div>
+                <div class="sect-body">
+<figure class="figure" data-tabgroup="">
+<figcaption class="figure-bar">
+<div class="figure-tabs" role="tablist">
+<button class="figure-tab active" data-show="nodens-events" type="button">ScanLayer.cpp</button>
+</div>
+<span>events and jobs</span>
+</figcaption>
+<pre class="code" data-src="nodens-events"></pre>
+</figure>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Profiling with Tracy</h3>
+                </div>
+                <div class="sect-body">
+<ul class="items"><li><span class="item-idx">01 · CPU</span><div><h4>Zones and frames</h4><p>Add <code>ZoneScoped</code> to any function to see it in Tracy. The job queue depth is plotted on its own timeline.</p></div></li><li><span class="item-idx">02 · Threads</span><div><h4>Lock contention</h4><p>The job queue mutex is a Tracy lockable, so contention between workers is visible as it happens.</p></div></li><li><span class="item-idx">03 · GPU</span><div><h4>Vulkan timings</h4><p>The Vulkan backend keeps per-frame Tracy contexts for GPU profiling next to the CPU view.</p></div></li></ul>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Where it comes from</h3>
+                    
+                </div>
+                <div class="sect-body">
+<p class="flush-text">Nodens began as a personal project for my undergraduate Computer Graphics course at UFMG. Its foundations follow the early episodes of The Cherno's Game Engine series, and earlier iterations powered several of my academic projects, including boids and galaxians. Versions of it also ran the numerical simulation applications from my research, which are on <a href="https://renanbomtempo.me/#eldritchcodex" rel="noopener" target="_blank">my portfolio</a>.</p>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Examples</h3>
+                    <p>Both ship in the repository under <code>examples/</code>.</p>
+                </div>
+                <div class="sect-body">
+<table class="ledger-table ledger-table--text">
+<thead><tr><th>Example</th><th>Shows</th></tr></thead>
+<tbody>
+<tr><td><code>circularwave3d</code></td><td>The immediate-mode GUI, with live 2D and 3D plots from ImPlot and ImPlot3D</td></tr>
+<tr><td><code>planetaryscan</code></td><td>The event bus and job system together, with thread-safe data collection and a live scatter plot</td></tr>
+</tbody>
+</table>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>Get started</h3>
+                    
+                </div>
+                <div class="sect-body">
+<ul class="notes">
+<li><a href="https://github.com/eldritch-codex/nodens/wiki/Getting-Started" rel="noopener" target="_blank">Getting Started, in the wiki</a></li>
+<li><a href="https://github.com/eldritch-codex/nodens/wiki/Profiling-with-Tracy" rel="noopener" target="_blank">Profiling with Tracy, in the wiki</a></li>
+<li><a href="https://github.com/eldritch-codex/nodens" rel="noopener" target="_blank">Source and issues</a></li>
+</ul>
+                </div>
+        </section>
+
+        <section class="sect">
+                <div class="sect-intro">
+                    <h3>References</h3>
+                    
+                </div>
+                <div class="sect-body">
+<ul class="references">
+<li>The Cherno. (n.d.). <strong>Game engine series</strong> [Video playlist]. YouTube. <a href="http://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT" rel="noopener" target="_blank">http://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT</a></li>
+<li>Gregory, J. (2019). <strong>Game engine architecture</strong> (3rd ed.). CRC Press.</li>
+<li>Horton, I., &amp; Van Weert, P. (2023). <strong>Beginning C++23: From beginner to pro</strong>. Apress. <a href="https://doi.org/10.1007/978-1-4842-9343-0" rel="noopener" target="_blank">https://doi.org/10.1007/978-1-4842-9343-0</a></li>
+</ul>
+                </div>
+        </section>
+        </article>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-inner">
+            <span>© 2026 EldritchCodex · A project by <a href="https://renanbomtempo.me" target="_blank"
+                    rel="noopener">Renan Bomtempo</a> · Released under the MIT License</span>
+            <div class="footer-links">
+                <a href="../nodens/">Nodens</a>
+                <a href="../nyar/">Nyar</a>
+                <a href="../armitage/">Armitage</a>
+                <a href="https://github.com/eldritch-codex/devcontainers" target="_blank"
+                    rel="noopener">Devcontainers</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Code & shell templates -->
+    <script type="text/plain" id="src-nodens-app" data-lang="cpp">
+#include <imgui.h>
+
+import nodens;
+import std;
+
+class HelloLayer : public Nodens::ILayer {
+public:
+    HelloLayer() : ILayer("Hello") {}
+
+    void OnUpdate(Nodens::TimeStep ts) override {
+        m_Seconds += ts.GetSeconds();
+    }
+
+    void OnImGuiRender(Nodens::TimeStep ts) override {
+        ImGui::Begin("Hello, Nodens");
+        ImGui::Text("Running for %.1f s", m_Seconds);
+        ImGui::End();
+    }
+
+private:
+    float m_Seconds = 0.f;
+};
+
+class HelloApp : public Nodens::Application {
+public:
+    HelloApp() : Application({.Name = "Hello Nodens"}) {
+        PushLayer(new HelloLayer());
+    }
+};
+
+int main() {
+    Nodens::InitializeLoggers();
+    HelloApp{}.Run();
+}
+</script>
+
+    <script type="text/plain" id="src-nodens-events" data-lang="cpp">
+struct ScanDone {
+    static constexpr std::string_view Name = "ScanDone";
+    float Distance;
+};
+
+void ScanLayer::OnAttach() {
+    // Runs on the main thread, during Flush().
+    auto& bus = Nodens::Application::Get().GetEventBus();
+    m_Subscription = bus.Subscribe<ScanDone>(
+        [this](ScanDone& e) { m_Distances.push_back(e.Distance); });
+}
+
+void ScanLayer::StartScan() {
+    Nodens::Application::Get().GetJobSystem().Submit([] {
+        ScanDone result{.Distance = RunSimulation()};
+        // Safe from any thread: copied into the active buffer.
+        auto& bus = Nodens::Application::Get().GetEventBus();
+        bus.QueueEvent(result);
+    });
+}
+</script>
+
+    <script src="../js/bg-field.js" defer></script>
+    <script src="../js/main.js" defer></script>
+</body>
+
 </html>

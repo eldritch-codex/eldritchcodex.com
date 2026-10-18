@@ -12,6 +12,10 @@
     --rule: rgba(214, 210, 196, 0.11);
     --rule-strong: rgba(214, 210, 196, 0.22);
 
+    --ink-rgb: 236, 232, 223;
+    --glass-rgb: 255, 255, 255;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+
     --ink: #ece8df;
     --text: #b7b4ac;
     --muted: #7e7b74;
@@ -58,7 +62,7 @@ body {
     background-image:
         /* concentric rings, one bone ring every 104px */
         repeating-radial-gradient(circle at var(--hub-x) -90px,
-            rgba(236, 232, 223, 0.03) 0 1px, transparent 1px 104px),
+            rgba(var(--ink-rgb), 0.03) 0 1px, transparent 1px 104px),
         /* the blue node's ring, every second bone ring */
         repeating-radial-gradient(circle at var(--hub-x) -90px,
             rgba(110, 168, 214, 0.035) 0 1px, transparent 1px 208px),
@@ -68,11 +72,11 @@ body {
         /* the instrument's vertical axis, through the hub */
         linear-gradient(90deg,
             transparent 0 calc(var(--hub-x) - 0.5px),
-            rgba(236, 232, 223, 0.03) calc(var(--hub-x) - 0.5px) calc(var(--hub-x) + 0.5px),
+            rgba(var(--ink-rgb), 0.03) calc(var(--hub-x) - 0.5px) calc(var(--hub-x) + 0.5px),
             transparent calc(var(--hub-x) + 0.5px)),
         /* the rotated square, as a faint diagonal lattice */
-        repeating-linear-gradient(45deg, rgba(236, 232, 223, 0.012) 0 1px, transparent 1px 148px),
-        repeating-linear-gradient(-45deg, rgba(236, 232, 223, 0.012) 0 1px, transparent 1px 148px);
+        repeating-linear-gradient(45deg, rgba(var(--ink-rgb), 0.012) 0 1px, transparent 1px 148px),
+        repeating-linear-gradient(-45deg, rgba(var(--ink-rgb), 0.012) 0 1px, transparent 1px 148px);
     color: var(--text);
     font-family: var(--font-sans);
     font-size: 15px;
@@ -109,11 +113,16 @@ body::before {
 
 /* Justified prose. Hyphenation keeps narrow columns from opening wide gaps. */
 p,
-.notes li,
-.ledger-table td:last-child {
+.notes li {
     text-align: justify;
     text-wrap: pretty;
     hyphens: auto;
+}
+
+/* Table text stays left-aligned. */
+.ledger-table td {
+    text-align: left;
+    text-wrap: pretty;
 }
 
 /* Code-sample paragraphs keep their natural alignment. */
@@ -130,7 +139,7 @@ code {
     font-family: var(--font-mono);
     font-size: 0.87em;
     color: var(--ink);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(var(--ink-rgb), 0.07);
     padding: 1px 5px;
     border-radius: 3px;
 }
@@ -171,6 +180,10 @@ code {
     grid-column: span 5;
 }
 
+.col-6 {
+    grid-column: span 6;
+}
+
 .col-7 {
     grid-column: span 7;
 }
@@ -206,7 +219,7 @@ code {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: rgba(12, 13, 16, 0.88);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--rule);
@@ -326,6 +339,14 @@ li {
     color: var(--armitage);
 }
 
+.hero-copy h1 .mono-word {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 0.86em;
+    letter-spacing: -0.04em;
+    color: var(--armitage);
+}
+
 .hero-copy p {
     margin: 0 0 28px;
     max-width: 62ch;
@@ -365,7 +386,7 @@ li {
 
 .btn:hover {
     background: var(--surface-2);
-    border-color: rgba(214, 210, 196, 0.38);
+    border-color: rgba(var(--ink-rgb), 0.38);
 }
 
 .link-quiet {
@@ -435,7 +456,7 @@ li {
     border-radius: 6px;
     background: var(--surface);
     overflow: hidden;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--shadow);
 }
 
 .zed p {
@@ -504,54 +525,78 @@ li {
     pointer-events: none;
 }
 
-.zed-pager {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    margin-top: 6px;
-    font-family: var(--font-mono);
-    font-size: 12px;
+/* The question list beside the deck (shown once the script has built the deck). */
+.zed-layout.has-list {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
 }
 
-.zed-pager[hidden] {
+.zed-layout.has-list .zed-deck.is-deck {
+    max-width: none;
+    margin: 0;
+}
+
+.zed-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.zed-list[hidden] {
     display: none;
 }
 
-.zed-next {
-    padding: 5px 12px;
+.zed-list button {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    padding: 14px 16px;
+    text-align: left;
     border: 1px solid var(--rule-strong);
+    border-left: 2px solid var(--rule-strong);
     border-radius: 3px;
     background: none;
+    color: var(--muted);
     font: inherit;
-    color: var(--text);
     cursor: pointer;
-    transition: border-color 0.15s, color 0.15s;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
-.zed-next:hover {
+.zed-list button:hover {
     color: var(--ink);
     border-color: var(--armitage);
 }
 
-.zed-dots {
-    display: flex;
-    gap: 8px;
-}
-
-.zed-dots button {
-    width: 8px;
-    height: 8px;
-    padding: 0;
-    border: 1px solid var(--rule-strong);
-    border-radius: 50%;
-    background: none;
-    cursor: pointer;
-}
-
-.zed-dots button[aria-pressed="true"] {
-    background: var(--armitage);
+.zed-list button[aria-pressed="true"] {
+    color: var(--ink);
     border-color: var(--armitage);
+    background: color-mix(in srgb, var(--armitage) 8%, transparent);
+}
+
+.zed-source {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--armitage);
+}
+
+.zed-q {
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+    .zed-layout.has-list {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -720,7 +765,7 @@ li {
 }
 
 .index-card:hover {
-    background: rgba(255, 255, 255, 0.016);
+    background: rgba(var(--ink-rgb), 0.02);
 }
 
 .index-meta {
@@ -794,11 +839,11 @@ li {
 
 .chapter-header {
     background: linear-gradient(135deg,
-            color-mix(in srgb, var(--tone) 8%, rgba(255, 255, 255, 0.03)),
-            rgba(255, 255, 255, 0.02));
+            color-mix(in srgb, var(--tone) 8%, rgba(var(--glass-rgb), 0.03)),
+            rgba(var(--glass-rgb), 0.02));
     -webkit-backdrop-filter: blur(18px) saturate(1.2);
     backdrop-filter: blur(18px) saturate(1.2);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 1px 0 rgba(var(--glass-rgb), 0.05);
 }
 
 .chapter-kicker {
@@ -1264,6 +1309,24 @@ li {
     white-space: nowrap;
 }
 
+/* Tables of running text: the second column is prose, not a short label. */
+.ledger-table--text td:first-child {
+    width: 200px;
+    white-space: normal;
+}
+
+.ledger-table--text th:nth-child(2),
+.ledger-table--text td:nth-child(2) {
+    width: auto;
+}
+
+.ledger-table--text td:nth-child(2) {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    white-space: normal;
+}
+
 .table-head {
     padding: 22px var(--pad-x) 4px;
 }
@@ -1427,6 +1490,7 @@ li {
     .col-3,
     .col-4,
     .col-5,
+    .col-6,
     .col-7,
     .col-8 {
         grid-column: span 12;
@@ -1476,7 +1540,8 @@ li {
     .astrolabe .spin-slow,
     .astrolabe .spin-rev,
     .astrolabe .spin-fast,
-    .astrolabe .spin-ring {
+    .astrolabe .spin-ring,
+    .astrolabe .spin-glyph {
         animation: none;
     }
 }
@@ -1527,4 +1592,1182 @@ li {
     margin: 0;
     font-size: 14px;
     color: var(--text);
+}
+
+/* Back link on a project page. */
+.crumb {
+    margin: 0;
+    padding: 14px var(--pad-x, 28px);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.crumb a {
+    color: var(--muted);
+    transition: color 0.15s;
+}
+
+.crumb a:hover {
+    color: var(--ink);
+}
+
+/* A numbered sequence. */
+.steps {
+    list-style: none;
+    margin: 0;
+    padding: 6px var(--pad-x) var(--pad-y);
+    counter-reset: none;
+}
+
+.steps li {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+}
+
+.steps li:first-child {
+    border-top: 0;
+}
+
+.step-num {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--tone, var(--armitage));
+    border-radius: 50%;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--tone, var(--armitage));
+}
+
+.steps h4,
+.pipeline .stage-name {
+    margin: 4px 0 4px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+}
+
+.steps p,
+.pipeline p {
+    margin: 0 0 4px;
+    text-align: left;
+    hyphens: manual;
+}
+
+.step-why {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.step-why::before {
+    content: "\2192\00a0";
+    color: var(--tone, var(--armitage));
+}
+
+/* A horizontal pipeline of stages. */
+.pipeline {
+    list-style: none;
+    margin: 0;
+    padding: 6px var(--pad-x) var(--pad-y);
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+}
+
+.pipeline li {
+    position: relative;
+    padding: 4px 18px 4px 16px;
+    border-left: 1px solid var(--rule-strong);
+    font-size: 13.5px;
+}
+
+.pipeline li:not(:last-child)::after {
+    content: "\2192";
+    position: absolute;
+    right: -8px;
+    top: 8px;
+    color: var(--tone, var(--armitage));
+    background: var(--bg, #0c0d10);
+    font-size: 14px;
+    line-height: 1;
+}
+
+.pipeline .stage-name {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tone, var(--armitage));
+    margin-bottom: 8px;
+}
+
+@media (max-width: 960px) {
+    .pipeline {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .pipeline li:not(:last-child)::after {
+        content: none;
+    }
+}
+
+
+/* ---------- Sections: a title column beside the content --------------- */
+/* Each section is a ruled band with its title and intro on the left and the content on the right,
+   so a whole page reads as one continuous, aligned document. */
+
+.sect {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+}
+
+.sect-intro {
+    align-self: start;
+    padding: 52px 40px 52px var(--pad-x);
+}
+
+.sect:not(.sect--stack):not(.sect--bare) .sect-intro {
+    position: sticky;
+    top: 92px;
+}
+
+.sect-intro h3 {
+    margin: 0 0 12px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(26px, 2.6vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.sect-intro p,
+.sect-intro .notes li {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--muted);
+    text-align: left;
+    hyphens: manual;
+}
+
+.sect-intro .notes li {
+    padding: 8px 0;
+}
+
+.sect-body {
+    min-width: 0;
+    padding: 52px var(--pad-x) 52px 44px;
+    border-left: 1px solid var(--rule);
+}
+
+.sect-body > * + * {
+    margin-top: 28px;
+}
+
+/* A section with no title (the first points under a project header) spans the full width. */
+.sect--bare,
+.sect--stack {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.sect--bare .sect-body,
+.sect--stack .sect-body {
+    padding: 32px var(--pad-x) 44px;
+    border-left: 0;
+}
+
+.sect--stack .sect-intro {
+    padding-bottom: 0;
+}
+
+.sect--bare {
+    padding-top: 12px;
+}
+
+/* Lists of points: a label on the left, the explanation on the right. */
+.items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.items li {
+    display: grid;
+    grid-template-columns: minmax(110px, 150px) minmax(0, 1fr);
+    gap: 28px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+}
+
+.items li:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.item-idx {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+.item-idx .big-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: var(--tone, var(--armitage));
+}
+
+.items h4 {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--ink);
+}
+
+.items p {
+    margin: 0 0 6px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text);
+    text-align: left;
+    hyphens: manual;
+}
+
+.items .role-name {
+    font-family: var(--font-mono);
+    font-size: 16px;
+}
+
+.items .step-why {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.items .step-why::before {
+    content: "\2192\00a0";
+    color: var(--tone, var(--armitage));
+}
+
+/* Bare sections lay their points out in columns. */
+.sect--bare .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0 36px;
+}
+
+.sect--bare .items li {
+    display: block;
+    padding: 0;
+    border-top: 0;
+}
+
+.sect--bare .item-idx {
+    margin-bottom: 10px;
+}
+
+.sub-label {
+    margin: 44px 0 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.sub-label:first-child {
+    margin-top: 0;
+}
+
+.sub-label + .items li:first-child {
+    padding-top: 22px;
+}
+
+/* Content that used to span the page now fits the body column. */
+.sect-body .ledger-table th:first-child,
+.sect-body .ledger-table td:first-child {
+    padding-left: 0;
+}
+
+.sect-body .ledger-table th:last-child,
+.sect-body .ledger-table td:last-child {
+    padding-right: 0;
+}
+
+.sect-body .steps,
+.sect-body .references,
+.sect-body .zed-wrap {
+    padding: 0;
+}
+
+/* Leftover two-cell rows stack inside the narrower body column. */
+.sect-body .row {
+    display: block;
+    border-top: 0;
+}
+
+.sect-body .row > .cell {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sect-body .row > .cell + .cell {
+    margin-top: 24px;
+    padding-left: 0;
+    border-left: 0;
+}
+
+.items + .items li:first-child {
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+}
+
+.sect-body .skill-filters {
+    margin-bottom: 14px;
+}
+
+.sect-cta {
+    padding: 36px var(--pad-x) 8px;
+    border-top: 1px solid var(--rule);
+}
+
+.chapter + .chapter {
+    margin-top: 72px;
+}
+
+/* A stepper: numerals joined by a hairline. */
+.steps li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 20px;
+    padding: 0 0 28px;
+    border-top: 0;
+}
+
+.steps li:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 40px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--rule-strong);
+}
+
+.step-num {
+    background: none;
+    border-color: var(--rule-strong);
+    color: var(--ink);
+    font-weight: 400;
+}
+
+.steps h4 {
+    margin-top: 5px;
+}
+
+@media (max-width: 960px) {
+    .sect {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sect-intro {
+        padding: 40px var(--pad-x) 0;
+    }
+
+    .sect-body {
+        padding: 24px var(--pad-x) 40px;
+        border-left: 0;
+    }
+
+    .sect:not(.sect--stack):not(.sect--bare) .sect-intro {
+        position: static;
+    }
+
+    .items li {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+    }
+}
+
+/* Reference list: hanging indent, left-aligned. */
+.references {
+    list-style: none;
+    margin: 0;
+    padding: 6px var(--pad-x) var(--pad-y);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.references li {
+    position: relative;
+    padding: 7px 0 7px 22px;
+    text-align: left;
+    hyphens: manual;
+    overflow-wrap: anywhere;
+}
+
+.references li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 17px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--tone, var(--armitage));
+}
+
+.references strong {
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.references a {
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule-strong);
+}
+
+.references a:hover {
+    color: var(--ink);
+}
+
+/* Canvas beside its code stays side by side. */
+.sect-body .row:has(.stage-box) {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 24px;
+}
+
+.sect-body .row:has(.stage-box) > .cell + .cell {
+    margin-top: 0;
+}
+
+.sect-body > :not(.items) + .items {
+    margin-top: 36px;
+}
+
+.sect-body .row:has(.stage-box) > .cell {
+    grid-column: auto;
+}
+
+
+/* Astrolabe strokes. */
+.s-ink16 {
+    stroke: rgba(var(--ink-rgb), 0.16);
+}
+
+.s-ink35 {
+    stroke: rgba(var(--ink-rgb), 0.35);
+}
+
+.f-ink {
+    fill: rgb(var(--ink-rgb));
+}
+
+/* ---------- Product-page nudges ------------------------------------------ */
+/* A larger hero, more air around sections, and framed exhibits. */
+
+.hero-copy h1 {
+    font-size: clamp(38px, 4.6vw, 58px);
+    line-height: 1.08;
+}
+
+.hero-copy.cell {
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.figure,
+.stage-box {
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.zed {
+    border-radius: 8px;
+}
+
+/* Step-by-step flows: square cards on a dashed rail, each step pointing to the next. */
+.flow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flow-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 20px;
+    padding: 22px 26px 22px 20px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+    background: transparent;
+}
+
+.flow-card + .flow-card {
+    margin-top: 40px;
+}
+
+/* The rail and its arrowhead hang from the step number itself, so they always share its centre line. */
+.flow-card + .flow-card .flow-num {
+    position: relative;
+}
+
+.flow-card + .flow-card .flow-num::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: -63px;
+    height: 32px;
+    border-left: 1px dashed var(--tone, var(--armitage));
+}
+
+.flow-card + .flow-card .flow-num::after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 9px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--tone, var(--armitage));
+}
+
+.flow-num {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--tone, var(--armitage));
+    border-radius: 2px;
+    background: none;
+    color: var(--tone, var(--armitage));
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1;
+}
+
+.flow-card h4 {
+    margin: 2px 0 6px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 19px;
+    color: var(--ink);
+}
+
+.flow-card p {
+    margin: 0 0 4px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    text-align: left;
+    hyphens: manual;
+}
+
+.flow-card .step-why {
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+.flow-card .step-why::before {
+    content: "\2192\00a0";
+    color: var(--tone, var(--armitage));
+}
+
+/* ---------- Fine detail: hatching, rule ticks and section numbers --------- */
+
+.sect {
+    border-top: 0;
+}
+
+/* The header gets a second hairline just beneath its border. */
+.site-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: var(--rule);
+    pointer-events: none;
+}
+
+/* ---------- Section lines ------------------------------------------------ */
+/* Each section is a ruled band. A small plain cross marks the corners and the head of the divider. */
+
+:root {
+    --cross: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'%3E%3Cpath d='M4.5 0v9M0 4.5h9' stroke='black' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.sect {
+    position: relative;
+    border-top: 1px solid var(--rule);
+}
+
+.sect::before {
+    content: none;
+}
+
+.sect > .sect-intro,
+.sect:not(.sect--stack) > .sect-body {
+    border-top: 0;
+}
+
+.sect::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    height: 9px;
+    pointer-events: none;
+    background: rgba(var(--ink-rgb), 0.55);
+    -webkit-mask: var(--cross) 0 0 / 9px 9px no-repeat, var(--cross) 100% 0 / 9px 9px no-repeat;
+    mask: var(--cross) 0 0 / 9px 9px no-repeat, var(--cross) 100% 0 / 9px 9px no-repeat;
+}
+
+.sect:not(.sect--bare):not(.sect--stack) > .sect-body {
+    position: relative;
+}
+
+.sect:not(.sect--bare):not(.sect--stack) > .sect-body::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    width: 9px;
+    height: 9px;
+    pointer-events: none;
+    background: rgba(var(--ink-rgb), 0.55);
+    -webkit-mask: var(--cross) center / 9px 9px no-repeat;
+    mask: var(--cross) center / 9px 9px no-repeat;
+}
+
+/* Section numbers: plain mono above each title. */
+.chapter {
+    counter-reset: sect;
+}
+
+.sect-intro::before {
+    counter-increment: sect;
+    content: counter(sect, decimal-leading-zero);
+    display: block;
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--tone, var(--armitage));
+}
+
+/* The glyph ring on the astrolabe turns slowly, with the dashed ring's company. */
+.astrolabe .spin-glyph {
+    transform-origin: 160px 160px;
+    animation: turn 240s linear infinite;
+}
+
+/* Role cards: what each role builds on. */
+.role-meta {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 14px;
+    margin: 10px 0 0 !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    color: var(--muted) !important;
+}
+
+.role-meta span:first-child {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tone, var(--armitage));
+    padding-top: 2px;
+}
+
+.role-meta em {
+    font-style: italic;
+    color: var(--text);
+}
+
+/* ---------- Buttons: one left edge, one rhythm ----------------------------- */
+
+/* The overview button sits in its own ruled strip, on the content's left edge. */
+.sect-cta {
+    padding: 22px var(--pad-x) 26px;
+}
+
+.chapter + .chapter {
+    margin-top: 48px;
+}
+
+/* Filter buttons and notes inside a section body align with the table beneath them. */
+.sect-body .skill-filters {
+    padding: 0 0 16px;
+    border-bottom: 0;
+}
+
+.sect-body .ledger-legend {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* The hero button keeps a steady distance below the intro text. */
+.hero-links {
+    margin-top: 8px;
+}
+
+/* ---------- Label hierarchy: category labels, skill names, group headings --- */
+
+/* The left-hand category label reads as a label, not as faded metadata. */
+.item-idx {
+    padding-top: 0;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--text);
+}
+
+/* A short accent tick ties the label to its section's tone. */
+.item-idx:not(:has(.big-num))::before {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 1px;
+    margin-bottom: 5px;
+    background: var(--tone, var(--armitage));
+    opacity: 0.8;
+}
+
+/* Skill and role names get a step up in size and a little room below. */
+.items .role-name {
+    margin-bottom: 10px;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+/* Group headings ("Contains the agent", "Keeps you in charge") and the intro kicker. */
+.sub-label,
+.sect-intro .kicker {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+}
+
+.sub-label {
+    padding-bottom: 12px;
+    border-bottom-color: var(--rule-strong);
+}
+
+.sub-label + .items li:first-child {
+    padding-top: 26px;
+}
+
+/* ==========================================================================
+   Vacuum-tube phosphor: a subtle glow on lines, borders and icons (never text), with
+   a few depth cues (layered shadows, top-lit panels, vignette, faint scanlines).
+   Each project glows in its own key colour: Nodens blue, Nyar violet, Armitage amber.
+   Inspired by the MAINFRAME 1.0 style by VKTRKRFT; see README.md.
+   Everything here is decoration: remove this block to get the flat theme back.
+   ========================================================================== */
+
+:root {
+    /* Default (home chrome & Armitage): warm tube amber. */
+    --glow-rgb: 217, 167, 92;
+    --warm-rgb: 255, 224, 182;
+
+    --rule: rgba(var(--warm-rgb), 0.11);
+    --rule-strong: rgba(var(--warm-rgb), 0.22);
+}
+
+/* Each project chapter (and each single-project page, including its header,
+   outer rails and corner haze) takes that project's key colour. */
+.chapter[data-tone="nodens"],
+body:has(> main > .chapter[data-tone="nodens"]:only-of-type) {
+    --glow-rgb: 110, 168, 214;
+    --warm-rgb: 200, 228, 252;
+}
+
+.chapter[data-tone="nyar"],
+body:has(> main > .chapter[data-tone="nyar"]:only-of-type) {
+    --glow-rgb: 177, 138, 224;
+    --warm-rgb: 226, 208, 250;
+}
+
+.chapter[data-tone="armitage"],
+body:has(> main > .chapter[data-tone="armitage"]:only-of-type) {
+    --glow-rgb: 217, 167, 92;
+    --warm-rgb: 255, 224, 182;
+}
+
+:root,
+.chapter[data-tone],
+body:has(> main > .chapter[data-tone]:only-of-type) {
+    --rule: rgba(var(--warm-rgb), 0.11);
+    --rule-strong: rgba(var(--warm-rgb), 0.22);
+    --shadow:
+        inset 0 1px 0 rgba(var(--warm-rgb), 0.06),
+        0 1px 2px rgba(0, 0, 0, 0.5),
+        0 22px 50px -6px rgba(0, 0, 0, 0.5),
+        0 0 36px -14px rgba(var(--glow-rgb), 0.28);
+}
+
+/* ---------- Depth: atmosphere over the page ------------------------------ */
+/* A vignette pulls the corners back, a warm haze sits at two corners,
+   and very faint scanlines give the glass a surface. */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.035) 0 1px, transparent 1px 3px),
+        radial-gradient(ellipse 55% 38% at 4% -6%, rgba(var(--glow-rgb), 0.075), transparent 70%),
+        radial-gradient(ellipse 48% 34% at 102% 104%, rgba(var(--glow-rgb), 0.055), transparent 70%),
+        radial-gradient(ellipse 120% 100% at 50% 42%, transparent 58%, rgba(0, 0, 0, 0.34) 100%);
+}
+
+/* ---------- Lines: the structure of the page glows faintly --------------- */
+
+.sect {
+    border-top-color: rgba(var(--glow-rgb), 0.2);
+    /* A thin cone of light spills from each divider into the section below it. */
+    background: linear-gradient(180deg, rgba(var(--glow-rgb), 0.04), transparent 150px);
+    box-shadow: 0 -1px 12px -3px rgba(var(--glow-rgb), 0.16);
+}
+
+/* The corner crosses become small lit points. */
+.sect::after,
+.sect:not(.sect--bare):not(.sect--stack) > .sect-body::before {
+    background: rgba(var(--warm-rgb), 0.8);
+    filter: drop-shadow(0 0 3px rgba(var(--glow-rgb), 0.7));
+}
+
+.site-header {
+    border-bottom-color: rgba(var(--glow-rgb), 0.18);
+    box-shadow:
+        0 10px 26px -14px rgba(0, 0, 0, 0.7),
+        0 1px 14px -6px rgba(var(--glow-rgb), 0.2);
+}
+
+.site-header::after {
+    background: rgba(var(--glow-rgb), 0.09);
+}
+
+.wrap,
+.header-inner {
+    border-left-color: rgba(var(--glow-rgb), 0.09);
+    border-right-color: rgba(var(--glow-rgb), 0.09);
+}
+
+/* Section dividers breathe, very slightly, like a tube at idle. */
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes tube-breathe {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.68; }
+    }
+
+    .sect::after {
+        animation: tube-breathe 7s ease-in-out infinite;
+    }
+
+    .sect:nth-of-type(even)::after {
+        animation-delay: -3.5s;
+    }
+}
+
+/* ---------- Surfaces: panels are lit from above -------------------------- */
+
+.figure,
+.stage-box,
+.zed,
+.pull-box {
+    border-color: rgba(var(--glow-rgb), 0.24);
+    background-image: linear-gradient(180deg, rgba(var(--warm-rgb), 0.035), transparent 46%);
+}
+
+.figure-bar {
+    border-bottom-color: rgba(var(--glow-rgb), 0.16);
+    background-image: linear-gradient(180deg, rgba(var(--warm-rgb), 0.04), transparent);
+}
+
+.flow-card {
+    border-color: rgba(var(--glow-rgb), 0.24);
+    background-image: linear-gradient(180deg, rgba(var(--warm-rgb), 0.03), transparent 55%);
+    box-shadow:
+        inset 0 1px 0 rgba(var(--warm-rgb), 0.05),
+        0 0 24px -14px rgba(var(--glow-rgb), 0.3);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flow-card:hover {
+    border-color: rgba(var(--glow-rgb), 0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(var(--warm-rgb), 0.07),
+        0 0 30px -10px rgba(var(--glow-rgb), 0.38);
+}
+
+/* The front card of the example deck carries the light; the ones behind it sit in shadow. */
+.zed-deck.is-deck .zed[data-pos="0"] {
+    box-shadow: var(--shadow), 0 0 44px -16px rgba(var(--glow-rgb), 0.4);
+}
+
+/* ---------- Controls ----------------------------------------------------- */
+
+.btn {
+    border-color: rgba(var(--glow-rgb), 0.34);
+    background-image: linear-gradient(180deg, rgba(var(--warm-rgb), 0.05), transparent);
+    box-shadow:
+        inset 0 1px 0 rgba(var(--warm-rgb), 0.08),
+        0 1px 2px rgba(0, 0, 0, 0.45),
+        0 0 18px -8px rgba(var(--glow-rgb), 0.32);
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    border-color: rgba(var(--glow-rgb), 0.6);
+    box-shadow:
+        inset 0 1px 0 rgba(var(--warm-rgb), 0.12),
+        0 6px 14px -6px rgba(0, 0, 0, 0.6),
+        0 0 24px -6px rgba(var(--glow-rgb), 0.5);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: none;
+}
+
+.skill-filter {
+    transition: color 0.15s, border-color 0.15s, box-shadow 0.2s;
+}
+
+.skill-filter[aria-pressed="true"] {
+    border-color: rgba(var(--glow-rgb), 0.55);
+    box-shadow: 0 0 14px -5px rgba(var(--glow-rgb), 0.45), inset 0 0 12px -8px rgba(var(--glow-rgb), 0.5);
+}
+
+.figure-tab.active {
+    border-color: rgba(var(--glow-rgb), 0.4);
+    box-shadow: 0 0 12px -6px rgba(var(--glow-rgb), 0.5);
+}
+
+.pull-box button:hover {
+    box-shadow: 0 0 12px -4px rgba(var(--glow-rgb), 0.5);
+}
+
+/* ---------- Icons and marks ---------------------------------------------- */
+
+.wordmark svg {
+    filter: drop-shadow(0 0 5px rgba(var(--glow-rgb), 0.55));
+}
+
+.chapter-mark {
+    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--tone, var(--armitage)) 60%, transparent));
+}
+
+.flow-num {
+    box-shadow: 0 0 12px -3px color-mix(in srgb, var(--tone, var(--armitage)) 65%, transparent),
+        inset 0 0 8px -5px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent);
+}
+
+.flow-card + .flow-card .flow-num::before,
+.flow-card + .flow-card .flow-num::after {
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent));
+}
+
+/* The short tick above each category label is a lit filament. */
+.item-idx:not(:has(.big-num))::before {
+    box-shadow: 0 0 6px 0 rgba(var(--glow-rgb), 0.7);
+}
+
+/* ---------- Source cards: three sources between Ask and Match ------------ */
+
+.flow-branch {
+    position: relative;
+    margin-top: 40px;
+}
+
+.flow-branch + .flow-card {
+    margin-top: 40px;
+}
+
+/* The dashed rail runs from step 1 into the sources, then from each source into step 2. */
+.flow-branch::before,
+.flow-branch + .flow-card .flow-num::before {
+    content: "";
+    position: absolute;
+    left: 34px;
+    top: -40px;
+    height: 32px;
+    border-left: 1px dashed var(--tone, var(--armitage));
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent));
+}
+
+.flow-branch + .flow-card .flow-num::before {
+    left: 13px;
+    top: -63px;
+}
+
+.flow-branch::after,
+.flow-branch + .flow-card .flow-num::after {
+    content: "";
+    position: absolute;
+    left: 30px;
+    top: -7px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--tone, var(--armitage));
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent));
+}
+
+.flow-branch + .flow-card .flow-num::after {
+    left: 9px;
+    top: -30px;
+}
+
+.flow-branch + .flow-card .flow-num {
+    position: relative;
+}
+
+/* Top bus: step 1 splits along a horizontal dashed line and points into all three sources.
+   Bottom bus: all three sources merge back onto the main rail and point into step 2. */
+.source-card {
+    position: relative;
+}
+
+.source-grid::before,
+.source-grid::after {
+    content: "";
+    position: absolute;
+    left: 34px;
+    right: calc((100% - 28px) / 6);
+    border-bottom: 1px dashed color-mix(in srgb, var(--tone, var(--armitage)) 55%, transparent);
+    pointer-events: none;
+}
+
+.source-grid::before {
+    top: -21px;
+}
+
+.source-grid::after {
+    bottom: -20px;
+}
+
+/* Cards 2 and 3 get a dashed stem + arrowhead from the top bus, and a dashed stem to the bottom bus. */
+.source-card:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -21px;
+    height: 13px;
+    border-left: 1px dashed color-mix(in srgb, var(--tone, var(--armitage)) 55%, transparent);
+}
+
+.source-card:not(:first-child) > .item-idx {
+    position: relative;
+}
+
+.source-card:not(:first-child) > .item-idx::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 5px);
+    top: -26px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid var(--tone, var(--armitage));
+    filter: drop-shadow(0 0 3px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent));
+}
+
+.source-card:not(:first-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -21px;
+    height: 20px;
+    border-left: 1px dashed color-mix(in srgb, var(--tone, var(--armitage)) 55%, transparent);
+}
+
+.source-grid {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.source-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 18px 20px;
+    border: 1px solid rgba(var(--glow-rgb), 0.24);
+    border-radius: 2px;
+    background-image: linear-gradient(180deg, rgba(var(--warm-rgb), 0.03), transparent 55%);
+    box-shadow:
+        inset 0 1px 0 rgba(var(--warm-rgb), 0.05),
+        0 0 24px -14px rgba(var(--glow-rgb), 0.3);
+}
+
+.source-card h4 {
+    margin: 2px 0 4px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.source-card h4 code {
+    padding: 0;
+    background: none;
+    font-size: inherit;
+    color: inherit;
+}
+
+.source-card p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text);
+    text-align: left;
+    hyphens: manual;
+}
+
+@media (max-width: 760px) {
+    .source-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .source-card:not(:first-child)::before,
+    .source-card:not(:first-child)::after,
+    .source-card:not(:first-child) > .item-idx::after,
+    .source-grid::before,
+    .source-grid::after {
+        display: none;
+    }
 }

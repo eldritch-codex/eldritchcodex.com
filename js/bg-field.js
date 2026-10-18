@@ -15,6 +15,51 @@
     const BLUE = '110, 168, 214';
     const AMBER = '217, 167, 92';
 
+    // The twelve glyphs, in order. Drawn on two slow rings around the hub.
+    const GLYPHS = [
+        'M2 12Q12 3 22 12Q12 21 2 12Z M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0 M12 8v8',
+        'M12 12m0 0a2 2 0 1 1 3 1.7a4 4 0 1 1-6-3.4a6 6 0 1 1 9 5.2 M18 18l3 3',
+        'M12 2v20M12 7l-6 6M12 12l6-5M12 17l-5 4',
+        'M4 13a8 8 0 1 0 16 0a8 8 0 1 0-16 0 M7 6a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M11 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M15 6a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M4 13h16',
+        'M4 10a8 8 0 0 0 16 0 M6 22l6-9 6 9z M10.8 5a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0',
+        'M6 3v9q0 5 6 5t6-5V3M12 17v5M8 20h8',
+        'M12 2l8 10-8 10-8-10z M12 7l4 5-4 5-4-5z M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0',
+        'M17 4H8v8h9v8H7 M4 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M18 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0',
+        'M3 12a9 9 0 0 1 18 0 M7 12a5 5 0 0 0 10 0 M10.8 12a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0 M12 17v5',
+        'M4 4q4 8 8 8t8-8M12 12v9M8 17h8',
+        'M10 4a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M7 9v13M12 9v9M17 9v5',
+        'M12 3v18M12 8L8 5M12 8l4-3M12 14l-5-3M12 14l5-3M12 19l-3-2M12 19l3-2'
+    ].map((d) => new Path2D(d));
+    const GLYPH_RINGS = [
+        { radius: RING_GAP * 3, size: 22, speed: 0.35 },
+        { radius: RING_GAP * 6, size: 24, speed: -0.25 },
+    ];
+
+    function glyphRing(cx, cy, ring, t) {
+        const step = (ring.size + 84) / ring.radius;           // radians between glyphs
+        const count = Math.round((Math.PI * 2) / step);
+        const turn = (t * ring.speed * Math.PI) / 180;
+        ctx.save();
+        ctx.strokeStyle = `rgba(${BONE}, 0.075)`;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        for (let i = 0; i < count; i++) {
+            const a = turn + (i / count) * Math.PI * 2;
+            const x = cx + Math.sin(a) * ring.radius;
+            const y = cy - Math.cos(a) * ring.radius;
+            if (x < -40 || x > width + 40 || y < -40 || y > height + 40) continue;
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.translate(x, y);
+            ctx.rotate(a);
+            const s = ring.size / 24;
+            ctx.scale(s, s);
+            ctx.translate(-12, -12);
+            ctx.lineWidth = 1.3 / s;
+            ctx.stroke(GLYPHS[i % GLYPHS.length]);
+        }
+        ctx.restore();
+    }
+
     const canvas = document.createElement('canvas');
     canvas.className = 'bg-field';
     canvas.setAttribute('aria-hidden', 'true');
@@ -60,6 +105,8 @@
             else if (i % 2 === 0) ring(hubX, cy, r, BLUE, 0.035);
             else ring(hubX, cy, r, BONE, 0.03);
         }
+
+        for (const ring of GLYPH_RINGS) glyphRing(hubX, cy, ring, t);
 
         // The instrument's vertical axis through the hub.
         ctx.beginPath();
