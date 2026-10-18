@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="EldritchCodex mark">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#1b1e26"/>
+      <stop offset="58%" stop-color="#111318"/>
+      <stop offset="100%" stop-color="#0c0d10"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+
+  <!-- amber bloom behind the screen only -->
+  <g filter="url(#softglow)" fill="#d9a75c" fill-opacity="0.26">
+    <path fill-rule="evenodd" d="M240 195 Q512 167 784 195 Q819 420 784 647 Q512 675 240 647 Q205 420 240 195 Z M324 281 Q512 270 700 281 L704 375 Q512 372 320 375 Z M320 469 Q416 472 512 469 L512 566 Q416 566 324 562 Z"/>
+  </g>
+
+  <!-- the mark: the screen glows, the base stays crisp -->
+  <path filter="url(#glow)" fill="#ece8df" fill-rule="evenodd" d="M240 195 Q512 167 784 195 Q819 420 784 647 Q512 675 240 647 Q205 420 240 195 Z M324 281 Q512 270 700 281 L704 375 Q512 372 320 375 Z M320 469 Q416 472 512 469 L512 566 Q416 566 324 562 Z"/>
+  <path fill="#ece8df" d="M240 738h363v90H240zM693 738h90v90h-90z"/>
+</svg>

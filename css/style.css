@@ -238,6 +238,7 @@ code {
 }
 
 .wordmark {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -1770,7 +1771,7 @@ li {
     border-left: 1px solid var(--rule);
 }
 
-.sect-body > * + * {
+.sect-body>*+* {
     margin-top: 28px;
 }
 
@@ -1900,7 +1901,7 @@ li {
     margin-top: 0;
 }
 
-.sub-label + .items li:first-child {
+.sub-label+.items li:first-child {
     padding-top: 22px;
 }
 
@@ -1927,18 +1928,18 @@ li {
     border-top: 0;
 }
 
-.sect-body .row > .cell {
+.sect-body .row>.cell {
     padding-left: 0;
     padding-right: 0;
 }
 
-.sect-body .row > .cell + .cell {
+.sect-body .row>.cell+.cell {
     margin-top: 24px;
     padding-left: 0;
     border-left: 0;
 }
 
-.items + .items li:first-child {
+.items+.items li:first-child {
     padding-top: 22px;
     border-top: 1px solid var(--rule);
 }
@@ -1952,7 +1953,7 @@ li {
     border-top: 1px solid var(--rule);
 }
 
-.chapter + .chapter {
+.chapter+.chapter {
     margin-top: 72px;
 }
 
@@ -2061,16 +2062,23 @@ li {
     gap: 24px;
 }
 
-.sect-body .row:has(.stage-box) > .cell + .cell {
+.sect-body .row:has(.stage-box)>.cell+.cell {
     margin-top: 0;
 }
 
-.sect-body > :not(.items) + .items {
+.sect-body> :not(.items)+.items {
     margin-top: 36px;
 }
 
-.sect-body .row:has(.stage-box) > .cell {
+.sect-body .row:has(.stage-box)>.cell {
     grid-column: auto;
+}
+
+/* On narrow pages the canvas sits above its code instead of beside it. */
+@media (max-width: 960px) {
+    .sect-body .row:has(.stage-box) {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
 
 
@@ -2088,12 +2096,8 @@ li {
 }
 
 /* ---------- Product-page nudges ------------------------------------------ */
-/* A larger hero, more air around sections, and framed exhibits. */
-
-.hero-copy h1 {
-    font-size: clamp(38px, 4.6vw, 58px);
-    line-height: 1.08;
-}
+/* More air around sections and framed exhibits; the hero heading keeps the
+   base scale above. */
 
 .hero-copy.cell {
     padding-top: 64px;
@@ -2128,16 +2132,16 @@ li {
     background: transparent;
 }
 
-.flow-card + .flow-card {
+.flow-card+.flow-card {
     margin-top: 40px;
 }
 
 /* The rail and its arrowhead hang from the step number itself, so they always share its centre line. */
-.flow-card + .flow-card .flow-num {
+.flow-card+.flow-card .flow-num {
     position: relative;
 }
 
-.flow-card + .flow-card .flow-num::before {
+.flow-card+.flow-card .flow-num::before {
     content: "";
     position: absolute;
     left: 13px;
@@ -2146,7 +2150,7 @@ li {
     border-left: 1px dashed var(--tone, var(--armitage));
 }
 
-.flow-card + .flow-card .flow-num::after {
+.flow-card+.flow-card .flow-num::after {
     content: "";
     position: absolute;
     top: -30px;
@@ -2230,8 +2234,8 @@ li {
     content: none;
 }
 
-.sect > .sect-intro,
-.sect:not(.sect--stack) > .sect-body {
+.sect>.sect-intro,
+.sect:not(.sect--stack)>.sect-body {
     border-top: 0;
 }
 
@@ -2248,11 +2252,11 @@ li {
     mask: var(--cross) 0 0 / 9px 9px no-repeat, var(--cross) 100% 0 / 9px 9px no-repeat;
 }
 
-.sect:not(.sect--bare):not(.sect--stack) > .sect-body {
+.sect:not(.sect--bare):not(.sect--stack)>.sect-body {
     position: relative;
 }
 
-.sect:not(.sect--bare):not(.sect--stack) > .sect-body::before {
+.sect:not(.sect--bare):not(.sect--stack)>.sect-body::before {
     content: "";
     position: absolute;
     left: -5px;
@@ -2263,22 +2267,6 @@ li {
     background: rgba(var(--ink-rgb), 0.55);
     -webkit-mask: var(--cross) center / 9px 9px no-repeat;
     mask: var(--cross) center / 9px 9px no-repeat;
-}
-
-/* Section numbers: plain mono above each title. */
-.chapter {
-    counter-reset: sect;
-}
-
-.sect-intro::before {
-    counter-increment: sect;
-    content: counter(sect, decimal-leading-zero);
-    display: block;
-    margin-bottom: 14px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--tone, var(--armitage));
 }
 
 /* The glyph ring on the astrolabe turns slowly, with the dashed ring's company. */
@@ -2319,7 +2307,7 @@ li {
     padding: 22px var(--pad-x) 26px;
 }
 
-.chapter + .chapter {
+.chapter+.chapter {
     margin-top: 48px;
 }
 
@@ -2381,7 +2369,7 @@ li {
     border-bottom-color: var(--rule-strong);
 }
 
-.sub-label + .items li:first-child {
+.sub-label+.items li:first-child {
     padding-top: 26px;
 }
 
@@ -2462,7 +2450,7 @@ body::after {
 
 /* The corner crosses become small lit points. */
 .sect::after,
-.sect:not(.sect--bare):not(.sect--stack) > .sect-body::before {
+.sect:not(.sect--bare):not(.sect--stack)>.sect-body::before {
     background: rgba(var(--warm-rgb), 0.8);
     filter: drop-shadow(0 0 3px rgba(var(--glow-rgb), 0.7));
 }
@@ -2487,8 +2475,15 @@ body::after {
 /* Section dividers breathe, very slightly, like a tube at idle. */
 @media (prefers-reduced-motion: no-preference) {
     @keyframes tube-breathe {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.68; }
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.68;
+        }
     }
 
     .sect::after {
@@ -2581,8 +2576,21 @@ body::after {
 
 /* ---------- Icons and marks ---------------------------------------------- */
 
+/* The header mark is the glow asset itself, not an inline SVG. */
 .wordmark svg {
-    filter: drop-shadow(0 0 5px rgba(var(--glow-rgb), 0.55));
+    visibility: hidden;
+}
+
+.wordmark::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    transform: translateY(-50%);
+    background: url("../assets/eldritchcodex-mark-glow.svg") center / contain no-repeat;
+    pointer-events: none;
 }
 
 .chapter-mark {
@@ -2594,8 +2602,8 @@ body::after {
         inset 0 0 8px -5px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent);
 }
 
-.flow-card + .flow-card .flow-num::before,
-.flow-card + .flow-card .flow-num::after {
+.flow-card+.flow-card .flow-num::before,
+.flow-card+.flow-card .flow-num::after {
     filter: drop-shadow(0 0 3px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent));
 }
 
@@ -2611,13 +2619,13 @@ body::after {
     margin-top: 40px;
 }
 
-.flow-branch + .flow-card {
+.flow-branch+.flow-card {
     margin-top: 40px;
 }
 
 /* The dashed rail runs from step 1 into the sources, then from each source into step 2. */
 .flow-branch::before,
-.flow-branch + .flow-card .flow-num::before {
+.flow-branch+.flow-card .flow-num::before {
     content: "";
     position: absolute;
     left: 34px;
@@ -2627,13 +2635,13 @@ body::after {
     filter: drop-shadow(0 0 3px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent));
 }
 
-.flow-branch + .flow-card .flow-num::before {
+.flow-branch+.flow-card .flow-num::before {
     left: 13px;
     top: -63px;
 }
 
 .flow-branch::after,
-.flow-branch + .flow-card .flow-num::after {
+.flow-branch+.flow-card .flow-num::after {
     content: "";
     position: absolute;
     left: 30px;
@@ -2644,12 +2652,12 @@ body::after {
     filter: drop-shadow(0 0 3px color-mix(in srgb, var(--tone, var(--armitage)) 70%, transparent));
 }
 
-.flow-branch + .flow-card .flow-num::after {
+.flow-branch+.flow-card .flow-num::after {
     left: 9px;
     top: -30px;
 }
 
-.flow-branch + .flow-card .flow-num {
+.flow-branch+.flow-card .flow-num {
     position: relative;
 }
 
@@ -2687,11 +2695,11 @@ body::after {
     border-left: 1px dashed color-mix(in srgb, var(--tone, var(--armitage)) 55%, transparent);
 }
 
-.source-card:not(:first-child) > .item-idx {
+.source-card:not(:first-child)>.item-idx {
     position: relative;
 }
 
-.source-card:not(:first-child) > .item-idx::after {
+.source-card:not(:first-child)>.item-idx::after {
     content: "";
     position: absolute;
     left: calc(50% - 5px);
@@ -2765,7 +2773,7 @@ body::after {
 
     .source-card:not(:first-child)::before,
     .source-card:not(:first-child)::after,
-    .source-card:not(:first-child) > .item-idx::after,
+    .source-card:not(:first-child)>.item-idx::after,
     .source-grid::before,
     .source-grid::after {
         display: none;
