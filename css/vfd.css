@@ -82,124 +82,35 @@
     }
 }
 
-/* ---------- Scroll meter: a wide panel along the bottom of the screen ---------------------- */
+/* ---------- Scroll meter: the header's lower rule, cut into one lit segment per section --------- */
 
 .vfd-meter {
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
-    z-index: 30;
-    border-top: 1px solid rgba(var(--vfd-rgb), 0.3);
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 -8px 24px -14px rgba(var(--vfd-rgb), 0.3);
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    color: rgba(var(--vfd-rgb), 0.72);
-    text-shadow: 0 0 6px rgba(var(--vfd-rgb), 0.35);
-}
-
-.vfd-meter-inner {
+    bottom: -1px;
     display: flex;
-    align-items: center;
-    gap: 22px;
-    max-width: var(--wrap);
-    margin: 0 auto;
-    padding: 6px var(--pad-x);
-}
-
-.vfd-meter-label {
-    flex: none;
-    white-space: nowrap;
-}
-
-.vfd-meter-pos {
-    color: var(--vfd);
-}
-
-/* The ladder: eleven numerals over ten double-line steps, lit up to the current position. */
-.vfd-meter-scale {
-    position: relative;
-    display: flex;
-    flex: 1;
-    gap: 10px;
-    padding-right: 14px;
+    gap: 6px;
+    height: 2px;
+    padding: 0 6px;
     pointer-events: none;
 }
 
 .vfd-step {
-    position: relative;
     flex: 1;
-    display: grid;
-    gap: 3px;
-    padding-top: 12px;
-    transform: skewX(-14deg);
-}
-
-.vfd-step::before {
-    content: attr(data-n);
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: rgba(var(--vfd-rgb), 0.5);
-}
-
-.vfd-step.last::after {
-    content: "10";
-    position: absolute;
-    top: 0;
-    right: -16px;
-    color: rgba(var(--vfd-rgb), 0.5);
-}
-
-.vfd-step i {
-    display: block;
-    height: 1px;
-    background: rgba(var(--vfd-rgb), 0.18);
+    background: rgba(var(--vfd-rgb), 0.16);
+    transform: skewX(-30deg);
     transition: background 0.25s, box-shadow 0.25s;
 }
 
-.vfd-step.on i {
+.vfd-step.on {
     background: var(--vfd);
     box-shadow: 0 0 5px rgba(var(--vfd-rgb), 0.55);
 }
 
-.vfd-step.hot i {
+.vfd-step.hot {
     background: var(--vfd-hot);
     box-shadow: 0 0 6px rgba(var(--vfd-hot-rgb), 0.7);
-}
-
-/* The back-to-top button is the last part of the panel. */
-.vfd-meter .to-top {
-    position: static;
-    flex: none;
-    width: 38px;
-    height: 24px;
-    box-sizing: border-box;
-    opacity: 1;
-}
-
-/* Room at the foot of the page so the panel never covers the last lines. */
-body {
-    padding-bottom: 44px;
-}
-
-@media (max-width: 760px) {
-    .vfd-step::before,
-    .vfd-step.last::after {
-        display: none;
-    }
-
-    .vfd-step {
-        padding-top: 0;
-    }
-
-    .vfd-meter-label {
-        display: none;
-    }
 }
 
 /* ==========================================================================
@@ -287,7 +198,8 @@ body {
 
 .chapter-links a:hover::after,
 .hero-project:hover,
-.chapter-cta:hover {
+.chapter-cta:hover,
+.crumb a:hover {
     text-shadow: 0 0 10px color-mix(in srgb, var(--tone, var(--vfd)) 55%, transparent);
 }
 
@@ -355,11 +267,13 @@ body {
     }
 }
 
-/* The project bar and the overview bar are buttons as a whole: a fine dot mesh fills them, and it brightens on hover. */
+/* The project bar, the overview bar and the back bar are buttons as a whole: a fine dot mesh fills them, and it brightens on hover. */
 .hero-project,
 .hero-project:hover,
 .chapter-cta,
-.chapter-cta:hover {
+.chapter-cta:hover,
+.crumb a,
+.crumb a:hover {
     background-image: radial-gradient(color-mix(in srgb, var(--tone, var(--vfd)) 9%, transparent) 0.6px, transparent 1px);
     background-size: 3px 3px;
     background-attachment: fixed;
@@ -367,7 +281,8 @@ body {
 }
 
 .hero-project:hover,
-.chapter-cta:hover {
+.chapter-cta:hover,
+.crumb a:hover {
     background-color: color-mix(in srgb, var(--tone, var(--vfd)) 12%, transparent);
 }
 
@@ -422,16 +337,8 @@ body {
     background-attachment: fixed;
 }
 
-/* The bottom strip carries the same fine dot mesh as the top header. */
-.vfd-meter {
-    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
-    background-size: 3px 3px;
-    background-attachment: fixed;
-}
-
 /* Back to top is plain text: no box, no slant, no dot mesh. */
-.to-top,
-.vfd-meter .to-top {
+.to-top {
     width: auto;
     height: auto;
     padding: 0 2px;

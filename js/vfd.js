@@ -6,34 +6,57 @@
     const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
     // ---- Flicker ---------------------------------------------------------------------------
-    $$('.chapter-index .roman, .chapter-kicker .tag, .hero-project-index, .vfd-meter-pos').forEach((el) => {
+    $$('.chapter-index .roman, .chapter-kicker .tag, .hero-project-index').forEach((el) => {
         el.classList.add('vfd-flicker');
         el.style.setProperty('--flicker-len', `${(7 + Math.random() * 7).toFixed(1)}s`);
         el.style.setProperty('--flicker-delay', `${(-Math.random() * 12).toFixed(1)}s`);
     });
 
     // ---- Scroll meter ----------------------------------------------------------------------
+    // The header's lower rule, cut into one segment per section on the page. A segment lights when its
+    // section has been reached, and the last one reached glows brighter.
+    const header = document.querySelector('.site-header');
+    const sections = $$('main > section, main > article > section');
+    if (!header || !sections.length) return;
     const meter = document.createElement('div');
     meter.className = 'vfd-meter';
-    meter.innerHTML = '<div class="vfd-meter-inner"><span class="vfd-meter-label" aria-hidden="true">POS <span class="vfd-meter-pos">00</span>/10</span>' +
-        '<span class="vfd-meter-scale" aria-hidden="true">' +
-        Array.from({ length: 10 }, (_, i) => `<span class="vfd-step${i === 9 ? ' last' : ''}" data-n="${i}"><i></i><i></i></span>`).join('') +
-        '</span></div>';
-    document.body.append(meter);
-    const toTop = document.querySelector('.to-top');   // the back-to-top button is the last part of the panel
-    if (toTop) meter.firstChild.append(toTop);
+    meter.setAttribute('aria-hidden', 'true');
+    meter.innerHTML = sections.map(() => '<i class="vfd-step"></i>').join('');
+    header.append(meter);
     const steps = $$('.vfd-step', meter);
-    const readout = $$('.vfd-meter-pos', meter)[0];
+
+    let tops = [];
+    let lead = 0;
+    let level = -1;
     function track() {
-        const max = document.documentElement.scrollHeight - innerHeight;
-        const level = max > 0 ? Math.round((scrollY / max) * 10) : 0;
+        const bottom = scrollY + innerHeight >= document.documentElement.scrollHeight - 2;
+        const line = scrollY + lead;
+        const next = bottom ? sections.length : Math.max(1, tops.filter((top) => top <= line).length);
+        if (next === level) return;
+        level = next;
         steps.forEach((step, i) => {
             step.classList.toggle('on', i < level);
             step.classList.toggle('hot', i === level - 1);
         });
-        readout.textContent = String(level).padStart(2, '0');
     }
     window.addEventListener('scroll', track, { passive: true });
-    window.addEventListener('resize', track);
-    track();
+
+    // Layout is read from a ResizeObserver callback, where it is already clean, so measuring does not
+    // force a reflow. Whatever sticks under the header (the crumb, anchor jumps) follows its height.
+    function measure() {
+        const height = header.offsetHeight;
+        document.documentElement.style.setProperty('--header-h', `${height}px`);
+        tops = sections.map((section) => section.getBoundingClientRect().top + scrollY);
+        lead = height + 120;
+        level = -1;
+        track();
+    }
+    if ('ResizeObserver' in window) {
+        const layout = new ResizeObserver(measure);
+        layout.observe(document.documentElement);
+        layout.observe(header);
+    } else {
+        measure();
+        window.addEventListener('resize', measure);
+    }
 })();

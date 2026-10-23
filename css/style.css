@@ -53,7 +53,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 60px;
+    scroll-padding-top: calc(var(--header-h, 56px) + 4px);
 }
 
 body {
@@ -808,15 +808,18 @@ li {
 
 /* ---------- Project chapters -------------------------------------------- */
 
-.chapter[data-tone="nodens"] {
+.chapter[data-tone="nodens"],
+.crumb[data-tone="nodens"] {
     --tone: var(--nodens);
 }
 
-.chapter[data-tone="nyar"] {
+.chapter[data-tone="nyar"],
+.crumb[data-tone="nyar"] {
     --tone: var(--nyar);
 }
 
-.chapter[data-tone="armitage"] {
+.chapter[data-tone="armitage"],
+.crumb[data-tone="armitage"] {
     --tone: var(--armitage);
 }
 
@@ -1627,12 +1630,11 @@ li {
 /* Back link on a project page. */
 .crumb {
     position: sticky;
-    top: 56px;
+    top: var(--header-h, 56px);
     z-index: 19;
     margin: 0;
-    padding: 14px var(--pad-x, 28px);
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 12.5px;
     background: color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1640,12 +1642,17 @@ li {
 }
 
 .crumb a {
-    color: var(--muted);
-    transition: color 0.15s;
+    /* The whole bar is the button, like the overview bars. */
+    display: block;
+    padding: 15px var(--pad-x, 28px);
+    color: var(--ink);
+    transition: background 0.15s, color 0.15s;
 }
 
-.crumb a:hover {
-    color: var(--ink);
+.crumb a:hover,
+.crumb a:focus-visible {
+    background: color-mix(in srgb, var(--tone, var(--vfd)) 10%, transparent);
+    color: var(--tone, var(--vfd));
 }
 
 /* A numbered sequence. */

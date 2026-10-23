@@ -10,15 +10,15 @@
         content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.doubleclick.net https://www.google.com.br https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://www.google.com; connect-src 'self' https://*.doubleclick.net https://www.google.com.br https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://www.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <script src="js/gtm.js?v=32" defer></script>
+    <script src="js/gtm.js?v=39" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
         rel="stylesheet" media="print" id="google-fonts">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="css/style.css?v=32">
-    <link rel="stylesheet" href="css/vfd.css?v=32">
+    <link rel="stylesheet" href="css/style.css?v=39">
+    <link rel="stylesheet" href="css/vfd.css?v=39">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
     <title>EldritchCodex</title>
@@ -235,7 +235,7 @@
                                 rel="noopener">Wiki</a></li>
                     </ul>
                 </aside>
-                <a class="chapter-cta" href="nodens/">Read the Nodens overview</a>
+                <a class="chapter-cta" href="nodens/" aria-label="Read the Nodens overview">Overview <span aria-hidden="true">→</span></a>
             </header>
 
             <section class="sect sect--bare">
@@ -339,7 +339,7 @@
                                 rel="noopener">Milestones</a></li>
                     </ul>
                 </aside>
-                <a class="chapter-cta" href="nyar/">Read the Nyar overview</a>
+                <a class="chapter-cta" href="nyar/" aria-label="Read the Nyar overview">Overview <span aria-hidden="true">→</span></a>
             </header>
 
             <section class="sect sect--bare">
@@ -432,10 +432,6 @@
                     <a href="https://agentclientprotocol.com/" target="_blank" rel="noopener">ACP</a>
                     <a href="https://docs.trychroma.com/" target="_blank" rel="noopener">ChromaDB</a>
                     <a href="https://ollama.com/" target="_blank" rel="noopener">Ollama</a>
-                    <a href="https://github.com/QwenLM/Qwen3" target="_blank" rel="noopener">Qwen3</a>
-                    <a href="https://tree-sitter.github.io/" target="_blank" rel="noopener">tree-sitter</a>
-                    <a href="https://pypi.org/project/pyzotero/" target="_blank" rel="noopener">PyZotero</a>
-                    <a href="https://sqlite.org/fts5.html" target="_blank" rel="noopener">SQLite FTS5</a>
                     <a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a>
                     <a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian</a>
                 </div>
@@ -445,7 +441,7 @@
                         <li class="is-note">Private repository · public release upcoming</li>
                     </ul>
                 </aside>
-                <a class="chapter-cta" href="armitage/">Read the Armitage overview</a>
+                <a class="chapter-cta" href="armitage/" aria-label="Read the Armitage overview">Overview <span aria-hidden="true">→</span></a>
             </header>
 
             <section class="sect sect--bare">
@@ -683,23 +679,6 @@
             </section>
         </article>
 
-        <section class="row">
-            <div class="cell col-7">
-                <h3>Shared Arch Linux toolchain</h3>
-                <p class="flush-text">
-                    Nodens and Nyar share a single container image with Clang, CMake, Ninja, Vulkan SDK,
-                    Slang, and Tracy preconfigured, ready for NVIDIA Container Toolkit or
-                    <code>/dev/dri</code> passthrough.
-                </p>
-            </div>
-            <div class="cell col-5 cell--center">
-                <div class="pull-box">
-                    <span id="pull-cmd">ghcr.io/eldritch-codex/arch-dev:main</span>
-                    <button type="button" data-copy="#pull-cmd">copy</button>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <footer class="site-footer">
@@ -710,8 +689,6 @@
                 <a href="nodens/">Nodens</a>
                 <a href="nyar/">Nyar</a>
                 <a href="armitage/">Armitage</a>
-                <a href="https://github.com/eldritch-codex/devcontainers" target="_blank"
-                    rel="noopener">Devcontainers</a>
             </div>
         </div>
     </footer>
@@ -832,11 +809,11 @@ function(add_slang_shader_target TARGET)
 endfunction()
 </script>
 
-    <script src="js/bg-field.js?v=32" defer></script>
-    <script src="js/astrolabe.js?v=32" defer></script>
-    <script src="js/zed-deck.js?v=32" defer></script>
-    <script src="js/main.js?v=32" defer></script>
-    <script src="js/vfd.js?v=32" defer></script>
+    <script src="js/bg-field.js?v=39" defer></script>
+    <script src="js/astrolabe.js?v=39" defer></script>
+    <script src="js/zed-deck.js?v=39" defer></script>
+    <script src="js/main.js?v=39" defer></script>
+    <script src="js/vfd.js?v=39" defer></script>
 </body>
 
 </html>
