@@ -267,16 +267,20 @@
     }
 }
 
-/* The project bar, the overview bar and the back bar are buttons as a whole: a fine dot mesh fills them, and it brightens on hover. */
+/* The project bars and the back bar are buttons as a whole, filled with the same fine dot mesh as the project
+   headers (same colour and strength, on the same screen-fixed grid). The overview bar sits inside a project
+   header, so it shows that header's mesh and adds no second one on top. */
 .hero-project,
 .hero-project:hover,
-.chapter-cta,
-.chapter-cta:hover,
 .crumb a,
 .crumb a:hover {
-    background-image: radial-gradient(color-mix(in srgb, var(--tone, var(--vfd)) 9%, transparent) 0.6px, transparent 1px);
+    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.08) 0.6px, transparent 1px);
     background-size: 3px 3px;
     background-attachment: fixed;
+    transition: background-color 0.18s, color 0.18s;
+}
+
+.chapter-cta {
     transition: background-color 0.18s, color 0.18s;
 }
 
@@ -337,29 +341,31 @@
     background-attachment: fixed;
 }
 
-/* Back to top is plain text: no box, no slant, no dot mesh. */
+/* Back to top is a small key, like the ones in the header, with its own backing so it stays legible over text. */
 .to-top {
     width: auto;
     height: auto;
-    padding: 0 2px;
+    padding: 7px 11px 6px;
     transform: none;
-    border: 0;
-    background: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(var(--vfd-rgb), 0.3);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 14px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.16em;
-    color: rgba(var(--vfd-rgb), 0.75);
+    color: rgba(var(--vfd-rgb), 0.85);
     text-shadow: 0 0 6px rgba(var(--vfd-rgb), 0.35);
     opacity: 1;
 }
 
 .to-top:hover,
 .to-top:focus-visible {
-    background: none;
-    box-shadow: none;
+    background: color-mix(in srgb, var(--bg) 88%, rgba(var(--vfd-rgb), 0.14));
+    border-color: rgba(var(--vfd-rgb), 0.55);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 14px rgba(0, 0, 0, 0.55), 0 0 12px -4px rgba(var(--vfd-rgb), 0.5);
     color: var(--vfd);
     text-shadow: 0 0 10px rgba(var(--vfd-rgb), 0.7);
 }
@@ -375,3 +381,47 @@
     background-attachment: fixed, scroll;
 }
 
+/* ==========================================================================
+   Pixel details: stepped corners.
+   ========================================================================== */
+
+/* Tags get stepped corners, like a sprite, instead of rounded ones. */
+.chapter-kicker .tag {
+    border-radius: 0;
+    clip-path: polygon(0 3px, 3px 3px, 3px 0, calc(100% - 3px) 0, calc(100% - 3px) 3px, 100% 3px,
+            100% calc(100% - 3px), calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) 100%,
+            3px 100%, 3px calc(100% - 3px), 0 calc(100% - 3px));
+}
+
+/* ==========================================================================
+   Instrument panel: hairlines, status slabs and rulers, after vector HUD layouts.
+   ========================================================================== */
+
+/* Window title bars read as status slabs: a neutral grey plate, a small lit square in an index cell on
+   the left, a hairline after it, and the right-hand note set as a quiet, tracked readout. */
+.figure-bar {
+    position: relative;
+    padding-left: 44px;
+    background-color: rgba(255, 255, 255, 0.045);
+    background-image: none;
+}
+
+.figure-bar::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    border-right: 1px solid rgba(var(--vfd-rgb), 0.22);
+    background:
+        linear-gradient(var(--vfd), var(--vfd)) center / 4px 4px no-repeat;
+    opacity: 0.85;
+}
+
+.figure-bar>span:last-child {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}

@@ -79,9 +79,10 @@
     });
   });
 
+  const PIXEL = 4;
   const canvas = $("#triangle");
   if (canvas) {
-    const gl = canvas.getContext("webgl", { antialias: true });
+    const gl = canvas.getContext("webgl", { antialias: false });
     if (gl) {
       const compile = (type, src) => {
         const sh = gl.createShader(type);
@@ -129,8 +130,9 @@
       let visible = false, frames = 0, last = performance.now();
 
       const draw = (now) => {
-        const dpr = Math.min(devicePixelRatio || 1, 2);
-        const w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
+        // Drawn at a coarse grid and scaled up with hard edges (image-rendering: pixelated): each pixel of
+        // the canvas is PIXEL css pixels, whatever the screen's density.
+        const w = Math.max(1, Math.round(canvas.clientWidth / PIXEL)), h = Math.max(1, Math.round(canvas.clientHeight / PIXEL));
         if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
         gl.viewport(0, 0, w, h);
         gl.clearColor(0.031, 0.035, 0.047, 1);
