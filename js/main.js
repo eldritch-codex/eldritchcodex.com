@@ -130,7 +130,7 @@
 
       const draw = (now) => {
         const dpr = Math.min(devicePixelRatio || 1, 2);
-        const w = canvas.clientWidth * dpr, h = canvas.clientHeight * dpr;
+        const w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
         if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
         gl.viewport(0, 0, w, h);
         gl.clearColor(0.031, 0.035, 0.047, 1);

@@ -1263,6 +1263,10 @@ li {
 }
 
 .stage-box canvas {
+    /* Out of flow: a canvas in flow takes its pixel size (client size x devicePixelRatio) as its height,
+       which grew the box, then the canvas, on every frame. */
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     display: block;

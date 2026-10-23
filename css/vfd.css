@@ -338,11 +338,13 @@ body {
     margin-top: 24px;
 }
 
-/* The slanted buttons and tags carry a fine dot mesh, like the glass of a display tube. */
+/* One fine dot mesh sits fixed to the screen, like the glass of an old display, and shows only inside
+   these parts: it stays still while they scroll past (background-attachment: fixed). */
 .to-top,
 .vfd-meter-info {
     background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
     background-size: 3px 3px;
+    background-attachment: fixed;
 }
 
 /* On a project page there is no overview bar under the links, so the links column runs the full height
@@ -360,6 +362,7 @@ body {
 .chapter-cta:hover {
     background-image: radial-gradient(color-mix(in srgb, var(--tone, var(--vfd)) 9%, transparent) 0.6px, transparent 1px);
     background-size: 3px 3px;
+    background-attachment: fixed;
     transition: background-color 0.18s, color 0.18s;
 }
 
@@ -416,12 +419,14 @@ body {
 .site-header {
     background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
     background-size: 3px 3px;
+    background-attachment: fixed;
 }
 
 /* The bottom strip carries the same fine dot mesh as the top header. */
 .vfd-meter {
     background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
     background-size: 3px 3px;
+    background-attachment: fixed;
 }
 
 /* Back to top is plain text: no box, no slant, no dot mesh. */
@@ -460,5 +465,6 @@ body {
             color-mix(in srgb, var(--tone) 8%, rgba(var(--glass-rgb), 0.03)),
             rgba(var(--glass-rgb), 0.02));
     background-size: 3px 3px, auto;
+    background-attachment: fixed, scroll;
 }
 
