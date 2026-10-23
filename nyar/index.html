@@ -10,15 +10,15 @@
         content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.doubleclick.net https://www.google.com.br https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://www.google.com; connect-src 'self' https://*.doubleclick.net https://www.google.com.br https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://www.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <script src="../js/gtm.js?v=76" defer></script>
+    <script src="../js/gtm.js?v=79" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
         rel="stylesheet" media="print" id="google-fonts">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../css/style.css?v=76">
-    <link rel="stylesheet" href="../css/vfd.css?v=76">
+    <link rel="stylesheet" href="../css/style.css?v=79">
+    <link rel="stylesheet" href="../css/vfd.css?v=79">
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 
     <title>Nyar · EldritchCodex</title>
@@ -52,7 +52,7 @@
       "@type": "SoftwareSourceCode",
       "@id": "https://eldritchcodex.com/nyar/",
       "name": "Nyar",
-      "description": "Nyar is a real-time Vulkan 1.3 renderer built as a separate module for Nodens, with Slang shaders compiled to SPIR-V.",
+      "description": "Nyar is a real-time Vulkan renderer built as a separate module for Nodens, as a learning exercise.",
       "programmingLanguage": "C++",
       "url": "https://eldritchcodex.com/nyar/",
       "author": { "@type": "Person", "name": "Renan Bomtempo", "url": "https://renanbomtempo.me/" },
@@ -106,20 +106,17 @@
                         Nyar
                     </h2>
                     <p>
-                        A real-time Vulkan 1.3 renderer, built as a separate module for Nodens as a learning exercise.
-                        It starts from the Khronos "Drawing a triangle" tutorial and is refactored step by step into a
-                        clean rendering API.
+                        A real-time renderer for Nodens, built on the Vulkan graphics API as a learning exercise. It
+                        starts from the Khronos "Drawing a triangle" tutorial and grows, step by step, into a clean
+                        rendering API for Nodens applications.
                     </p>
                 </div>
                 <div class="chapter-stack dep-strip">
                     <span class="label">Stack:</span>
                     <a href="https://en.cppreference.com/w/cpp/23" target="_blank" rel="noopener">C++</a>
                     <a href="https://docs.vulkan.org/spec/latest/index.html" target="_blank" rel="noopener">Vulkan</a>
-                    <a href="https://github.com/KhronosGroup/Vulkan-Hpp" target="_blank" rel="noopener">Vulkan-Hpp</a>
                     <a href="https://github.com/shader-slang/slang" target="_blank" rel="noopener">Slang</a>
-                    <a href="https://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>
-                    <a href="https://registry.khronos.org/SPIR-V/" target="_blank" rel="noopener">SPIR-V</a>
-                    <a href="https://github.com/EldritchCodex/Nodens" target="_blank" rel="noopener">Nodens</a>
+                    <a href="https://github.com/eldritch-codex/nodens" target="_blank" rel="noopener">Nodens</a>
                 </div>
                 <aside class="cell col-4 chapter-aside" aria-label="Nyar links">
                     <span class="aside-label">Links</span>
@@ -134,133 +131,41 @@
 
         <section class="sect sect--bare">
                 <div class="sect-body">
-<ul class="items"><li><span class="item-idx">01 · Shaders</span><div><h4 aria-level="3">Slang to SPIR-V</h4><p>Shaders are written in Slang, a shading language, and compiled to SPIR-V (the format Vulkan
-                        loads) by a custom CMake target.</p></div></li><li><span class="item-idx">02 · Pipeline</span><div><h4>Modern Vulkan 1.3</h4><p>Uses Vulkan's current features: dynamic rendering (no render pass objects),
-                        <code>synchronization2</code> and extended dynamic state.
-                    </p></div></li><li><span class="item-idx">03 · Direction</span><div><h4>Nodens integration</h4><p>Packaged as a C++ module (<code>export module nyar;</code>) that Nodens applications import
-                        as their rendering backend.</p></div></li></ul>
+<ul class="items"><li><span class="item-idx">01 · What</span><div><h4 aria-level="3">A renderer for Nodens</h4><p>Nyar is the part of Nodens that draws. It is a separate module, so Nodens applications can use it as their rendering backend.</p></div></li><li><span class="item-idx">02 · Why</span><div><h4>A learning exercise</h4><p>Nyar exists to understand modern real-time rendering by building it, one small working step at a time.</p></div></li><li><span class="item-idx">03 · How</span><div><h4>Vulkan and Slang</h4><p>It uses current Vulkan, and shaders written in Slang, a modern shading language.</p></div></li></ul>
             <div class="row">
-                <div class="cell col-5">
+                <div class="cell">
                     <div class="stage-box">
                         <canvas id="triangle" aria-label="Live triangle preview"></canvas>
                         <div class="stage-caption">
-                            <span>hello-triangle · vertMain → fragMain</span>
+                            <span>hello-triangle · the first milestone</span>
                             <span id="fps"></span>
                         </div>
                     </div>
                 </div>
-                <div class="cell col-7">
-                    <figure class="figure">
-                        <figcaption class="figure-bar">
-                            <span>shaders/shader.slang</span>
-                            <span>slangc → spirv_1_4</span>
-                        </figcaption>
-                        <pre class="code" data-src="nyar-shader"></pre>
-                    </figure>
-                </div>
             </div>
                 </div>
         </section>
-
         <section class="sect">
                 <div class="sect-intro">
                     <h3>Where it is today</h3>
-
                 </div>
                 <div class="sect-body">
-<p class="flush-text">Nyar is at the start of its path. The code that runs now is the Khronos <em>Drawing a triangle</em> tutorial, adapted to run inside a Nodens application as <code>nyar-test-app</code>. It is a known-good baseline and not yet the renderer. The public renderer boundary, <code>src/nyar.cppm</code>, holds only the module declaration for now.</p>
-<p class="flush-text">The plan is to finish the tutorial, then refactor and morph that working code step by step into a dedicated renderer API that Nodens applications import.</p>
+<p class="flush-text">Nyar is at the start of its path. What runs today is the Khronos <em>Drawing a triangle</em> tutorial, adapted to run inside a Nodens application. It is a known-good baseline, not yet the renderer.</p>
                 </div>
         </section>
-
         <section class="sect">
                 <div class="sect-intro">
-                    <h3>Working with Nodens</h3>
+                    <h3>Where it is going</h3>
+                    <p>The plan, in order. Progress is tracked in the milestones.</p>
                 </div>
                 <div class="sect-body">
-<ul class="items"><li><span class="item-idx">01 · Nodens owns</span><div><h4>The platform</h4><p>Nodens creates the Vulkan instance, surface and logical device, picks the physical device, and owns the swapchain. It also acquires each image and presents it.</p></div></li><li><span class="item-idx">02 · Nyar borrows</span><div><h4>The handles</h4><p>A Nodens layer borrows the device, swapchain images and views, extent, format and the active command buffer. It never destroys them.</p></div></li><li><span class="item-idx">03 · Nyar records</span><div><h4>The scene</h4><p>The scene pass is recorded inside a Nodens layer. Nodens finishes the frame afterwards, so other renderers can append work after Nyar's pass.</p></div></li></ul>
+<ul class="items"><li><span class="item-idx">01 · Now</span><div><h4>Finish the tutorial</h4><p>Get the whole Khronos tutorial running inside a Nodens application.</p></div></li><li><span class="item-idx">02 · Next</span><div><h4>Refactor into an API</h4><p>Reshape that working code, step by step, into a dedicated renderer with a clear public interface.</p></div></li><li><span class="item-idx">03 · Then</span><div><h4>Used by Nodens apps</h4><p>Nodens applications import Nyar and draw their scenes through it, while Nodens keeps the window and the frame loop.</p></div></li></ul>
                 </div>
         </section>
-
-        <section class="sect">
-                <div class="sect-intro">
-                    <h3>What the baseline requires</h3>
-                    <p>Checked when a GPU is picked, so an unsuitable device is rejected up front.</p>
-                </div>
-                <div class="sect-body">
-<table class="ledger-table ledger-table--text">
-<thead><tr><th>Requirement</th><th>Why</th></tr></thead>
-<tbody>
-<tr><td>Vulkan 1.3</td><td>The baseline for dynamic rendering and synchronization2</td></tr>
-<tr><td><code>dynamicRendering</code></td><td>Render passes without render pass or framebuffer objects</td></tr>
-<tr><td><code>synchronization2</code></td><td>Clearer barrier and submission structures</td></tr>
-<tr><td><code>extendedDynamicState</code></td><td>More pipeline state set at record time</td></tr>
-<tr><td><code>shaderDrawParameters</code></td><td>Lets the vertex shader read <code>SV_VertexID</code>, which the triangle shader uses</td></tr>
-</tbody>
-</table>
-                </div>
-        </section>
-
-        <section class="sect">
-                <div class="sect-intro">
-                    <h3>Presentation and debugging</h3>
-                </div>
-                <div class="sect-body">
-<ul class="items"><li><span class="item-idx">01 · Surface</span><div><h4>sRGB colour</h4><p>The swapchain prefers B8G8R8A8 with an sRGB non-linear colour space.</p></div></li><li><span class="item-idx">02 · Present</span><div><h4>Mailbox, else FIFO</h4><p>It uses mailbox presentation when the GPU offers it, and falls back to FIFO, which is always available.</p></div></li><li><span class="item-idx">03 · Debug</span><div><h4>Validation on</h4><p>A debug messenger reports validation, performance and general messages at warning level and above.</p></div></li></ul>
-                </div>
-        </section>
-
-        <section class="sect">
-                <div class="sect-intro">
-                    <h3>Shaders in the build</h3>
-                    <ul class="notes">
-<li>A CMake function, <code>add_slang_shader_target</code>, runs <code>slangc</code> on the Slang sources.</li>
-<li>It targets SPIR-V 1.4 directly, keeps the entry-point names, and emits one <code>slang.spv</code> holding both <code>vertMain</code> and <code>fragMain</code>.</li>
-<li>Because it is an ordinary CMake target, shaders rebuild whenever their sources change and a normal build keeps them current.</li>
-</ul>
-                </div>
-                <div class="sect-body">
-<figure class="figure" data-tabgroup="">
-<figcaption class="figure-bar">
-<span class="figure-file">CMakeLists.txt</span>
-<span>shader target</span>
-</figcaption>
-<pre class="code" data-src="nyar-cmake"></pre>
-</figure>
-                </div>
-        </section>
-
-        <section class="sect">
-                <div class="sect-intro">
-                    <h3>Build and run</h3>
-                    <p>Linux is the supported setup.</p>
-                </div>
-                <div class="sect-body">
-<table class="ledger-table ledger-table--text">
-<thead><tr><th>Step</th><th>Command</th></tr></thead>
-<tbody>
-<tr><td>Configure</td><td><code>cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug</code></td></tr>
-<tr><td>Build the test app</td><td><code>cmake --build build --target nyar-test-app</code></td></tr>
-<tr><td>Run</td><td><code>./build/examples/nyar-test-app/nyar-test-app</code></td></tr>
-</tbody>
-</table>
-                </div>
-        </section>
-
-        <section class="sect">
-                <div class="sect-intro">
-                    <h3>What it is built on</h3>
-
-                </div>
-                <div class="sect-body">
-<p class="flush-text">Nyar needs CMake 3.30 or newer for <code>import std</code>, the <code>slangc</code> compiler, GLFW and the Vulkan SDK. It fetches Nodens with CMake. The Vulkan-Hpp module comes from Nodens when it provides one, and from the Vulkan SDK otherwise.</p>
-                </div>
-        </section>
-
         <section class="sect">
                 <div class="sect-intro">
                     <h3>Follow along</h3>
-
+                    <p>Linux is the supported setup for now.</p>
                 </div>
                 <div class="sect-body">
 <ul class="chapter-links">
@@ -270,7 +175,6 @@
 </ul>
                 </div>
         </section>
-
         <section class="sect">
                 <div class="sect-intro">
                     <h3>References</h3>
@@ -309,63 +213,9 @@
 
     <a class="to-top" href="#top" aria-label="Back to top" title="Back to top">↑ TOP</a>
 
-    <!-- Code & shell templates -->
-    <script type="text/plain" id="src-nyar-shader" data-lang="slang">
-static float2 positions[3] = {
-    float2(0.0, -0.5),
-    float2(0.5, 0.5),
-    float2(-0.5, 0.5),
-};
-
-static float3 colors[3] = {
-    float3(1.0, 0.0, 0.0),
-    float3(0.0, 1.0, 0.0),
-    float3(0.0, 0.0, 1.0),
-};
-
-struct VertexOutput
-{
-    float3 color;
-    float4 sv_position : SV_Position;
-};
-
-[shader("vertex")]
-VertexOutput vertMain(uint vid: SV_VertexID)
-{
-    VertexOutput output;
-    output.sv_position = float4(positions[vid], 0.0, 1.0);
-    output.color = colors[vid];
-    return output;
-}
-
-[shader("fragment")]
-float4 fragMain(VertexOutput inVert)
-{
-    return float4(inVert.color, 1.0);
-}
-</script>
-
-    <script type="text/plain" id="src-nyar-cmake" data-lang="cpp">
-function(add_slang_shader_target TARGET)
-  # ... parse SOURCES, pick an output directory ...
-  add_custom_command(
-    OUTPUT "${output_file}"
-    COMMAND "${SLANGC_EXECUTABLE}" ${SHADER_SOURCES}
-            -target spirv
-            -profile spirv_1_4
-            -emit-spirv-directly
-            -fvk-use-entrypoint-name
-            -entry vertMain
-            -entry fragMain
-            -o "${output_file}"
-    DEPENDS ${SHADER_SOURCES})
-  add_custom_target("${TARGET}" DEPENDS "${output_file}")
-endfunction()
-</script>
-
-    <script src="../js/bg-field.js?v=76" defer></script>
-    <script src="../js/main.js?v=76" defer></script>
-    <script src="../js/vfd.js?v=76" defer></script>
+    <script src="../js/bg-field.js?v=79" defer></script>
+    <script src="../js/main.js?v=79" defer></script>
+    <script src="../js/vfd.js?v=79" defer></script>
 </body>
 
 </html>

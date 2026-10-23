@@ -10,15 +10,15 @@
         content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.doubleclick.net https://www.google.com.br https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://www.google.com; connect-src 'self' https://*.doubleclick.net https://www.google.com.br https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://www.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <script src="../js/gtm.js?v=76" defer></script>
+    <script src="../js/gtm.js?v=79" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
         rel="stylesheet" media="print" id="google-fonts">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../css/style.css?v=76">
-    <link rel="stylesheet" href="../css/vfd.css?v=76">
+    <link rel="stylesheet" href="../css/style.css?v=79">
+    <link rel="stylesheet" href="../css/vfd.css?v=79">
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 
     <title>Nodens · EldritchCodex</title>
@@ -184,7 +184,6 @@
                         <li>Two examples ship with it: <code>circularwave3d</code> (live 2D/3D plots with ImPlot and
                             ImPlot3D) and <code>planetaryscan</code> (the event bus and job system working together).
                         </li>
-                        <li>Tracy profiling is built in: add <code>ZoneScoped</code> to any layer method.</li>
                         <li>CMake builds every dependency from source, so there is nothing to install by hand.</li>
                     </ul>
                 </div>
@@ -225,179 +224,15 @@
 
             <section class="sect">
                 <div class="sect-intro">
-                    <h3>Layer lifecycle</h3>
-                    <p>Every layer is a subclass of <code>ILayer</code> and overrides only the hooks it needs.</p>
+                    <h3>How an app is organised</h3>
+                    <p>A few ideas carry most of an app. The wiki goes deeper into each.</p>
                 </div>
                 <div class="sect-body">
-                    <table class="ledger-table ledger-table--text">
-                        <thead>
-                            <tr>
-                                <th>Hook</th>
-                                <th>When it runs</th>
-                                <th>Use it for</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>OnAttach</code></td>
-                                <td>Once, when the layer is pushed onto the stack</td>
-                                <td>Allocating resources, subscribing to events</td>
-                            </tr>
-                            <tr>
-                                <td><code>OnUpdate(ts)</code></td>
-                                <td>Every frame, with the time since the last frame</td>
-                                <td>Simulation and application logic</td>
-                            </tr>
-                            <tr>
-                                <td><code>OnImGuiRender(ts)</code></td>
-                                <td>Every frame, between the start and end of the ImGui frame</td>
-                                <td>Windows, plots and debug tools</td>
-                            </tr>
-                            <tr>
-                                <td><code>OnInputEvent(event)</code></td>
-                                <td>When an input or window event reaches the layer, back to front</td>
-                                <td>Handling input; set <code>Handled</code> to stop it travelling further</td>
-                            </tr>
-                            <tr>
-                                <td><code>OnDetach</code></td>
-                                <td>Once, when the layer is removed</td>
-                                <td>Releasing resources, unsubscribing</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<ul class="items"><li><span class="item-idx">01 · Layers</span><div><h4>Your app is a stack of layers</h4><p>A layer is a self-contained piece of the app: a simulation, a plot window, a debug panel. Each one sets itself up when it is added, reacts to input, updates every frame, draws its own interface, and cleans up when it is removed. Overlays such as the ImGui layer always draw on top.</p></div></li><li><span class="item-idx">02 · Events</span><div><h4>Two ways to send a message</h4><p>Input and window events travel down the layers until one handles them. Events you define yourself go through an event bus: handled immediately, or queued and delivered once per frame on the main thread.</p></div></li><li><span class="item-idx">03 · Jobs</span><div><h4>Heavy work off the main thread</h4><p>Simulation and data processing run on worker threads, and a finished job reports back as an event. The main thread receives the result, so handlers never need locks of their own.</p></div></li><li><span class="item-idx">04 · Profiling</span><div><h4>Tracy built in</h4><p>Add <code>ZoneScoped</code> to any function to see it in Tracy, including lock contention between workers and GPU timings on Vulkan.</p></div></li></ul>
                 </div>
-            </section>
+        </section>
 
-            <section class="sect">
-                <div class="sect-intro">
-                    <h3>Layers and overlays</h3>
-
-                </div>
-                <div class="sect-body">
-                    <p class="flush-text">The layer stack is one ordered list with a boundary in it.
-                        <code>PushLayer</code> inserts before the boundary and <code>PushOverlay</code> appends after
-                        it, so overlays such as the ImGui layer always update and draw after regular layers. The stack
-                        owns the layer pointers and deletes them on shutdown.</p>
-                </div>
-            </section>
-
-            <section class="sect">
-                <div class="sect-intro">
-                    <h3>Two event paths</h3>
-                    <p>Events that come from the window and events your own code defines take different routes.</p>
-                </div>
-                <div class="sect-body">
-                    <ul class="items">
-                        <li><span class="item-idx">Input and window events</span>
-                            <div>
-                                <h4>Layer stack</h4>
-                                <p>They travel as one <code>std::variant</code>, back to front through the layers, until
-                                    one handles it.</p>
-                            </div>
-                        </li>
-                        <li><span class="item-idx">Events you define</span>
-                            <div>
-                                <h4>EventBus</h4>
-                                <p>Subscribers register typed handlers. <code>Dispatch</code> calls them at once, in
-                                    subscription order, on the calling thread. <code>QueueEvent</code> copies the event
-                                    into a double-buffered byte array that <code>Flush()</code> drains once per frame on
-                                    the main thread.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="sect">
-                <div class="sect-intro">
-                    <h3>Event types</h3>
-                </div>
-                <div class="sect-body">
-                    <ul class="items">
-                        <li><span class="item-idx">01 · Plain data</span>
-                            <div>
-                                <h4>Events are POD</h4>
-                                <p>An event is a standard-layout, trivially copyable struct with a <code>static
-                                        constexpr std::string_view Name</code>. A C++ concept enforces it, so events can
-                                    be copied straight into byte buffers.</p>
-                            </div>
-                        </li>
-                        <li><span class="item-idx">02 · No RTTI</span>
-                            <div>
-                                <h4>Sequential type IDs</h4>
-                                <p>Each event type gets the next integer from an atomic counter the first time it is
-                                    used. No RTTI and no hashing.</p>
-                            </div>
-                        </li>
-                        <li><span class="item-idx">03 · Threads</span>
-                            <div>
-                                <h4>Safe where it matters</h4>
-                                <p><code>Subscribe</code>, <code>Unsubscribe</code> and <code>QueueEvent</code> may be
-                                    called from any thread. <code>Dispatch</code> and <code>Flush</code> belong to the
-                                    main thread.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="sect">
-                <div class="sect-intro">
-                    <h3>Events and jobs together</h3>
-                    <ul class="notes">
-                        <li>The job system runs work on a pool of <code>std::jthread</code> workers, sized to the
-                            hardware thread count minus one so the main thread stays free.</li>
-                        <li><code>Submit</code> takes any callable and returns a <code>std::future</code>. Workers sleep
-                            on a condition variable that understands stop tokens, so shutdown cancels cooperatively and
-                            joins on its own.</li>
-                        <li>A job finishes by queueing an event. The next <code>Flush()</code> hands the result to
-                            subscribers on the main thread, so no handler needs a lock of its own.</li>
-                        <li>The <code>planetaryscan</code> example is this pattern with live plots.</li>
-                    </ul>
-                </div>
-                <div class="sect-body">
-                    <figure class="figure" data-tabgroup="">
-                        <figcaption class="figure-bar">
-                            <span class="figure-file">ScanLayer.cpp</span>
-                            <span>events and jobs</span>
-                        </figcaption>
-                        <pre class="code" data-src="nodens-events"></pre>
-                    </figure>
-                </div>
-            </section>
-
-            <section class="sect">
-                <div class="sect-intro">
-                    <h3>Profiling with Tracy</h3>
-                </div>
-                <div class="sect-body">
-                    <ul class="items">
-                        <li><span class="item-idx">01 · CPU</span>
-                            <div>
-                                <h4>Zones and frames</h4>
-                                <p>Add <code>ZoneScoped</code> to any function to see it in Tracy. The job queue depth
-                                    is plotted on its own timeline.</p>
-                            </div>
-                        </li>
-                        <li><span class="item-idx">02 · Threads</span>
-                            <div>
-                                <h4>Lock contention</h4>
-                                <p>The job queue mutex is a Tracy lockable, so contention between workers is visible as
-                                    it happens.</p>
-                            </div>
-                        </li>
-                        <li><span class="item-idx">03 · GPU</span>
-                            <div>
-                                <h4>Vulkan timings</h4>
-                                <p>The Vulkan backend keeps per-frame Tracy contexts for GPU profiling next to the CPU
-                                    view.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="sect">
+        <section class="sect">
                 <div class="sect-intro">
                     <h3>Where it comes from</h3>
 
@@ -533,32 +368,9 @@ int main() {
 }
 </script>
 
-    <script type="text/plain" id="src-nodens-events" data-lang="cpp">
-struct ScanDone {
-    static constexpr std::string_view Name = "ScanDone";
-    float Distance;
-};
-
-void ScanLayer::OnAttach() {
-    // Runs on the main thread, during Flush().
-    auto& bus = Nodens::Application::Get().GetEventBus();
-    m_Subscription = bus.Subscribe<ScanDone>(
-        [this](ScanDone& e) { m_Distances.push_back(e.Distance); });
-}
-
-void ScanLayer::StartScan() {
-    Nodens::Application::Get().GetJobSystem().Submit([] {
-        ScanDone result{.Distance = RunSimulation()};
-        // Safe from any thread: copied into the active buffer.
-        auto& bus = Nodens::Application::Get().GetEventBus();
-        bus.QueueEvent(result);
-    });
-}
-</script>
-
-    <script src="../js/bg-field.js?v=76" defer></script>
-    <script src="../js/main.js?v=76" defer></script>
-    <script src="../js/vfd.js?v=76" defer></script>
+    <script src="../js/bg-field.js?v=79" defer></script>
+    <script src="../js/main.js?v=79" defer></script>
+    <script src="../js/vfd.js?v=79" defer></script>
 </body>
 
 </html>

@@ -10,15 +10,15 @@
         content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.doubleclick.net https://www.google.com.br https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://www.google.com; connect-src 'self' https://*.doubleclick.net https://www.google.com.br https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://*.googletagmanager.com https://www.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <script src="../js/gtm.js?v=76" defer></script>
+    <script src="../js/gtm.js?v=79" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
         rel="stylesheet" media="print" id="google-fonts">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="../css/style.css?v=76">
-    <link rel="stylesheet" href="../css/vfd.css?v=76">
+    <link rel="stylesheet" href="../css/style.css?v=79">
+    <link rel="stylesheet" href="../css/vfd.css?v=79">
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 
     <title>Armitage · EldritchCodex</title>
@@ -471,57 +471,6 @@
 
             <section class="sect">
                 <div class="sect-intro">
-                    <h3>Retrieval, step by step</h3>
-                    <p>One pipeline serves memory, code and papers.</p>
-                </div>
-                <div class="sect-body">
-                    <ol class="flow">
-                        <li class="flow-card"><span class="flow-num">1</span>
-                            <div>
-                                <h4>Extract</h4>
-                                <p>Everything Zotero stores is read: PDFs page by page (scans through OCR), EPUBs by
-                                    chapter, and web snapshots by section.</p>
-                                <p class="step-why">Every chunk keeps its page, so a citation can name it.</p>
-                            </div>
-                        </li>
-                        <li class="flow-card"><span class="flow-num">2</span>
-                            <div>
-                                <h4>Index</h4>
-                                <p>Text is chunked, embedded with a local Ollama model into Chroma, and indexed for
-                                    keywords with SQLite FTS5.</p>
-                                <p class="step-why">Meaning and exact words both match.</p>
-                            </div>
-                        </li>
-                        <li class="flow-card"><span class="flow-num">3</span>
-                            <div>
-                                <h4>Fuse</h4>
-                                <p>The top 50 matches by meaning and the top 50 by keywords merge into 20 candidates by
-                                    reciprocal rank fusion.</p>
-                                <p class="step-why">Ranks are comparable where raw scores are not.</p>
-                            </div>
-                        </li>
-                        <li class="flow-card"><span class="flow-num">4</span>
-                            <div>
-                                <h4>Rerank</h4>
-                                <p>A Qwen3 reranker keeps the best 5. One pass orders memory, code and papers together.
-                                </p>
-                                <p class="step-why">A note, a function and a paper compete on merit.</p>
-                            </div>
-                        </li>
-                        <li class="flow-card"><span class="flow-num">5</span>
-                            <div>
-                                <h4>Cite</h4>
-                                <p>Each hit carries its citation: a Zotero page, a snapshot link, a note link or a
-                                    <code>path:line</code>.</p>
-                                <p class="step-why">The index produces the citation, not the model.</p>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-            </section>
-
-            <section class="sect">
-                <div class="sect-intro">
                     <h3>What it remembers</h3>
                     <p>Plain Markdown in a vault on your disk. Obsidian is optional, and the CLI notices edits made
                         behind its back.</p>
@@ -583,12 +532,6 @@
                                 <h4 class="role-name">auto</h4>
                                 <p>Reads what you ask and picks its own posture: answer, investigate, plan, implement or
                                     teach.</p>
-                                <p class="role-meta"><span>Skills</span><span class="role-meta-v">Any skill the task
-                                        names</span></p>
-                                <p class="role-meta"><span>Workflow</span><span class="role-meta-v">No added workflow:
-                                        it picks a posture from your ask</span></p>
-                                <p class="role-meta"><span>Draws on</span><span class="role-meta-v">The sources of
-                                        whichever role it adopts</span></p>
                             </div>
                         </li>
                         <li><span class="item-idx">Builder</span>
@@ -596,15 +539,6 @@
                                 <h4 class="role-name">swe-code</h4>
                                 <p>Builds a feature in small, verified steps, matching your codebase's style and proving
                                     each step with tests.</p>
-                                <p class="role-meta"><span>Skills</span><span class="role-meta-v">armitage-swe,
-                                        work-patterns</span></p>
-                                <p class="role-meta"><span>Workflow</span><span class="role-meta-v">Read the code that
-                                        owns the behaviour, build in small verified steps with tests first, prove each
-                                        step with the nearest gate</span></p>
-                                <p class="role-meta"><span>Draws on</span><span class="role-meta-v">Fowler,
-                                        <em>Refactoring</em>; Feathers, <em>Working Effectively with Legacy Code</em>;
-                                        Beck, <em>Test-Driven Development</em>; Freeman and Pryce, <em>Growing
-                                            Object-Oriented Software</em></span></p>
                             </div>
                         </li>
                         <li><span class="item-idx">Delivery</span>
@@ -612,14 +546,6 @@
                                 <h4 class="role-name">swe-devops</h4>
                                 <p>Handles CI/CD, releases, versioning and git, and explains as it goes. It confirms
                                     before any commit, push, tag, publish or deploy.</p>
-                                <p class="role-meta"><span>Skills</span><span class="role-meta-v">armitage-maintain,
-                                        work-patterns</span></p>
-                                <p class="role-meta"><span>Workflow</span><span class="role-meta-v">Fit the process to
-                                        the project, build the pipeline, confirm before any commit, push, tag, publish
-                                        or deploy</span></p>
-                                <p class="role-meta"><span>Draws on</span><span class="role-meta-v">Nygard, <em>Release
-                                            It!</em>; Orosz, <em>The Software Engineer's Guidebook</em>; Scott,
-                                        <em>Professional CMake</em>; the Development Container Specification</span></p>
                             </div>
                         </li>
                     </ul>
@@ -638,16 +564,6 @@
                                 <h4 class="role-name">researcher</h4>
                                 <p>Answers a question from your Zotero library like a scientist: plans the study, waits
                                     for your approval, then reports with the exact page behind every claim.</p>
-                                <p class="role-meta"><span>Skills</span><span
-                                        class="role-meta-v">armitage-research</span></p>
-                                <p class="role-meta"><span>Workflow</span><span class="role-meta-v">Frame the question,
-                                        write a plan, wait for your approval, read the sources, report with exact
-                                        citations</span></p>
-                                <p class="role-meta"><span>Draws on</span><span class="role-meta-v">Booth et al.,
-                                        <em>The Craft of Research</em>; Booth et al., <em>Systematic Approaches to a
-                                            Successful Literature Review</em>; Kitchenham et al., <em>Evidence-Based
-                                            Software Engineering</em>; Spiegelhalter, <em>The Art of
-                                            Statistics</em></span></p>
                             </div>
                         </li>
                         <li><span class="item-idx">Teaching</span>
@@ -655,15 +571,6 @@
                                 <h4 class="role-name">tutor</h4>
                                 <p>Teaches a concept, or guides you through an implementation, so you can do it alone
                                     afterwards. It never writes your code.</p>
-                                <p class="role-meta"><span>Skills</span><span class="role-meta-v">armitage-tutor</span>
-                                </p>
-                                <p class="role-meta"><span>Workflow</span><span class="role-meta-v">Find what you
-                                        already know, work through examples, fade the guidance, check your
-                                        understanding</span></p>
-                                <p class="role-meta"><span>Draws on</span><span class="role-meta-v">Sweller et al.,
-                                        <em>Cognitive Load Theory</em>; Brown et al., <em>Make It Stick</em>; Fincher et
-                                        al., <em>The Cambridge Handbook of Computing Education Research</em>; Hermans,
-                                        <em>The Programmer's Brain</em></span></p>
                             </div>
                         </li>
                         <li><span class="item-idx">Design</span>
@@ -671,14 +578,6 @@
                                 <h4 class="role-name">swe-plan</h4>
                                 <p>Designs a feature or system, or reviews a diff, like a senior engineer and architect,
                                     naming the trade-offs.</p>
-                                <p class="role-meta"><span>Skills</span><span class="role-meta-v">armitage-swe,
-                                        work-patterns, caveman-review</span></p>
-                                <p class="role-meta"><span>Workflow</span><span class="role-meta-v">Rank the quality
-                                        goals, design it twice, name the trade-offs, plan in thin slices</span></p>
-                                <p class="role-meta"><span>Draws on</span><span class="role-meta-v">Bass et al.,
-                                        <em>Software Architecture in Practice</em>; Ford et al., <em>Software
-                                            Architecture: The Hard Parts</em>; Khononov, <em>Learning Domain-Driven
-                                            Design</em>; Ousterhout, <em>A Philosophy of Software Design</em></span></p>
                             </div>
                         </li>
                         <li><span class="item-idx">Diagnosis</span>
@@ -686,14 +585,6 @@
                                 <h4 class="role-name">swe-debug</h4>
                                 <p>Finds why something fails before any edit and hands you a cause backed by evidence,
                                     not a guess.</p>
-                                <p class="role-meta"><span>Skills</span><span class="role-meta-v">work-patterns</span>
-                                </p>
-                                <p class="role-meta"><span>Workflow</span><span class="role-meta-v">Reproduce, simplify,
-                                        test hypotheses, binary-chop, and stop at a cause shown with evidence</span></p>
-                                <p class="role-meta"><span>Draws on</span><span class="role-meta-v">Zeller, <em>Why
-                                            Programs Fail</em>; Agans, <em>Debugging: The 9 Indispensable Rules</em>;
-                                        Spinellis, <em>Effective Debugging</em>; Taudul, <em>Tracy Profiler User
-                                            Manual</em></span></p>
                             </div>
                         </li>
                     </ul>
@@ -934,9 +825,9 @@ armitage code symbol validate_token      # where is this defined?
 armitage code refs validate_token        # every use, with exact lines
 </script>
 
-    <script src="../js/bg-field.js?v=76" defer></script>
-    <script src="../js/main.js?v=76" defer></script>
-    <script src="../js/vfd.js?v=76" defer></script>
+    <script src="../js/bg-field.js?v=79" defer></script>
+    <script src="../js/main.js?v=79" defer></script>
+    <script src="../js/vfd.js?v=79" defer></script>
 </body>
 
 </html>
