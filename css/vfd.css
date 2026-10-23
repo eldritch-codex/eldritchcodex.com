@@ -1,0 +1,464 @@
+/* ==========================================================================
+   Vacuum fluorescent display touches: thin lit lines, a slight flicker and a warm glow.
+   Everything here is decoration. It stays quiet at rest and is off with reduced motion.
+   ========================================================================== */
+
+:root {
+    --vfd-rgb: 246, 198, 74;
+    --vfd: rgb(var(--vfd-rgb));
+    --vfd-hot-rgb: 255, 122, 69;
+    --vfd-hot: rgb(var(--vfd-hot-rgb));
+}
+
+/* ---------- Glow on the small lit parts ---------------------------------------------------- */
+
+.chapter-index .roman,
+.hero-project-index,
+.item-idx .big-num,
+.hero-copy h1 .mono-word,
+.flow-num {
+    text-shadow: 0 0 12px color-mix(in srgb, var(--tone, var(--armitage)) 40%, transparent);
+}
+
+.chapter-label,
+.aside-label,
+.sub-label,
+.figure-bar>span:first-child {
+    text-shadow: 0 0 8px rgba(var(--vfd-rgb), 0.18);
+}
+
+/* Status tags are slanted, like the tags on the front of an old amplifier. */
+.chapter-kicker .tag {
+    transform: skewX(-14deg);
+    padding: 2px 10px;
+    background-color: color-mix(in srgb, var(--tone) 12%, rgba(12, 13, 16, 0.85));
+    box-shadow: 0 0 8px -4px color-mix(in srgb, var(--tone) 50%, transparent);
+}
+
+.figure,
+.hero-art {
+    position: relative;
+}
+
+.figure {
+    box-shadow: 0 0 36px -16px rgba(var(--vfd-rgb), 0.22);
+}
+
+/* The header's second hairline breathes a little. */
+.site-header::after {
+    background: rgba(var(--vfd-rgb), 0.16);
+    box-shadow: 0 0 8px rgba(var(--vfd-rgb), 0.18);
+}
+
+/* ---------- Flicker: a rare dip in brightness on a few small parts ------------------------ */
+
+@media (prefers-reduced-motion: no-preference) {
+    .vfd-flicker {
+        animation: vfd-flicker var(--flicker-len, 9s) linear infinite;
+        animation-delay: var(--flicker-delay, 0s);
+    }
+
+    @keyframes vfd-flicker {
+
+        0%,
+        90%,
+        93%,
+        96%,
+        100% {
+            opacity: 1;
+        }
+
+        91% {
+            opacity: 0.72;
+        }
+
+        94% {
+            opacity: 0.84;
+        }
+
+        95% {
+            opacity: 0.66;
+        }
+    }
+}
+
+/* ---------- Scroll meter: a wide panel along the bottom of the screen ---------------------- */
+
+.vfd-meter {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    border-top: 1px solid rgba(var(--vfd-rgb), 0.3);
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -8px 24px -14px rgba(var(--vfd-rgb), 0.3);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(var(--vfd-rgb), 0.72);
+    text-shadow: 0 0 6px rgba(var(--vfd-rgb), 0.35);
+}
+
+.vfd-meter-inner {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 6px var(--pad-x);
+}
+
+.vfd-meter-label {
+    flex: none;
+    white-space: nowrap;
+}
+
+.vfd-meter-pos {
+    color: var(--vfd);
+}
+
+/* The ladder: eleven numerals over ten double-line steps, lit up to the current position. */
+.vfd-meter-scale {
+    position: relative;
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    padding-right: 14px;
+    pointer-events: none;
+}
+
+.vfd-step {
+    position: relative;
+    flex: 1;
+    display: grid;
+    gap: 3px;
+    padding-top: 12px;
+    transform: skewX(-14deg);
+}
+
+.vfd-step::before {
+    content: attr(data-n);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(var(--vfd-rgb), 0.5);
+}
+
+.vfd-step.last::after {
+    content: "10";
+    position: absolute;
+    top: 0;
+    right: -16px;
+    color: rgba(var(--vfd-rgb), 0.5);
+}
+
+.vfd-step i {
+    display: block;
+    height: 1px;
+    background: rgba(var(--vfd-rgb), 0.18);
+    transition: background 0.25s, box-shadow 0.25s;
+}
+
+.vfd-step.on i {
+    background: var(--vfd);
+    box-shadow: 0 0 5px rgba(var(--vfd-rgb), 0.55);
+}
+
+.vfd-step.hot i {
+    background: var(--vfd-hot);
+    box-shadow: 0 0 6px rgba(var(--vfd-hot-rgb), 0.7);
+}
+
+/* The back-to-top button is the last part of the panel. */
+.vfd-meter .to-top {
+    position: static;
+    flex: none;
+    width: 38px;
+    height: 24px;
+    box-sizing: border-box;
+    opacity: 1;
+}
+
+/* Room at the foot of the page so the panel never covers the last lines. */
+body {
+    padding-bottom: 44px;
+}
+
+@media (max-width: 760px) {
+    .vfd-step::before,
+    .vfd-step.last::after {
+        display: none;
+    }
+
+    .vfd-step {
+        padding-top: 0;
+    }
+
+    .vfd-meter-label {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   A little more: slanted buttons, lit vertical rules, corner brackets, brighter headings.
+   ========================================================================== */
+
+/* ---------- Slanted buttons and tags (the style of "TONE MEMO") --------------------------- */
+
+.to-top {
+    --slant: var(--vfd);
+    transform: skewX(-14deg);
+    border: 1px solid color-mix(in srgb, var(--slant) 50%, transparent);
+    border-radius: 1px;
+    color: var(--slant);
+    text-shadow: 0 0 8px color-mix(in srgb, var(--slant) 50%, transparent);
+    box-shadow: 0 0 10px -4px color-mix(in srgb, var(--slant) 60%, transparent);
+    background: transparent;
+    transition: background 0.18s, box-shadow 0.18s, color 0.18s, border-color 0.18s, opacity 0.18s;
+}
+
+.to-top:hover,
+.to-top:focus-visible {
+    background-color: color-mix(in srgb, var(--slant) 16%, transparent);
+    box-shadow: 0 0 14px -2px color-mix(in srgb, var(--slant) 70%, transparent);
+    color: var(--slant);
+    border-color: color-mix(in srgb, var(--slant) 80%, transparent);
+}
+
+/* The back-to-top square keeps its size; only its edges slant. */
+.to-top {
+    border-radius: 1px;
+    opacity: 0.85;
+    transform: skewX(-14deg);
+}
+
+.to-top:hover {
+    opacity: 1;
+}
+
+
+.nav a:hover {
+    text-shadow: 0 0 10px rgba(var(--vfd-rgb), 0.45);
+}
+
+.footer-links a:hover {
+    text-shadow: 0 0 10px rgba(var(--vfd-rgb), 0.45);
+}
+
+/* ---------- Corner brackets on the windows, like the wiring in a schematic ---------------- */
+
+.figure::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 3;
+    pointer-events: none;
+    --arm: 12px;
+    background:
+        linear-gradient(var(--vfd), var(--vfd)) 0 0 / var(--arm) 1px no-repeat,
+        linear-gradient(var(--vfd), var(--vfd)) 0 0 / 1px var(--arm) no-repeat,
+        linear-gradient(var(--vfd), var(--vfd)) 100% 0 / var(--arm) 1px no-repeat,
+        linear-gradient(var(--vfd), var(--vfd)) 100% 0 / 1px var(--arm) no-repeat,
+        linear-gradient(var(--vfd), var(--vfd)) 0 100% / var(--arm) 1px no-repeat,
+        linear-gradient(var(--vfd), var(--vfd)) 0 100% / 1px var(--arm) no-repeat,
+        linear-gradient(var(--vfd), var(--vfd)) 100% 100% / var(--arm) 1px no-repeat,
+        linear-gradient(var(--vfd), var(--vfd)) 100% 100% / 1px var(--arm) no-repeat;
+    opacity: 0.55;
+    filter: drop-shadow(0 0 3px rgba(var(--vfd-rgb), 0.6));
+}
+
+/* ---------- Brighter headings ---------------------------------------------------------------- */
+
+.chapter-header {
+    background: linear-gradient(135deg,
+            color-mix(in srgb, var(--tone) 8%, rgba(var(--glass-rgb), 0.03)),
+            rgba(var(--glass-rgb), 0.02));
+}
+
+.chapter-head h2,
+.sect-intro h3,
+.items h4,
+.hero-copy h1 {
+    text-shadow: 0 0 22px rgba(var(--vfd-rgb), 0.14);
+}
+
+.chapter-links a:hover::after,
+.hero-project:hover,
+.chapter-cta:hover {
+    text-shadow: 0 0 10px color-mix(in srgb, var(--tone, var(--vfd)) 55%, transparent);
+}
+
+/* Table headers and the dep strip read like the printed labels on the panel. */
+.ledger-table th,
+.dep-strip .label {
+    text-shadow: 0 0 8px rgba(var(--vfd-rgb), 0.2);
+}
+
+/* A table row warms a little under the pointer. No edge line: it showed up as a stray vertical line. */
+.ledger-table tbody tr {
+    transition: background 0.2s;
+}
+
+.ledger-table tbody tr:hover {
+    background: rgba(var(--vfd-rgb), 0.04);
+}
+
+/* ==========================================================================
+   Tighter spacing between and inside sections.
+   ========================================================================== */
+
+.sect-intro {
+    padding-top: 36px;
+    padding-bottom: 36px;
+}
+
+.sect-body {
+    padding-top: 36px;
+    padding-bottom: 36px;
+}
+
+.sect--bare .sect-body,
+.sect--stack .sect-body {
+    padding-top: 24px;
+    padding-bottom: 28px;
+}
+
+.sect--bare {
+    padding-top: 8px;
+}
+
+.chapter+.chapter {
+    margin-top: 0;
+}
+
+.sect-body>*+* {
+    margin-top: 24px;
+}
+
+/* The slanted buttons and tags carry a fine dot mesh, like the glass of a display tube. */
+.to-top,
+.vfd-meter-info {
+    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
+    background-size: 3px 3px;
+}
+
+/* On a project page there is no overview bar under the links, so the links column runs the full height
+   of the header again and its divider reaches the bottom. */
+@media (min-width: 961px) {
+    .chapter-header .chapter-aside:not(:has(+ .chapter-cta)) {
+        grid-row: 1 / 3;
+    }
+}
+
+/* The project bar and the overview bar are buttons as a whole: a fine dot mesh fills them, and it brightens on hover. */
+.hero-project,
+.hero-project:hover,
+.chapter-cta,
+.chapter-cta:hover {
+    background-image: radial-gradient(color-mix(in srgb, var(--tone, var(--vfd)) 9%, transparent) 0.6px, transparent 1px);
+    background-size: 3px 3px;
+    transition: background-color 0.18s, color 0.18s;
+}
+
+.hero-project:hover,
+.chapter-cta:hover {
+    background-color: color-mix(in srgb, var(--tone, var(--vfd)) 12%, transparent);
+}
+
+/* A code window with a single file shows its name as a label, not as a button. */
+.figure-file {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    text-shadow: 0 0 8px rgba(var(--vfd-rgb), 0.18);
+}
+
+/* ==========================================================================
+   Code, command, terminal and chat windows share one look: the same glass, type size,
+   line height and padding. Only their contents differ.
+   ========================================================================== */
+
+.figure {
+    border-radius: 8px;
+}
+
+.figure>.code,
+.figure>.shell,
+.figure>.tui,
+.figure>.zp {
+    background: transparent;
+    font-size: 11.5px;
+    line-height: 1.7;
+}
+
+.figure>.shell,
+.figure>.tui {
+    padding: 14px 16px 16px;
+}
+
+.figure>.code {
+    padding: 14px 0 16px;
+}
+
+/* The current page in the nav is just lit; the whole header carries the fine dot mesh. */
+.nav a[aria-current="page"] {
+    color: var(--vfd);
+    text-shadow: 0 0 9px rgba(var(--vfd-rgb), 0.5);
+}
+
+.nav a[aria-current="page"] .num {
+    color: inherit;
+}
+
+.site-header {
+    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
+    background-size: 3px 3px;
+}
+
+/* The bottom strip carries the same fine dot mesh as the top header. */
+.vfd-meter {
+    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
+    background-size: 3px 3px;
+}
+
+/* Back to top is plain text: no box, no slant, no dot mesh. */
+.to-top,
+.vfd-meter .to-top {
+    width: auto;
+    height: auto;
+    padding: 0 2px;
+    transform: none;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: rgba(var(--vfd-rgb), 0.75);
+    text-shadow: 0 0 6px rgba(var(--vfd-rgb), 0.35);
+    opacity: 1;
+}
+
+.to-top:hover,
+.to-top:focus-visible {
+    background: none;
+    box-shadow: none;
+    color: var(--vfd);
+    text-shadow: 0 0 10px rgba(var(--vfd-rgb), 0.7);
+}
+
+/* The project headers carry the same fine dot mesh, a little fainter so the text stays easy to read. */
+.chapter-header {
+    background-image:
+        radial-gradient(rgba(var(--vfd-rgb), 0.08) 0.6px, transparent 1px),
+        linear-gradient(135deg,
+            color-mix(in srgb, var(--tone) 8%, rgba(var(--glass-rgb), 0.03)),
+            rgba(var(--glass-rgb), 0.02));
+    background-size: 3px 3px, auto;
+}
+

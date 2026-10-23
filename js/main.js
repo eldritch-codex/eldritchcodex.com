@@ -2,6 +2,10 @@
 (() => {
   "use strict";
 
+  // The fonts stylesheet loads as media=print so it does not block first paint.
+  const fonts = document.getElementById("google-fonts");
+  if (fonts) fonts.media = "all";
+
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 

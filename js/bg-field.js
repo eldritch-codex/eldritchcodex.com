@@ -1,5 +1,5 @@
-// Animated background: the astrolabe's rings drift outward from the hub and the
-// diagonal lattice rotates about the hub, all in page space so it scrolls with the content.
+// Animated background: the astrolabe's rings drift outward from the hub, in page space so
+// they scroll with the content.
 // The static gradients in css/style.css remain as the fallback.
 (() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -7,9 +7,9 @@
     const root = document.documentElement;
     const RING_GAP = 104;      // px between bone rings
     const RING_SPEED = 5;      // px/s outward drift
-    const LATTICE_GAP = 148;   // px between diagonal lines
-    const LATTICE_TURN = 0.5;  // degrees/s, rotation of the lattice about the hub
     const HUB_Y = -90;         // page-space y of the hub
+    const RINGS_FADE_FROM = 380;   // page-space y where the rings start to fade ...
+    const RINGS_FADE_TO = 760;     // ... and where they are gone
 
     const BONE = '236, 232, 223';
     const BLUE = '110, 168, 214';
@@ -17,18 +17,18 @@
 
     // The twelve glyphs, in order. Drawn on two slow rings around the hub.
     const GLYPHS = [
-        'M2 12Q12 3 22 12Q12 21 2 12Z M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0 M12 8v8',
-        'M12 12m0 0a2 2 0 1 1 3 1.7a4 4 0 1 1-6-3.4a6 6 0 1 1 9 5.2 M18 18l3 3',
-        'M12 2v20M12 7l-6 6M12 12l6-5M12 17l-5 4',
-        'M4 13a8 8 0 1 0 16 0a8 8 0 1 0-16 0 M7 6a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M11 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M15 6a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M4 13h16',
-        'M4 10a8 8 0 0 0 16 0 M6 22l6-9 6 9z M10.8 5a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0',
-        'M6 3v9q0 5 6 5t6-5V3M12 17v5M8 20h8',
-        'M12 2l8 10-8 10-8-10z M12 7l4 5-4 5-4-5z M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0',
-        'M17 4H8v8h9v8H7 M4 4a1 1 0 1 0 2 0a1 1 0 1 0-2 0 M18 20a1 1 0 1 0 2 0a1 1 0 1 0-2 0',
-        'M3 12a9 9 0 0 1 18 0 M7 12a5 5 0 0 0 10 0 M10.8 12a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0 M12 17v5',
-        'M4 4q4 8 8 8t8-8M12 12v9M8 17h8',
-        'M10 4a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M7 9v13M12 9v9M17 9v5',
-        'M12 3v18M12 8L8 5M12 8l4-3M12 14l-5-3M12 14l5-3M12 19l-3-2M12 19l3-2'
+        'M18 4H6l7 8-7 8h12',
+        'M9 5l-6 7 6 7M15 5l6 7-6 7',
+        'M15 3.5c-2.5-1-4 .8-4 3.5v10c0 2.7-1.5 4.5-4 3.5',
+        'M9 3c-3 0-3 2-3 4v2c0 2-1 3-3 3 2 0 3 1 3 3v2c0 2 0 4 3 4M15 3c3 0 3 2 3 4v2c0 2 1 3 3 3-2 0-3 1-3 3v2c0 2 0 4-3 4',
+        'M12 10a5 5 0 1 0 0 10a5 5 0 1 0 0-10zM12 10C9.5 8 9.5 4 14 4h4',
+        'M19 20L9.5 9C7.5 6.5 8.5 4 10.5 4s3.5 2.5 1.5 4.5L8.5 13C6 16 7.5 20 11 20c2.5 0 4.5-1.5 6-4.5',
+        'M12 12c-2-3-3-4-5-4a4 4 0 0 0 0 8c2 0 3-1 5-4s3-4 5-4a4 4 0 0 1 0 8c-2 0-3-1-5-4z',
+        'M3 12h17M14 6l6 6-6 6',
+        'M11.5 10C14 10 16 12 16 15s-2 5-4.5 5S7 18 7 15s2-5 4.5-5zM16 15c0-6-3-9.5-7-10.5',
+        'M9 4L7 20M17 4l-2 16M4 9h16M3 15h16',
+        'M4 5h16l-8 15z',
+        'M7 4v12M2 10h10M17 8v12M12 14h10'
     ].map((d) => new Path2D(d));
     const GLYPH_RINGS = [
         { radius: RING_GAP * 3, size: 22, speed: 0.35 },
@@ -72,7 +72,7 @@
     function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
         canvas.width = Math.round(width * dpr);
         canvas.height = Math.round(height * dpr);
         const hub = getComputedStyle(root).getPropertyValue('--hub-x').trim();
@@ -87,7 +87,12 @@
         ctx.stroke();
     }
 
+    let lastDraw = 0;
+
     function frame(now) {
+        // The drift is slow, so about 30 fps looks the same and halves the canvas work.
+        if (now - lastDraw < 30) { raf = requestAnimationFrame(frame); return; }
+        lastDraw = now;
         const t = now / 1000;
         const scroll = window.scrollY || 0;
         const cy = HUB_Y - scroll;
@@ -106,8 +111,6 @@
             else ring(hubX, cy, r, BONE, 0.03);
         }
 
-        for (const ring of GLYPH_RINGS) glyphRing(hubX, cy, ring, t);
-
         // The instrument's vertical axis through the hub.
         ctx.beginPath();
         ctx.moveTo(Math.round(hubX) + 0.5, 0);
@@ -115,23 +118,18 @@
         ctx.strokeStyle = `rgba(${BONE}, 0.03)`;
         ctx.stroke();
 
-        // Diagonal lattice: two perpendicular families of lines, LATTICE_GAP apart, turning rigidly
-        // about the hub. Starts at 45 degrees, like the static fallback.
-        const turn = Math.PI / 4 + ((t * LATTICE_TURN) * Math.PI) / 180;
-        const kMax = Math.ceil(reach / LATTICE_GAP);
-        ctx.strokeStyle = `rgba(${BONE}, 0.012)`;
-        ctx.beginPath();
-        for (const angle of [turn, turn + Math.PI / 2]) {
-            const dx = Math.cos(angle), dy = Math.sin(angle); // line direction
-            const nx = -dy, ny = dx;                          // line normal
-            for (let k = -kMax; k <= kMax; k++) {
-                const d = k * LATTICE_GAP;
-                const px = hubX + nx * d, py = cy + ny * d;
-                ctx.moveTo(px - dx * reach, py - dy * reach);
-                ctx.lineTo(px + dx * reach, py + dy * reach);
-            }
-        }
-        ctx.stroke();
+        // The rings and the axis belong to the top of the page: lower down, where they would cross
+        // the sections as faint diagonal streaks, they fade out.
+        const fade = ctx.createLinearGradient(0, RINGS_FADE_FROM - scroll, 0, RINGS_FADE_TO - scroll);
+        fade.addColorStop(0, 'rgba(0,0,0,1)');
+        fade.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.fillStyle = fade;
+        ctx.fillRect(0, 0, width, height);
+        ctx.restore();
+
+        for (const ring of GLYPH_RINGS) glyphRing(hubX, cy, ring, t);
 
         if (!revealed) {
             revealed = true;
@@ -156,6 +154,10 @@
     });
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
 
-    resize();
-    start();
+    // Start once the page has loaded and laid out, so measuring does not force a reflow.
+    const begin = () => requestAnimationFrame(() => { resize(); start(); });
+    window.addEventListener('load', () => {
+        if ('requestIdleCallback' in window) requestIdleCallback(begin, { timeout: 3000 });
+        else setTimeout(begin, 1000);
+    });
 })();
