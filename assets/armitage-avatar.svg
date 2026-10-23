@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <!-- The honeycomb grid in front of the phosphor. -->
+    <pattern id="hex" width="34.641" height="60.000" patternUnits="userSpaceOnUse">
+      <path d="M0 10.000L17.321 0L34.641 10.000V30.000L17.321 40.000L0 30.000Z M17.321 40.000V60.000" fill="none" stroke="#000" stroke-width="2.4"/>
+    </pattern>
+    <linearGradient id="lit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff2cc"/>
+      <stop offset="55%" stop-color="#ffd98a"/>
+      <stop offset="100%" stop-color="#f4b94d"/>
+    </linearGradient>
+    <radialGradient id="glassglow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#e8a83c" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#e8a83c" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="halo" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="bloom" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
+    <path id="glyph" transform="translate(512 512) scale(0.88) translate(-512 -512) translate(213.333 805.926) scale(0.237037 -0.237037)" d="M120 1240 l0 -1160 360 0 360 0 0 130 0 130 -230 0 -230 0 0 900 0 900 230 0 230 0 0 130 0 130 -360 0 -360 0 0 -1160z M1660 2270 l0 -130 230 0 230 0 0 -900 0 -900 -227 -2 -228 -3 -3 -127 -3 -128 361 0 360 0 0 1160 0 1160 -360 0 -360 0 0 -130z M1072 1813 c-21 -40 -422 -1010 -422 -1020 0 -15 232 -145 241 -135 4 4 69 158 144 342 75 184 150 368 167 408 28 68 49 88 61 60 96 -241 330 -805 336 -811 5 -5 233 107 259 128 1 1 -93 231 -209 511 -116 280 -213 515 -216 522 -4 9 -49 12 -179 12 -155 0 -174 -2 -182 -17z"/>
+    <clipPath id="glyphclip"><use href="#glyph"/></clipPath>
+  </defs>
+
+  <!-- A dark tube face with the grid over it. -->
+  <rect width="1024" height="1024" fill="#08090b"/>
+  <rect width="1024" height="1024" fill="url(#glassglow)"/>
+  <rect width="1024" height="1024" fill="url(#hex)" opacity="0.35"/>
+
+  <!-- The lit surface: halo, bloom, body, the grid over it and the gaps between segments. -->
+  <use href="#glyph" fill="#f0a93a" fill-opacity="0.8" filter="url(#halo)"/>
+  <use href="#glyph" fill="#ffd27a" fill-opacity="0.7" filter="url(#bloom)"/>
+  <use href="#glyph" fill="url(#lit)"/>
+  <g clip-path="url(#glyphclip)">
+    <rect width="1024" height="1024" fill="url(#hex)" opacity="0.3"/>
+    <g fill="#050605" fill-opacity="0.85"><rect x="328.1" y="270.0" width="5.3" height="54.6"/><rect x="328.1" y="700.3" width="5.3" height="54.6"/><rect x="690.6" y="270.0" width="5.3" height="54.6"/><rect x="690.6" y="700.3" width="5.3" height="54.6"/></g>
+  </g>
+</svg>

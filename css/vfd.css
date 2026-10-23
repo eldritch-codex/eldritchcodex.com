@@ -4,6 +4,9 @@
    ========================================================================== */
 
 :root {
+    /* The honeycomb mesh of a VFD grid, as a tile: 6 x 10.4 px, in the display colour. */
+    --hex-12: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10.392'%3E%3Cpath d='M0 1.732L3.0 0L6 1.732V5.196L3.0 6.928L0 5.196Z M3.0 6.928V10.392' fill='none' stroke='%23f6c64a' stroke-opacity='0.14' stroke-width='0.5'/%3E%3C/svg%3E");
+    --hex-08: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10.392'%3E%3Cpath d='M0 1.732L3.0 0L6 1.732V5.196L3.0 6.928L0 5.196Z M3.0 6.928V10.392' fill='none' stroke='%23f6c64a' stroke-opacity='0.1' stroke-width='0.5'/%3E%3C/svg%3E");
     --vfd-rgb: 246, 198, 74;
     --vfd: rgb(var(--vfd-rgb));
     --vfd-hot-rgb: 255, 122, 69;
@@ -25,14 +28,6 @@
 .sub-label,
 .figure-bar>span:first-child {
     text-shadow: 0 0 8px rgba(var(--vfd-rgb), 0.18);
-}
-
-/* Status tags are slanted, like the tags on the front of an old amplifier. */
-.chapter-kicker .tag {
-    transform: skewX(-14deg);
-    padding: 2px 10px;
-    background-color: color-mix(in srgb, var(--tone) 12%, rgba(12, 13, 16, 0.85));
-    box-shadow: 0 0 8px -4px color-mix(in srgb, var(--tone) 50%, transparent);
 }
 
 .figure,
@@ -252,10 +247,9 @@
 
 /* One fine dot mesh sits fixed to the screen, like the glass of an old display, and shows only inside
    these parts: it stays still while they scroll past (background-attachment: fixed). */
-.to-top,
-.vfd-meter-info {
-    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
-    background-size: 3px 3px;
+.to-top {
+    background-image: var(--hex-12);
+    background-size: 6px 10.392px;
     background-attachment: fixed;
 }
 
@@ -274,8 +268,8 @@
 .hero-project:hover,
 .crumb a,
 .crumb a:hover {
-    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.08) 0.6px, transparent 1px);
-    background-size: 3px 3px;
+    background-image: var(--hex-08);
+    background-size: 6px 10.392px;
     background-attachment: fixed;
     transition: background-color 0.18s, color 0.18s;
 }
@@ -336,8 +330,8 @@
 }
 
 .site-header {
-    background-image: radial-gradient(rgba(var(--vfd-rgb), 0.12) 0.6px, transparent 1px);
-    background-size: 3px 3px;
+    background-image: var(--hex-12);
+    background-size: 6px 10.392px;
     background-attachment: fixed;
 }
 
@@ -373,24 +367,12 @@
 /* The project headers carry the same fine dot mesh, a little fainter so the text stays easy to read. */
 .chapter-header {
     background-image:
-        radial-gradient(rgba(var(--vfd-rgb), 0.08) 0.6px, transparent 1px),
+        var(--hex-08),
         linear-gradient(135deg,
             color-mix(in srgb, var(--tone) 8%, rgba(var(--glass-rgb), 0.03)),
             rgba(var(--glass-rgb), 0.02));
-    background-size: 3px 3px, auto;
+    background-size: 6px 10.392px, auto;
     background-attachment: fixed, scroll;
-}
-
-/* ==========================================================================
-   Pixel details: stepped corners.
-   ========================================================================== */
-
-/* Tags get stepped corners, like a sprite, instead of rounded ones. */
-.chapter-kicker .tag {
-    border-radius: 0;
-    clip-path: polygon(0 3px, 3px 3px, 3px 0, calc(100% - 3px) 0, calc(100% - 3px) 3px, 100% 3px,
-            100% calc(100% - 3px), calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) 100%,
-            3px 100%, 3px calc(100% - 3px), 0 calc(100% - 3px));
 }
 
 /* ==========================================================================
@@ -424,4 +406,56 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
+}
+
+/* ==========================================================================
+   Status tags as a lit cell of the display: a slanted window with the honeycomb grid in front of a
+   lit label, in a muted tone.
+   ========================================================================== */
+
+.chapter-kicker .tag {
+    /* The tone, greyed: the tag should sit in the page, not shout. */
+    --tag: color-mix(in srgb, var(--tone) 42%, #8c8982);
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    transform: none;
+    padding: 4px 15px 4px 15px;
+    border: 0;
+    border-radius: 0;
+    font-size: 9.5px;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--tag) 55%, #fff);
+    text-shadow: 0 0 6px color-mix(in srgb, var(--tag) 35%, transparent);
+    background: color-mix(in srgb, var(--tag) 62%, transparent);
+    box-shadow: none;
+    clip-path: polygon(7.1px 2px, 11px 0, calc(100% - 3px) 0, calc(100% - 0.9px) 2px, calc(100% - 7.1px) calc(100% - 2px), calc(100% - 11px) 100%, 3px 100%, 0.9px calc(100% - 2px));
+}
+
+/* The window: dark, with a little of the tone. */
+.chapter-kicker .tag::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: -1;
+    clip-path: polygon(7.1px 2px, 11px 0, calc(100% - 3px) 0, calc(100% - 0.9px) 2px, calc(100% - 7.1px) calc(100% - 2px), calc(100% - 11px) 100%, 3px 100%, 0.9px calc(100% - 2px));
+    background: color-mix(in srgb, var(--tag) 8%, #08090b);
+}
+
+/* The grid over the window, in the tone's own light. */
+.chapter-kicker .tag::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: -1;
+    pointer-events: none;
+    clip-path: polygon(7.1px 2px, 11px 0, calc(100% - 3px) 0, calc(100% - 0.9px) 2px, calc(100% - 7.1px) calc(100% - 2px), calc(100% - 11px) 100%, 3px 100%, 0.9px calc(100% - 2px));
+    background: var(--tag);
+    opacity: 0.24;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10.392'%3E%3Cpath d='M0 1.732L3.0 0L6 1.732V5.196L3.0 6.928L0 5.196Z M3.0 6.928V10.392' fill='none' stroke='black' stroke-width='0.95'/%3E%3C/svg%3E") 0 0 / 6px 10.392px;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10.392'%3E%3Cpath d='M0 1.732L3.0 0L6 1.732V5.196L3.0 6.928L0 5.196Z M3.0 6.928V10.392' fill='none' stroke='black' stroke-width='0.95'/%3E%3C/svg%3E") 0 0 / 6px 10.392px;
 }

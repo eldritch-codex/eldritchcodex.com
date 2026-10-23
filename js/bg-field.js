@@ -72,7 +72,7 @@
     function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
-        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        dpr = 1;   // the lines are faint and thin; a full-density canvas costs far more than it shows
         canvas.width = Math.round(width * dpr);
         canvas.height = Math.round(height * dpr);
         const hub = getComputedStyle(root).getPropertyValue('--hub-x').trim();
@@ -88,6 +88,7 @@
     }
 
     let lastDraw = 0;
+    let cleared = false;
 
     function frame(now) {
         // The drift is slow, so about 30 fps looks the same and halves the canvas work.
@@ -95,6 +96,13 @@
         lastDraw = now;
         const t = now / 1000;
         const scroll = window.scrollY || 0;
+        // Past the fade, everything drawn here is off screen: clear once and wait.
+        if (scroll > RINGS_FADE_TO + 60) {
+            if (!cleared) { ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, width, height); cleared = true; }
+            raf = requestAnimationFrame(frame);
+            return;
+        }
+        cleared = false;
         const cy = HUB_Y - scroll;
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -156,8 +164,11 @@
 
     // Start once the page has loaded and laid out, so measuring does not force a reflow.
     const begin = () => requestAnimationFrame(() => { resize(); start(); });
+    // It is decoration over a static fallback, so it waits a couple of seconds after load.
     window.addEventListener('load', () => {
-        if ('requestIdleCallback' in window) requestIdleCallback(begin, { timeout: 3000 });
-        else setTimeout(begin, 1000);
+        setTimeout(() => {
+            if ('requestIdleCallback' in window) requestIdleCallback(begin, { timeout: 3000 });
+            else begin();
+        }, 2500);
     });
 })();
