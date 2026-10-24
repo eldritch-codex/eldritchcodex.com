@@ -14,6 +14,25 @@
       <stop offset="55%" stop-color="#d9a75c" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#d9a75c" stop-opacity="0"/>
     </radialGradient>
+  
+    <pattern id="vfd-hex" width="12" height="20.784" patternUnits="userSpaceOnUse">
+      <path d="M0 3.464L6 0L12 3.464V10.392L6 13.856L0 10.392Z M6 13.856V20.784" fill="none" stroke="#f6c64a" stroke-opacity="0.16" stroke-width="0.9"/>
+    </pattern>
+    <radialGradient id="vfd-fade" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.45"/>
+    </radialGradient>
+    <mask id="vfd-mask"><rect width="1200" height="630" fill="url(#vfd-fade)"/></mask>
+    <filter id="vfd-glow" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="wide"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="tight"/>
+      <feColorMatrix in="wide" type="matrix" values="0 0 0 0 0.965  0 0 0 0 0.776  0 0 0 0 0.290  0 0 0 0.55 0" result="wideTint"/>
+      <feMerge><feMergeNode in="wideTint"/><feMergeNode in="tight"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="vfd-edge" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
@@ -52,8 +71,9 @@
     </g></g>
   </g>
   <rect width="1200" height="630" fill="url(#veil)"/>
+  <rect width="1200" height="630" fill="url(#vfd-hex)" mask="url(#vfd-mask)"/>
 
-  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74">A PROJECT BY&#160;&#160;<tspan fill="#b7b4ac">RENAN BOMTEMPO</tspan></text>
+  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74" filter="url(#vfd-glow)">A PROJECT BY&#160;&#160;<tspan fill="#b7b4ac">RENAN BOMTEMPO</tspan></text>
   <rect x="72" y="136" width="520" height="1" fill="#d9a75c" fill-opacity="0.32"/>
 
   <svg x="72" y="66" width="48" height="48" viewBox="195 157 650 680" preserveAspectRatio="xMidYMid meet">
@@ -61,20 +81,27 @@
       <path fill-rule="evenodd" d="M240 195 Q512 167 784 195 Q819 420 784 647 Q512 675 240 647 Q205 420 240 195 Z M324 281 Q512 270 700 281 L704 375 Q512 372 320 375 Z M320 469 Q416 472 512 469 L512 566 Q416 566 324 562 Z"/>
       <path d="M240 738h363v90H240zM693 738h90v90h-90z"/>
     </g>
-  </svg>
+    <g stroke="#f6c64a" stroke-opacity="0.7" stroke-width="1.5" fill="none" filter="url(#vfd-edge)">
+    <path d="M30 64V30H64"/><path d="M1136 30H1170V64"/>
+    <path d="M30 566V600H64"/><path d="M1136 600H1170V566"/>
+  </g>
+</svg>
 
-  <text font-family="Fraunces, Georgia, serif" font-weight="300" font-size="46" fill="#ece8df" letter-spacing="-0.8">
-    <tspan x="70" y="240">Exploring the <tspan font-style="italic" fill="#d9a75c">engineering</tspan> and</tspan>
-    <tspan x="70" y="304"><tspan font-style="italic" fill="#d9a75c">mathematics</tspan> of rendering and</tspan>
-    <tspan x="70" y="368">simulation tools.</tspan>
+  <text font-family="Fraunces, Georgia, serif" font-weight="300" font-size="46" fill="#ece8df" letter-spacing="-0.8" filter="url(#vfd-glow)">
+    <tspan x="70" y="272">Exploring <tspan font-family="IBM Plex Mono" font-weight="400" font-size="40" letter-spacing="-1.6" fill="#d9a75c">software engineering</tspan></tspan>
+    <tspan x="70" y="336">and <tspan font-style="italic" fill="#d9a75c">mathematics</tspan>, learning by building.</tspan>
   </text>
 
   <text font-family="IBM Plex Sans" font-size="21" fill="#b7b4ac">
-    <tspan x="72" y="440">EldritchCodex is an open-source project where I build what I want to understand:</tspan>
-    <tspan x="72" y="472">Nodens, a C++23 application framework; Nyar, a Vulkan renderer; and Armitage, an</tspan>
-    <tspan x="72" y="504">agent that keeps my work grounded in books, documentation and papers.</tspan>
+    <tspan x="72" y="440">EldritchCodex is an open-source project where I build what I want to understand and</tspan>
+    <tspan x="72" y="472">use: Nodens, a C++23 framework; Nyar, a Vulkan renderer; and Armitage, an agent that</tspan>
+    <tspan x="72" y="504">keeps my work grounded in books, documentation and papers.</tspan>
   </text>
 
   <rect x="72" y="556" width="1056" height="1" fill="#d9a75c" fill-opacity="0.16"/>
-  <text x="72" y="590" font-family="IBM Plex Mono" font-size="14" letter-spacing="2.6" fill="#7e7b74">ELDRITCHCODEX.COM</text>
+  <text x="72" y="590" font-family="IBM Plex Mono" font-size="14" letter-spacing="2.6" fill="#7e7b74" filter="url(#vfd-glow)">ELDRITCHCODEX.COM</text>
+  <g stroke="#f6c64a" stroke-opacity="0.7" stroke-width="1.5" fill="none" filter="url(#vfd-edge)">
+    <path d="M30 64V30H64"/><path d="M1136 30H1170V64"/>
+    <path d="M30 566V600H64"/><path d="M1136 600H1170V566"/>
+  </g>
 </svg>

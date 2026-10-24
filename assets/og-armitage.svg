@@ -14,6 +14,25 @@
       <stop offset="55%" stop-color="#d9a75c" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#d9a75c" stop-opacity="0"/>
     </radialGradient>
+  
+    <pattern id="vfd-hex" width="12" height="20.784" patternUnits="userSpaceOnUse">
+      <path d="M0 3.464L6 0L12 3.464V10.392L6 13.856L0 10.392Z M6 13.856V20.784" fill="none" stroke="#f6c64a" stroke-opacity="0.16" stroke-width="0.9"/>
+    </pattern>
+    <radialGradient id="vfd-fade" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.45"/>
+    </radialGradient>
+    <mask id="vfd-mask"><rect width="1200" height="630" fill="url(#vfd-fade)"/></mask>
+    <filter id="vfd-glow" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="wide"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="tight"/>
+      <feColorMatrix in="wide" type="matrix" values="0 0 0 0 0.965  0 0 0 0 0.776  0 0 0 0 0.290  0 0 0 0.55 0" result="wideTint"/>
+      <feMerge><feMergeNode in="wideTint"/><feMergeNode in="tight"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="vfd-edge" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
@@ -52,25 +71,34 @@
     </g></g>
   </g>
   <rect width="1200" height="630" fill="url(#veil)"/>
+  <rect width="1200" height="630" fill="url(#vfd-hex)" mask="url(#vfd-mask)"/>
 
-  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74">ELDRITCHCODEX · III · AGENT, SKILLSET &amp; CLI</text>
+  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74" filter="url(#vfd-glow)">ELDRITCHCODEX · III · AGENT, SKILLSET &amp; CLI</text>
   <rect x="72" y="136" width="640" height="1" fill="#d9a75c" fill-opacity="0.32"/>
 
   <svg x="72" y="66" width="48" height="48" viewBox="236 230 548 562" preserveAspectRatio="xMidYMid meet">
     <g transform="translate(213.333 805.926) scale(0.237037 -0.237037)" fill="#d9a75c">
       <path d="M120 1240 l0 -1160 360 0 360 0 0 130 0 130 -230 0 -230 0 0 900 0 900 230 0 230 0 0 130 0 130 -360 0 -360 0 0 -1160z M1660 2270 l0 -130 230 0 230 0 0 -900 0 -900 -227 -2 -228 -3 -3 -127 -3 -128 361 0 360 0 0 1160 0 1160 -360 0 -360 0 0 -130z M1072 1813 c-21 -40 -422 -1010 -422 -1020 0 -15 232 -145 241 -135 4 4 69 158 144 342 75 184 150 368 167 408 28 68 49 88 61 60 96 -241 330 -805 336 -811 5 -5 233 107 259 128 1 1 -93 231 -209 511 -116 280 -213 515 -216 522 -4 9 -49 12 -179 12 -155 0 -174 -2 -182 -17z"/>
     </g>
-  </svg>
+    <g stroke="#f6c64a" stroke-opacity="0.7" stroke-width="1.5" fill="none" filter="url(#vfd-edge)">
+    <path d="M30 64V30H64"/><path d="M1136 30H1170V64"/>
+    <path d="M30 566V600H64"/><path d="M1136 600H1170V566"/>
+  </g>
+</svg>
 
-  <text x="70" y="300" font-family="Fraunces, Georgia, serif" font-weight="300" font-size="100" fill="#ece8df" letter-spacing="-1.5">Armitage</text>
-  <text x="72" y="356" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#d9a75c">Source-grounded agent, skillset and CLI</text>
+  <text x="70" y="300" font-family="Fraunces, Georgia, serif" font-weight="300" font-size="100" fill="#ece8df" letter-spacing="-1.5" filter="url(#vfd-glow)">Armitage</text>
+  <text x="72" y="356" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#d9a75c" filter="url(#vfd-glow)">Source-grounded agent, skillset and CLI</text>
 
   <text font-family="IBM Plex Sans" font-size="21" fill="#b7b4ac">
-    <tspan x="72" y="440">How I use coding agents without giving up learning from first principles. It works</tspan>
-    <tspan x="72" y="472">natively with Zotero and with Zed through the Agent Client Protocol, and every factual</tspan>
-    <tspan x="72" y="504">claim must point to a source or be cut.</tspan>
+    <tspan x="72" y="440">How I use coding agents without giving up learning from first principles. It runs on</tspan>
+    <tspan x="72" y="472">Pi, reads your Zotero library and works in Zed through a custom ACP adapter. Every</tspan>
+    <tspan x="72" y="504">factual claim must point to a source, or it is cut or marked unverified.</tspan>
   </text>
 
   <rect x="72" y="556" width="1056" height="1" fill="#d9a75c" fill-opacity="0.16"/>
-  <text x="72" y="590" font-family="IBM Plex Mono" font-size="14" letter-spacing="2.6" fill="#7e7b74">ELDRITCHCODEX.COM/#ARMITAGE</text>
+  <text x="72" y="590" font-family="IBM Plex Mono" font-size="14" letter-spacing="2.6" fill="#7e7b74" filter="url(#vfd-glow)">ELDRITCHCODEX.COM/#ARMITAGE</text>
+  <g stroke="#f6c64a" stroke-opacity="0.7" stroke-width="1.5" fill="none" filter="url(#vfd-edge)">
+    <path d="M30 64V30H64"/><path d="M1136 30H1170V64"/>
+    <path d="M30 566V600H64"/><path d="M1136 600H1170V566"/>
+  </g>
 </svg>

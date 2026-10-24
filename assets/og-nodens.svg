@@ -14,6 +14,25 @@
       <stop offset="55%" stop-color="#6ea8d6" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#6ea8d6" stop-opacity="0"/>
     </radialGradient>
+  
+    <pattern id="vfd-hex" width="12" height="20.784" patternUnits="userSpaceOnUse">
+      <path d="M0 3.464L6 0L12 3.464V10.392L6 13.856L0 10.392Z M6 13.856V20.784" fill="none" stroke="#f6c64a" stroke-opacity="0.16" stroke-width="0.9"/>
+    </pattern>
+    <radialGradient id="vfd-fade" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.45"/>
+    </radialGradient>
+    <mask id="vfd-mask"><rect width="1200" height="630" fill="url(#vfd-fade)"/></mask>
+    <filter id="vfd-glow" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="wide"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="tight"/>
+      <feColorMatrix in="wide" type="matrix" values="0 0 0 0 0.431  0 0 0 0 0.659  0 0 0 0 0.839  0 0 0 0.55 0" result="wideTint"/>
+      <feMerge><feMergeNode in="wideTint"/><feMergeNode in="tight"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="vfd-edge" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
@@ -52,8 +71,9 @@
     </g></g>
   </g>
   <rect width="1200" height="630" fill="url(#veil)"/>
+  <rect width="1200" height="630" fill="url(#vfd-hex)" mask="url(#vfd-mask)"/>
 
-  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74">ELDRITCHCODEX · I · FRAMEWORK</text>
+  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74" filter="url(#vfd-glow)">ELDRITCHCODEX · I · FRAMEWORK</text>
   <rect x="72" y="136" width="560" height="1" fill="#6ea8d6" fill-opacity="0.32"/>
 
   <svg x="72" y="66" width="48" height="48" viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet">
@@ -61,10 +81,14 @@
       <path transform="translate(0 0)" d="M300 -12Q244 -12 219.5 12.5Q195 37 195 71V106Q195 140 219.5 164.5Q244 189 300 189Q356 189 380.5 164.5Q405 140 405 106V71Q405 37 380.5 12.5Q356 -12 300 -12ZM300 327Q244 327 219.5 351.5Q195 376 195 410V445Q195 479 219.5 503.5Q244 528 300 528Q356 528 380.5 503.5Q405 479 405 445V410Q405 376 380.5 351.5Q356 327 300 327Z"/>
       <path transform="translate(380 0)" d="M300 -12Q244 -12 219.5 12.5Q195 37 195 71V106Q195 140 219.5 164.5Q244 189 300 189Q356 189 380.5 164.5Q405 140 405 106V71Q405 37 380.5 12.5Q356 -12 300 -12ZM300 327Q244 327 219.5 351.5Q195 376 195 410V445Q195 479 219.5 503.5Q244 528 300 528Q356 528 380.5 503.5Q405 479 405 445V410Q405 376 380.5 351.5Q356 327 300 327Z"/>
     </g>
-  </svg>
+    <g stroke="#f6c64a" stroke-opacity="0.7" stroke-width="1.5" fill="none" filter="url(#vfd-edge)">
+    <path d="M30 64V30H64"/><path d="M1136 30H1170V64"/>
+    <path d="M30 566V600H64"/><path d="M1136 600H1170V566"/>
+  </g>
+</svg>
 
-  <text x="70" y="300" font-family="Fraunces, Georgia, serif" font-weight="300" font-size="100" fill="#ece8df" letter-spacing="-1.5">Nodens</text>
-  <text x="72" y="356" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#6ea8d6">C++23 application framework</text>
+  <text x="70" y="300" font-family="Fraunces, Georgia, serif" font-weight="300" font-size="100" fill="#ece8df" letter-spacing="-1.5" filter="url(#vfd-glow)">Nodens</text>
+  <text x="72" y="356" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#6ea8d6" filter="url(#vfd-glow)">C++23 application framework</text>
 
   <text font-family="IBM Plex Sans" font-size="21" fill="#b7b4ac">
     <tspan x="72" y="440">A C++23 framework for building interactive desktop applications quickly, with</tspan>
@@ -73,5 +97,9 @@
   </text>
 
   <rect x="72" y="556" width="1056" height="1" fill="#6ea8d6" fill-opacity="0.16"/>
-  <text x="72" y="590" font-family="IBM Plex Mono" font-size="14" letter-spacing="2.6" fill="#7e7b74">ELDRITCHCODEX.COM/#NODENS</text>
+  <text x="72" y="590" font-family="IBM Plex Mono" font-size="14" letter-spacing="2.6" fill="#7e7b74" filter="url(#vfd-glow)">ELDRITCHCODEX.COM/#NODENS</text>
+  <g stroke="#f6c64a" stroke-opacity="0.7" stroke-width="1.5" fill="none" filter="url(#vfd-edge)">
+    <path d="M30 64V30H64"/><path d="M1136 30H1170V64"/>
+    <path d="M30 566V600H64"/><path d="M1136 600H1170V566"/>
+  </g>
 </svg>

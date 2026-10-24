@@ -203,7 +203,7 @@
                         <li><span class="item-idx">Pi</span>
                             <div>
                                 <h4>The agent harness and terminal UI</h4>
-                                <p>Armitage is built on Pi. <code>armitage pi</code> opens Pi with Armitage's own interface: a header board, a status footer and a plan docked above the input. Tool calls fold to one row, <code>ctrl+o</code> expands them, and <code>/prefs</code> changes the role and settings.</p>
+                                <p>Armitage is built on Pi. <code>armitage agent pi</code> opens Pi with Armitage's own interface: a header board, a status footer and a plan docked above the input. Tool calls fold to one row, <code>ctrl+o</code> expands them, and <code>/prefs</code> changes the role and settings.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Zotero</span>
@@ -231,7 +231,8 @@
                 <div class="sect-body">
                     <h4 class="sub-label">Skills &amp; CLI · core, no Pi or Zed required</h4>
                     <p class="way-note">Instructions for your coding agent, plus a CLI for memory, code and Zotero
-                        search.</p>
+                        search. The CLI works on its own; the agent is a second package that adds Pi, the skills and
+                        <code>ask</code> under <code>armitage agent</code>.</p>
                     <div class="figure">
                         <div class="figure-bar">
                             <span>Example commands</span>
@@ -239,17 +240,17 @@
                         </div>
                         <pre class="shell" data-shell="armitage-cli"></pre>
                     </div>
-                    <h4 class="sub-label">Terminal UI · <code>armitage pi</code> and <code>armitage ask</code> · needs Pi</h4>
+                    <h4 class="sub-label">Terminal UI · <code>armitage agent pi</code> and <code>armitage agent ask</code> · needs Pi</h4>
                     <p class="way-note">A dedicated Pi environment with Armitage's own interface. It powers both the
                         terminal and Zed.</p>
                     <div class="figure">
                         <div class="figure-bar">
-                            <span>$ armitage pi</span>
+                            <span>$ armitage agent pi</span>
                             <span>the terminal UI · illustrative</span>
                         </div>
                         <pre class="tui" role="img" aria-label="Armitage terminal UI: a header board with the memory vault and Zotero collections, your question in its own box with a quiet row for what the harness attached, the agent's work as one-line rows, the cited answer on a tinted card, the plan docked above the input bar, and the footer with role, access, permission, gate, sandbox, reply settings, Zotero and Ollama health and the context bar."><span class="tl"> <span class="ta">◈</span> <span class="ta tbold">armitage</span><span class="tq">  chief librarian of the archives</span></span>
 <span class="tl"> <span class="tq">────────────────────────────────────────────────────────────────────────────</span></span>
-<span class="tl"><span class="tq"> ledger   </span>214 notes<span class="tq"> · </span>3 active plans<span class="tq"> · </span>5 concepts waiting<span class="tq">   ~/.armitage/memory</span></span>
+<span class="tl"><span class="tq"> ledger   </span>214 notes<span class="tq"> · </span>3 active plans<span class="tq"> · </span>5 concepts waiting<span class="tq">   ~/.armitage/agent/memory</span></span>
 <span class="tl"><span class="tq"> archive  </span>9 of 12 collections indexed</span>
 <span class="tl"><span class="tq"> keys     </span>alt+t<span class="tq"> thoughts · </span>/<span class="tq"> commands · </span>/prefs</span>
 <span class="tl"> </span><span class="tblk tmu"> 
@@ -258,22 +259,22 @@
 <span class="tl"> </span>
 <span class="tl"><span class="tq">   <i>deliberating…</i></span></span>
 <span class="tl"> </span>
-<span class="tl"> QueueEvent is the producer entry point. Reading its definition and the thread-safety notes.</span>
+<span class="tl"> The bus has two halves: QueueEvent for producers and Flush for the main thread. Reading both.</span>
 <span class="tl"> </span>
-<span class="tl">   <span class="tg">✓</span> symbol <span class="tq">“QueueEvent”</span>   <span class="tq">→ 1 row  0.4s</span></span>
-<span class="tl">   <span class="tg">✓</span> search <span class="tq">“EventBus thread safety”</span>   <span class="tq">→ 6 rows  1.2s</span></span>
+<span class="tl">   <span class="tg">✓</span> read <span class="tq">“src/Nodens/Events/EventBus.cppm”</span>   <span class="tq">→ 228 lines  0.1s</span></span>
+<span class="tl">   <span class="tg">✓</span> read <span class="tq">“src/Nodens/Events/EventBus.cpp”</span>   <span class="tq">→ 100 lines  0.1s</span></span>
 <span class="tl">   <span class="tg">✓</span> tasks set   <span class="tq">→ 3/3 complete</span></span>
 <span class="tl"> </span><span class="tblk tmc"> 
- Producers never wait for handlers. QueueEvent takes a short mutex, appends the
- event to the active buffer and returns.<span class="tf">[^1]</span> Flush swaps the two buffers under that
- lock, then runs the handlers outside it.<span class="tf">[^2]</span>
+ Producers never wait for handlers. QueueEvent locks the buffer mutex only to append
+ the event to the active buffer, then returns.<span class="tf">[^1]</span> Flush takes that lock only to swap
+ the two buffers, then runs the handlers outside it.<span class="tf">[^2]</span>
  
-<span class="tq"> [^1] Nodens/Events/EventBus.cppm:108</span>
-<span class="tq"> [^2] Nodens/Events/EventBus.cpp:66</span>
+<span class="tq"> [^1] src/Nodens/Events/EventBus.cppm:108</span>
+<span class="tq"> [^2] src/Nodens/Events/EventBus.cpp:66</span>
  </span><span class="tl"> </span>
 <span class="tl"><span class="trule">── Plan 3/3 </span><span class="ta">██████████</span><span class="trule"> ─────────────────────────────────────────── alt+o ──</span></span>
-<span class="tl"> <span class="tg">✓</span> 1. read QueueEvent and its callers</span>
-<span class="tl"> <span class="tg">✓</span> 2. read the thread-safety notes</span>
+<span class="tl"> <span class="tg">✓</span> 1. read the bus's interface and its Flush</span>
+<span class="tl"> <span class="tg">✓</span> 2. check the thread-safety note</span>
 <span class="tl"> <span class="tg">✓</span> 3. answer with the two citations</span>
 <span class="tl"><span class="trule">────────────────────────────────────────────────────────────────────────────────────────────</span></span>
 <span class="tl"><span class="tq"> ~/miskatonic/nodens (main) • EventBus and producers</span>     <span class="tq">deepseek/deepseek-v4.1-flash • high</span></span>
@@ -284,7 +285,7 @@
 <span class="tl">          <span class="c2">■</span> tool definitions 12% 42k   <span class="c3">■</span> user 10% 35k   <span class="c4">■</span> assistant 10% 35k</span>
 <span class="tl">          <span class="c6">■</span> tool calls 6% 21k   <span class="c8">■</span> summaries 2% 7.0k</span></pre>
                     </div>
-                    <h5 class="way-sub">Quick questions with <code>armitage ask</code></h5>
+                    <h5 class="way-sub">Quick questions with <code>armitage agent ask</code></h5>
                     <p class="way-note">The same interface for a one-off question with no project: a short, cited
                         answer from Zotero and memory, using the read-only <code>ask</code> role.</p>
                     <h4 class="sub-label">Zed via custom ACP · needs Pi · the best way</h4>
@@ -302,16 +303,16 @@
                                 <div class="zp-user">Why does Armitage release the reranker after every query?</div>
                                 <div class="zp-tools-list">
                                     <span class="zp-tool"><span class="zp-ico">⌕</span>Recall reranker<span class="zp-chev">›</span></span>
-                                    <span class="zp-tool"><span class="zp-ico">⌕</span>Symbol Reranker.close<span class="zp-chev">›</span></span>
+                                    <span class="zp-tool"><span class="zp-ico">⌕</span>Symbol Reranker<span class="zp-chev">›</span></span>
                                     <span class="zp-tool"><span class="zp-ico">⌕</span>Search · reranker keep_alive<span class="zp-chev">›</span></span>
                                 </div>
                                 <div class="zp-md">
                                     <p>Memory has the answer but marks it stale, so I rechecked it against the docs and code, and it still holds. The reranker is loaded for one query and then released, and the query path unloads the embedding model first, so the two never sit in VRAM together.<sup>1</sup></p>
                                     <p>In code, <code>Reranker</code> is a context manager whose <code>__exit__</code> calls <code>close()</code>.<sup>2</sup> That moves the model off the GPU and empties the CUDA cache.<sup>3</sup></p>
                                     <ol class="zp-refs">
-                                        <li><code>docs/03-retrieval-pipeline.md:207</code></li>
-                                        <li><code>armitage_cli/retriever.py:191</code></li>
-                                        <li><code>armitage_cli/retriever.py:290</code></li>
+                                        <li><code>docs/03-retrieval-pipeline.md:208</code></li>
+                                        <li><code>src/armitage_cli/retriever.py:207</code></li>
+                                        <li><code>src/armitage_cli/retriever.py:302</code></li>
                                     </ol>
                                 </div>
                             </div>
@@ -494,7 +495,7 @@
                         <li><span class="item-idx">Quick questions</span>
                             <div>
                                 <h4 class="role-name">ask</h4>
-                                <p>Short, cited answers from Zotero and memory. <code>armitage ask</code> locks this role.</p>
+                                <p>Short, cited answers from Zotero and memory. <code>armitage agent ask</code> locks this role.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Research</span>
@@ -577,6 +578,35 @@
                             <div>
                                 <h4>Zotero untouched</h4>
                                 <p>Armitage never writes to Zotero. The one opt-in OCR option rewrites a PDF and keeps the original.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="sect">
+                <div class="sect-intro">
+                    <h3>Where it is going</h3>
+                    <p>Planned, not built yet. The core stays small and other tools plug into it as plugins.</p>
+                </div>
+                <div class="sect-body">
+                    <ul class="items">
+                        <li><span class="item-idx">Tools</span>
+                            <div>
+                                <h4>Standalone, in any language</h4>
+                                <p>A tool is its own app with its own repository and CLI. Tools talk to Armitage only through that CLI and JSON, and none imports another.</p>
+                            </div>
+                        </li>
+                        <li><span class="item-idx">Plugins</span>
+                            <div>
+                                <h4>A manifest, not code</h4>
+                                <p>A tool prints a manifest of the commands the agent may call, and Armitage turns each into an agent tool. A plugin needs no TypeScript and no change to Armitage.</p>
+                            </div>
+                        </li>
+                        <li><span class="item-idx">Reach</span>
+                            <div>
+                                <h4>Opt-in, and you confirm writes</h4>
+                                <p>Each plugin declares how far the agent may go: none, status, read or write. Armitage enforces it, and every action that changes something waits for your confirmation outside the model.</p>
                             </div>
                         </li>
                     </ul>
@@ -717,9 +747,9 @@
 
     <!-- Code & shell templates -->
     <script type="text/plain" id="sh-armitage-cli">
-armitage skills install                  # give your agent the skills
-armitage pi                              # open the terminal UI (TUI)
-armitage ask                             # quick question, no project
+armitage agent install skills            # give your agent the skills
+armitage agent pi                        # open the terminal UI (TUI)
+armitage agent ask                       # quick question, no project
 armitage doctor                          # check installed skills
 armitage search "image creation"         # search all three at once
 armitage memory recall "retrieval"       # what past sessions saved

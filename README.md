@@ -1,11 +1,11 @@
 # EldritchCodex
 
-The site for [EldritchCodex](https://eldritchcodex.com): open-source projects exploring the engineering and
-mathematics of rendering and simulation tools.
+The site for [EldritchCodex](https://eldritchcodex.com): open-source projects exploring software engineering
+and mathematics and learning by building, from rendering and simulation to the tools around them.
 
 - **[Nodens](nodens/)**: a C++23 application framework built on modules.
-- **[Nyar](nyar/)**: a Vulkan 1.3 renderer, built as a learning exercise for Nodens.
-- **[Armitage](armitage/)**: a source-grounded research and coding agent toolkit.
+- **[Nyar](nyar/)**: a Vulkan renderer, built as a learning exercise for Nodens.
+- **[Armitage](armitage/)**: a source-grounded personal agent and research toolkit, with a small core that other tools plug into.
 
 The sources behind the projects are listed in a [public Zotero library](https://www.zotero.org/groups/6489354/eldritchcodex).
 
