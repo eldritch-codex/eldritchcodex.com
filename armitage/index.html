@@ -112,14 +112,11 @@
                         Armitage
                     </h2>
                     <p>
-                        Armitage is how I use coding agents without giving up learning from first principles. It works
-                        natively with Pi, the agent harness it runs on, which has its own terminal interface (TUI) for
-                        Armitage; with Zotero, where your PDFs, EPUBs and saved web pages live; and with Zed, through a
-                        custom Agent Client Protocol adapter on top of Pi. Every factual claim must point to your workspace, your Zotero library or
-                        the agent's memory, or it is cut or marked unverified. Skills and a CLI work with any coding
-                        agent, but it is at its
-                        best in Zed, through the Pi harness and ACP, where it is most thoroughly tested, or in its own
-                        terminal interface.
+                        Armitage is how I use coding agents without giving up learning from first principles. It runs
+                        on Pi, with its own terminal interface, reads your Zotero library, and works in Zed through a
+                        custom Agent Client Protocol (ACP) adapter. Every factual claim must point to your workspace,
+                        your Zotero library or the agent's memory, or it is cut or marked unverified. Skills and a CLI
+                        work with any coding agent.
                     </p>
                     <p class="chapter-note">
                         A personal, experimental tool, built largely with AI coding agents to help me develop Nodens
@@ -157,24 +154,19 @@
                         <li><span class="item-idx"><b class="big-num">01</b><span>Verified</span></span>
                             <div>
                                 <h4>Citations it cannot fake</h4>
-                                <p>Each reference must resolve: the file and line exist, or the Zotero page or section
-                                    exists in the extracted text. It must also have been looked up in this session, so a
-                                    source the model only remembers is refused.</p>
+                                <p>Each reference must resolve to a real file and line, or a real Zotero page, and must have been looked up this session. A source the model only remembers is refused.</p>
                             </div>
                         </li>
                         <li><span class="item-idx"><b class="big-num">02</b><span>Durable</span></span>
                             <div>
                                 <h4>Memory that quotes the source</h4>
-                                <p>Findings are stored as the source's own words next to a link to the exact page or
-                                    passage. The quote is checked against the file, even with Zotero closed and offline.
-                                </p>
+                                <p>Findings are stored as the source's own words, linked to the exact page. The quote is checked against the file, even with Zotero closed.</p>
                             </div>
                         </li>
                         <li><span class="item-idx"><b class="big-num">03</b><span>Local</span></span>
                             <div>
                                 <h4>Search that stays on your machine</h4>
-                                <p>Embeddings, keyword search and reranking all run locally. The reranker is loaded for
-                                    one query and then released, so it fits on a modest GPU.</p>
+                                <p>Embeddings, keyword search and reranking all run locally, light enough for a modest GPU.</p>
                             </div>
                         </li>
                     </ul>
@@ -182,23 +174,19 @@
                         <li><span class="item-idx"><b class="big-num">04</b><span>Careful</span></span>
                             <div>
                                 <h4>Studies you approve</h4>
-                                <p>A research plan waits for your approval. The report is refused unless every analysis
-                                    paragraph cites a page or says Inference, and every quote is found on its page.</p>
+                                <p>A research plan waits for your approval. A report is refused unless every analysis paragraph cites a page or says Inference.</p>
                             </div>
                         </li>
                         <li><span class="item-idx"><b class="big-num">05</b><span>Deliberate</span></span>
                             <div>
                                 <h4>Designs you approve</h4>
-                                <p>Before a big code change it writes a design file and asks its open questions. The
-                                    plan cannot be approved with one unanswered, and editing it sends it back to draft.
-                                </p>
+                                <p>Before a big code change it writes a design and asks its open questions. The plan cannot be approved with one unanswered.</p>
                             </div>
                         </li>
                         <li><span class="item-idx"><b class="big-num">06</b><span>Consistent</span></span>
                             <div>
                                 <h4>Decisions that stick</h4>
-                                <p>When you settle something, Armitage records it with your own words and loads it into
-                                    every later session, so nothing proposes the opposite.</p>
+                                <p>When you settle something, Armitage records it in your words and loads it into every later session.</p>
                             </div>
                         </li>
                     </ul>
@@ -208,47 +196,26 @@
             <section class="sect">
                 <div class="sect-intro">
                     <h3>Built around Zotero, Zed and Pi</h3>
-                    <p>Three native integrations: the agent, where your sources live, and where you work. Zed and the
-                        terminal both run on Pi.</p>
+                    <p>Three native integrations. Zed and the terminal both run on Pi.</p>
                 </div>
                 <div class="sect-body">
                     <ul class="items">
                         <li><span class="item-idx">Pi</span>
                             <div>
-                                <h4>The agent harness, with its own terminal interface</h4>
-                                <p>Armitage is built on the Pi harness. In the terminal, <code>armitage pi</code> opens
-                                    Pi with Armitage's own interface: a header board with your memory vault and Zotero
-                                    collections; a footer table of what governs the agent (role, access, permission,
-                                    gate, sandbox) and how it answers, with Zotero and Ollama health and a bar of where
-                                    the context window goes; and a plan docked above the input bar, with a progress
-                                    bar, that stays in view while the agent works through it.</p>
-                                <p>The conversation keeps a hierarchy: your message and the delivered answer are framed,
-                                    and what the agent did sits quietly beneath. Tool calls fold to one row with a
-                                    check or a cross, and what the harness attached to your message (a memory sweep, a
-                                    plan) is a row of its own. <code>ctrl+o</code> expands any of them. The spinner
-                                    changes with the work, such as searching the Archive, reading, running in the
-                                    sandbox or auditing citations. Pickers and a <code>/prefs</code> panel change the
-                                    role and the rest. It all sits in a dark theme of brass, verdigris and umber.</p>
+                                <h4>The agent harness and terminal UI</h4>
+                                <p>Armitage is built on Pi. <code>armitage pi</code> opens Pi with Armitage's own interface: a header board, a status footer and a plan docked above the input. Tool calls fold to one row, <code>ctrl+o</code> expands them, and <code>/prefs</code> changes the role and settings.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Zotero</span>
                             <div>
                                 <h4>Your library is the source</h4>
-                                <p>Armitage reads Zotero 7+ through its local API and never writes to it. Zotero stores
-                                    your PDFs, EPUBs and saved web page snapshots, and Armitage reads all three, not
-                                    only PDFs: PDFs page by page, with OCR for scans, EPUBs chapter by chapter, and
-                                    snapshots section by section.</p>
-                                <p>Every citation opens at the exact place in Zotero, the page of a PDF or the passage
-                                    of a snapshot.</p>
+                                <p>Armitage reads Zotero 7+ through its local API and never writes to it. It reads PDFs page by page (with OCR for scans), EPUBs by chapter and saved web pages by section. Every citation opens at the exact page or passage.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Zed</span>
                             <div>
                                 <h4>Native in the Agent Panel</h4>
-                                <p>Zed support is a custom Agent Client Protocol (ACP) adapter on top of Pi: Zed talks
-                                    ACP to the adapter, which drives the same Pi agent, with Armitage's extensions,
-                                    roles and gate, that the TUI uses. Its questions and approvals appear as native
-                                    cards, and a code citation opens the file in Zed at the cited line.</p>
+                                <p>A custom ACP adapter on top of Pi runs the same agent, roles and gate as the terminal. Questions and approvals appear as native cards, and a code citation opens the file at the cited line.</p>
                             </div>
                         </li>
                     </ul>
@@ -258,13 +225,13 @@
             <section class="sect">
                 <div class="sect-intro">
                     <h3>Ways to use it</h3>
-                    <p>The skills and CLI are the portable base; the best way to use Armitage is inside Zed, through
-                        Pi and ACP, or in its terminal interface on Pi. Each way, as it looks.</p>
+                    <p>Skills and the CLI are the portable base. The best way is Zed, through Pi and ACP; the terminal
+                        interface on Pi is the alternative.</p>
                 </div>
                 <div class="sect-body">
                     <h4 class="sub-label">Skills &amp; CLI · core, no Pi or Zed required</h4>
-                    <p class="way-note">Instructions for your coding agent, plus a CLI that maintains memory and
-                        searches your code and Zotero library.</p>
+                    <p class="way-note">Instructions for your coding agent, plus a CLI for memory, code and Zotero
+                        search.</p>
                     <div class="figure">
                         <div class="figure-bar">
                             <span>Example commands</span>
@@ -273,9 +240,8 @@
                         <pre class="shell" data-shell="armitage-cli"></pre>
                     </div>
                     <h4 class="sub-label">Terminal UI · <code>armitage pi</code> and <code>armitage ask</code> · needs Pi</h4>
-                    <p class="way-note">A dedicated Pi environment built around Armitage's workflow, with its own
-                        interface: header board, status footer, context bar, docked plan, library-themed spinners and
-                        pickers. It powers both the terminal and Zed.</p>
+                    <p class="way-note">A dedicated Pi environment with Armitage's own interface. It powers both the
+                        terminal and Zed.</p>
                     <div class="figure">
                         <div class="figure-bar">
                             <span>$ armitage pi</span>
@@ -319,13 +285,11 @@
 <span class="tl">          <span class="c6">■</span> tool calls 6% 21k   <span class="c8">■</span> summaries 2% 7.0k</span></pre>
                     </div>
                     <h5 class="way-sub">Quick questions with <code>armitage ask</code></h5>
-                    <p class="way-note">The same interface, for a one-off question with no project. It opens a custom session in an empty
-                        scratch folder with the read-only <code>ask</code> role locked: a short answer first from your
-                        Zotero library and memory, with no study plan and no check question, and a smaller
-                        prompt.</p>
+                    <p class="way-note">The same interface for a one-off question with no project: a short, cited
+                        answer from Zotero and memory, using the read-only <code>ask</code> role.</p>
                     <h4 class="sub-label">Zed via custom ACP · needs Pi · the best way</h4>
-                    <p class="way-note">Armitage's own ACP adapter runs the Pi harness in Zed's Agent Panel instead of
-                        a terminal. The most thoroughly tested way to use Armitage.</p>
+                    <p class="way-note">Armitage's ACP adapter runs Pi in Zed's Agent Panel. The most thoroughly tested
+                        way to use it.</p>
                     <div class="figure">
                         <div class="figure-bar">
                             <span>Zed · Agent Panel</span>
@@ -363,56 +327,49 @@
             <section class="sect">
                 <div class="sect-intro">
                     <h3>How a question is answered</h3>
-                    <p>One search across your memory, code and papers, then four steps to an answer with a source
-                        for every claim.</p>
+                    <p>One search across memory, code and papers, then four steps to an answer with a source for every
+                        claim.</p>
                 </div>
                 <div class="sect-body">
                     <ol class="flow">
                         <li class="flow-card"><span class="flow-num">1</span>
                             <div>
                                 <h4>Ask: One question</h4>
-                                <p>A single query fans out across its memory, your papers and your code at once
-                                    (<code>armitage search</code>).</p>
+                                <p>A single query searches memory, papers and code at once (<code>armitage search</code>).</p>
                             </div>
                         </li>
                         <li class="flow-branch" aria-label="Sources consulted">
                             <ul class="source-grid">
                                 <li class="source-card">
                                     <span class="item-idx">Memory</span>
-                                    <p>The agent's own notes, kept as Markdown in an Obsidian vault: plans, decisions,
-                                        concepts and your profile.</p>
+                                    <p>The agent's notes, kept as Markdown in an Obsidian vault.</p>
                                 </li>
                                 <li class="source-card">
                                     <span class="item-idx">Papers, books &amp; web</span>
-                                    <p>Your local Zotero 7+ library, read-only. Reads every file Zotero's reader opens:
-                                        PDFs (with OCR for scans), EPUBs by chapter, and saved web snapshots.</p>
+                                    <p>Your read-only Zotero 7+ library: PDFs, EPUBs and saved web pages.</p>
                                 </li>
                                 <li class="source-card">
                                     <span class="item-idx">Code</span>
-                                    <p>An index of your repositories, shared across branches and worktrees. Looking up a
-                                        symbol or where it is used needs no AI model.</p>
+                                    <p>An index of your repositories. Symbol lookups need no AI model.</p>
                                 </li>
                             </ul>
                         </li>
                         <li class="flow-card"><span class="flow-num">2</span>
                             <div>
                                 <h4>Match: Meaning + keywords</h4>
-                                <p>In each of those three sources, embedding search (Ollama) finds passages by meaning
-                                    and SQLite full-text search finds exact words.</p>
+                                <p>Embedding search (Ollama) finds passages by meaning; SQLite full-text search finds exact words.</p>
                             </div>
                         </li>
                         <li class="flow-card"><span class="flow-num">3</span>
                             <div>
                                 <h4>Rank: Best passages first</h4>
-                                <p>Matches from all three sources are merged, then a reranking model (Qwen3) puts the
-                                    most relevant passages first.</p>
+                                <p>Matches from all sources are merged, then a reranking model (Qwen3) puts the most relevant first.</p>
                             </div>
                         </li>
                         <li class="flow-card"><span class="flow-num">4</span>
                             <div>
                                 <h4>Cite: Every claim sourced</h4>
-                                <p>Each factual statement carries an inline <code>[^n]</code> footnote to its source.
-                                </p>
+                                <p>Each factual statement carries an inline <code>[^n]</code> footnote to its source.</p>
                             </div>
                         </li>
                     </ol>
@@ -429,40 +386,31 @@
                         <li class="flow-card"><span class="flow-num">1</span>
                             <div>
                                 <h4>Sweep</h4>
-                                <p>On your first fact-bearing question, it recalls memory, plans, code or literature
-                                    within about three seconds and puts the evidence in front of the model.</p>
-                                <p class="step-why">Earlier work is reused, not rediscovered.</p>
+                                <p>On your first fact-bearing question, it recalls related memory, plans, code or literature in about three seconds.</p>
                             </div>
                         </li>
                         <li class="flow-card"><span class="flow-num">2</span>
                             <div>
                                 <h4>Look up</h4>
-                                <p>The agent reads the code or queries Zotero for the passages it needs.</p>
-                                <p class="step-why">Claims rest on sources, not on what the model remembers.</p>
+                                <p>The agent reads the code or queries Zotero, so claims rest on sources, not on what the model remembers.</p>
                             </div>
                         </li>
                         <li class="flow-card"><span class="flow-num">3</span>
                             <div>
                                 <h4>Answer</h4>
-                                <p>Factual answers go through an answer form with the claims and their references, not
-                                    free prose.</p>
-                                <p class="step-why">Every claim has a place for its source.</p>
+                                <p>Factual answers use a form with claims and their references, not free prose.</p>
                             </div>
                         </li>
                         <li class="flow-card"><span class="flow-num">4</span>
                             <div>
                                 <h4>Audit</h4>
-                                <p>Each footnote is checked: the file and line exist and were read, the Zotero item was
-                                    returned this session and the page exists.</p>
-                                <p class="step-why">Invented or half-remembered sources are rejected.</p>
+                                <p>Each footnote is checked: the file and line exist and were read, or the Zotero item was returned this session and the page exists.</p>
                             </div>
                         </li>
                         <li class="flow-card"><span class="flow-num">5</span>
                             <div>
                                 <h4>Correct</h4>
-                                <p>If a check fails, the agent is sent back, up to three times. If it still fails, you
-                                    see a visible warning and the answer is flagged.</p>
-                                <p class="step-why">Nothing passes silently.</p>
+                                <p>A failed check sends the agent back, up to three times. If it still fails, the answer is flagged with a visible warning.</p>
                             </div>
                         </li>
                     </ol>
@@ -472,22 +420,20 @@
             <section class="sect">
                 <div class="sect-intro">
                     <h3>What it remembers</h3>
-                    <p>Plain Markdown in a vault on your disk. Obsidian is optional, and the CLI notices edits made
-                        behind its back.</p>
+                    <p>Plain Markdown in a vault on your disk. Obsidian is optional.</p>
                 </div>
                 <div class="sect-body">
                     <ul class="items">
                         <li><span class="item-idx">Notes and concepts</span>
                             <div>
                                 <h4>Pointer records</h4>
-                                <p>The source's exact words, linked to the page. Quick recall without paraphrasing the
-                                    source.</p>
+                                <p>The source's exact words, linked to the page.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Research</span>
                             <div>
                                 <h4>Plans and reports</h4>
-                                <p>Approved plans and cited reports. Later sessions find what a study established.</p>
+                                <p>Approved plans and cited reports that later sessions can find.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Design plans</span>
@@ -501,15 +447,13 @@
                         <li><span class="item-idx">Decisions</span>
                             <div>
                                 <h4>What you settled</h4>
-                                <p>Your decision, the reason and your own words. They change only by being superseded or
-                                    revoked, so nothing contradicts them later.</p>
+                                <p>Your decision, the reason and your own words. Changed only by being superseded or revoked.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Profile</span>
                             <div>
                                 <h4>Who you are to it</h4>
-                                <p>Preferences, corrections, goals and dated events. It adapts to you, and the shell
-                                    cannot rewrite it.</p>
+                                <p>Preferences, corrections, goals and dated events. The shell cannot rewrite it.</p>
                             </div>
                         </li>
                     </ul>
@@ -519,10 +463,9 @@
             <section class="sect">
                 <div class="sect-intro">
                     <h3>Roles</h3>
-                    <p>Roles build on skills. Each role loads the skills it is charged with and adds a workflow of its
-                        own, consolidated from the literature: books and papers cited by page in the role's
-                        instructions. A role also sets what Armitage may touch. You pick one with <code>/role</code>,
-                        and only you can switch it.</p>
+                    <p>Each role loads the skills it needs and adds a workflow drawn from the literature, cited by
+                        page. It also sets what Armitage may touch. Pick one with <code>/role</code>; only you can
+                        switch it.</p>
                 </div>
                 <div class="sect-body">
                     <h4 class="sub-label">Can edit your files</h4>
@@ -530,22 +473,19 @@
                         <li><span class="item-idx">Default</span>
                             <div>
                                 <h4 class="role-name">auto</h4>
-                                <p>Reads what you ask and picks its own posture: answer, investigate, plan, implement or
-                                    teach.</p>
+                                <p>Reads your request and picks a posture: answer, investigate, plan, implement or teach.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Builder</span>
                             <div>
                                 <h4 class="role-name">swe-code</h4>
-                                <p>Builds a feature in small, verified steps, matching your codebase's style and proving
-                                    each step with tests.</p>
+                                <p>Builds a feature in small steps that match your codebase, proving each with tests.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Delivery</span>
                             <div>
                                 <h4 class="role-name">swe-devops</h4>
-                                <p>Handles CI/CD, releases, versioning and git, and explains as it goes. It confirms
-                                    before any commit, push, tag, publish or deploy.</p>
+                                <p>Handles CI/CD, releases, versioning and git. Confirms before any commit, push, tag or deploy.</p>
                             </div>
                         </li>
                     </ul>
@@ -554,37 +494,31 @@
                         <li><span class="item-idx">Quick questions</span>
                             <div>
                                 <h4 class="role-name">ask</h4>
-                                <p>A reference desk for one-off questions: answers first and briefly from Zotero and
-                                    memory, with every claim still cited. It is the role <code>armitage ask</code>
-                                    locks for that session.</p>
+                                <p>Short, cited answers from Zotero and memory. <code>armitage ask</code> locks this role.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Research</span>
                             <div>
                                 <h4 class="role-name">researcher</h4>
-                                <p>Answers a question from your Zotero library like a scientist: plans the study, waits
-                                    for your approval, then reports with the exact page behind every claim.</p>
+                                <p>Plans a study from your Zotero library, waits for approval, then reports with the exact page behind each claim.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Teaching</span>
                             <div>
                                 <h4 class="role-name">tutor</h4>
-                                <p>Teaches a concept, or guides you through an implementation, so you can do it alone
-                                    afterwards. It never writes your code.</p>
+                                <p>Teaches a concept or guides an implementation so you can do it alone. Never writes your code.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Design</span>
                             <div>
                                 <h4 class="role-name">swe-plan</h4>
-                                <p>Designs a feature or system, or reviews a diff, like a senior engineer and architect,
-                                    naming the trade-offs.</p>
+                                <p>Designs a feature or reviews a diff like a senior engineer, naming the trade-offs.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Diagnosis</span>
                             <div>
                                 <h4 class="role-name">swe-debug</h4>
-                                <p>Finds why something fails before any edit and hands you a cause backed by evidence,
-                                    not a guess.</p>
+                                <p>Finds why something fails before any edit and hands you an evidence-backed cause.</p>
                             </div>
                         </li>
                     </ul>
@@ -594,8 +528,8 @@
             <section class="sect">
                 <div class="sect-intro">
                     <h3>Staying in control</h3>
-                    <p>The agent has a shell and your notes, so it is contained in layers. The sandbox is not a claim of
-                        perfect isolation, and the project documents its known limits.</p>
+                    <p>The agent has a shell and your notes, so it is contained in layers. The sandbox is not perfect
+                        isolation; the project documents its known limits.</p>
                 </div>
                 <div class="sect-body">
                     <h4 class="sub-label">Contains the agent</h4>
@@ -603,8 +537,7 @@
                         <li><span class="item-idx">Shell</span>
                             <div>
                                 <h4>Sandboxed commands</h4>
-                                <p>Runs in bubblewrap with an empty root and no network, with SSH, AWS and GPG folders
-                                    hidden. Without the sandbox, the shell refuses to run.</p>
+                                <p>Runs in bubblewrap with no network and SSH, AWS and GPG folders hidden. Without the sandbox, the shell refuses to run.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Files</span>
@@ -616,8 +549,7 @@
                         <li><span class="item-idx">Rules</span>
                             <div>
                                 <h4>Protected rules</h4>
-                                <p>Its skills, persona and your profile are read-only to the agent, so it cannot widen
-                                    its own sandbox.</p>
+                                <p>Skills, persona and your profile are read-only to the agent, so it cannot widen its own sandbox.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Models</span>
@@ -632,23 +564,19 @@
                         <li><span class="item-idx">Commands</span>
                             <div>
                                 <h4>Permission prompts</h4>
-                                <p>Commands ask before running: all of them, only risky ones, or none. Allow and deny
-                                    rules can be set per command. In the TUI the footer always shows the current role, access,
-                                    permission and gate level.</p>
+                                <p>Commands ask before running: all, only risky ones, or none, with per-command allow and deny rules. The TUI footer always shows the current level.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Roles</span>
                             <div>
                                 <h4>Read-only roles</h4>
-                                <p>The researcher, tutor, planner and debug roles cannot change your files. Their builds
-                                    and tests run in a throwaway overlay.</p>
+                                <p>The researcher, tutor, plan and debug roles cannot change your files. Their builds and tests run in a throwaway overlay.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Library</span>
                             <div>
                                 <h4>Zotero untouched</h4>
-                                <p>Armitage never writes to your Zotero library. The one opt-in OCR option rewrites a
-                                    PDF file and keeps the original.</p>
+                                <p>Armitage never writes to Zotero. The one opt-in OCR option rewrites a PDF and keeps the original.</p>
                             </div>
                         </li>
                     </ul>
@@ -658,11 +586,9 @@
             <section class="sect sect--stack">
                 <div class="sect-intro">
                     <h3>The skills</h3>
-                    <p>Skills are the building blocks: instructions the agent follows, which the roles above build on.
-                        <strong>Starts</strong> shows who triggers a skill:
-                        <em>You</em> invoke it by name, <em>Agent</em> means the model loads it itself,
-                        <em>Either</em> works both ways.
-                    </p>
+                    <p>Instructions the agent follows, which the roles build on. <strong>Starts</strong> shows who
+                        triggers a skill: <em>You</em> invoke it by name, <em>Agent</em> means the model loads it,
+                        <em>Either</em> works both ways.</p>
                 </div>
                 <div class="sect-body">
                     <div aria-label="Filter skills by category" class="skill-filters" hidden="" role="group">
@@ -689,87 +615,72 @@
                             <tr data-cat="core">
                                 <td>armitage</td>
                                 <td>Agent</td>
-                                <td>The citation gate. Before answering a factual question, it searches memory, code and
-                                    papers and cites every claim inline. A claim with no source is cut or marked
-                                    unverified.</td>
+                                <td>The citation gate. Searches memory, code and papers before a factual answer and cites every claim. An unsourced claim is cut or marked unverified.</td>
                             </tr>
                             <tr data-cat="planning">
                                 <td>armitage-init</td>
                                 <td>Either</td>
-                                <td>Starts or resumes a working session: recalls prior work, attaches the right project
-                                    and plan, then routes to the next skill.</td>
+                                <td>Starts or resumes a session: recalls prior work, attaches the right project and plan, then routes to the next skill.</td>
                             </tr>
                             <tr data-cat="planning">
                                 <td>armitage-project</td>
                                 <td>You</td>
-                                <td>Keeps a project file for a bigger goal: its aims, ideas, open questions and
-                                    decisions, with its plans listed automatically.</td>
+                                <td>Keeps a project file for a bigger goal: aims, ideas, open questions, decisions and its plans.</td>
                             </tr>
                             <tr data-cat="planning">
                                 <td>armitage-plan</td>
                                 <td>You</td>
-                                <td>Keeps a plan for one piece of work: goal, timeline, reasoning and references.
-                                    Checkpoints progress so a later session can pick up where you left off.</td>
+                                <td>Keeps a plan for one piece of work, with checkpoints so a later session can pick up where you left off.</td>
                             </tr>
                             <tr data-cat="research">
                                 <td>armitage-research</td>
                                 <td>You</td>
-                                <td>Answers a hard question end to end: plans the research, waits for your approval,
-                                    reads each source, and reports with the exact Zotero page behind every finding.</td>
+                                <td>Plans the research, waits for your approval, reads each source, and reports with the exact Zotero page behind every finding.</td>
                             </tr>
                             <tr data-cat="research">
                                 <td>armitage-consolidate</td>
                                 <td>You</td>
-                                <td>Turns a reviewed research report into linked memory notes and an Obsidian canvas,
-                                    written only after you approve.</td>
+                                <td>Turns an approved research report into linked memory notes and an Obsidian canvas.</td>
                             </tr>
                             <tr data-cat="research">
                                 <td>armitage-tutor</td>
                                 <td>You</td>
-                                <td>Teaches you step by step instead of just writing the answer, grounded in your code,
-                                    notes and papers.</td>
+                                <td>Teaches you step by step instead of just writing the answer, grounded in your code, notes and papers.</td>
                             </tr>
                             <tr data-cat="engineering">
                                 <td>armitage-swe</td>
                                 <td>Agent</td>
-                                <td>Before a big change (over 3 files or 80 lines, a new feature, a migration), writes a
-                                    design plan and asks its open questions. Implements only after you approve.</td>
+                                <td>Before a big change (over 3 files or 80 lines, a new feature, a migration), writes a design plan and implements only after you approve.</td>
                             </tr>
                             <tr data-cat="engineering">
                                 <td>armitage-issues</td>
                                 <td>You</td>
-                                <td>Writes, searches and triages GitHub issues as Armitage's own GitHub user. Nothing is
-                                    sent until you approve it.</td>
+                                <td>Writes, searches and triages GitHub issues as Armitage's own GitHub user. Nothing is sent until you approve.</td>
                             </tr>
                             <tr data-cat="engineering">
                                 <td>armitage-maintain</td>
                                 <td>You</td>
-                                <td>Beginner-friendly advice on versioning, git workflow, changelogs, releases and
-                                    roadmaps, based on the repository's real state.</td>
+                                <td>Advice on versioning, git workflow, changelogs, releases and roadmaps, based on the repository's real state.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-learn</td>
                                 <td>Agent</td>
-                                <td>Saves findings as citation-backed notes in the memory cache, so later sessions can
-                                    recall what is true and what to do next.</td>
+                                <td>Saves findings as citation-backed notes so later sessions can recall them.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-decide</td>
                                 <td>Agent</td>
-                                <td>The moment you settle something ("never X", "keep Y"), records it with the reason
-                                    and your own words, so no later session proposes the opposite.</td>
+                                <td>Records what you settle ("never X", "keep Y") with the reason and your words, so no later session proposes the opposite.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-user</td>
                                 <td>Agent</td>
-                                <td>Maintains your profile: preferences, corrections, goals and deadlines. Records a
-                                    fact the turn you state it.</td>
+                                <td>Maintains your profile: preferences, corrections, goals and deadlines.</td>
                             </tr>
                             <tr data-cat="memory">
                                 <td>armitage-obsidian</td>
                                 <td>Agent</td>
-                                <td>Formats notes for Obsidian and builds tables, boards and canvas views of the memory
-                                    when you ask for a map or dashboard.</td>
+                                <td>Formats notes for Obsidian and builds tables, boards and canvas maps of the memory on request.</td>
                             </tr>
                             <tr data-cat="core">
                                 <td>armitage-help</td>
@@ -779,10 +690,9 @@
                         </tbody>
                     </table>
                     <p class="ledger-legend">
-                        Also bundled from the Caveman project (MIT), outside Armitage's citation system:
-                        <code>work-patterns</code> (six working habits, such as investigate-first and
-                        surgical-patch), <code>caveman</code>, <code>caveman-commit</code> and
-                        <code>caveman-review</code> (terse writing and review helpers).
+                        Also bundled from the Caveman project (MIT), outside the citation system:
+                        <code>work-patterns</code> (working habits such as investigate-first and surgical-patch),
+                        <code>caveman</code>, <code>caveman-commit</code> and <code>caveman-review</code>.
                     </p>
                 </div>
             </section>
