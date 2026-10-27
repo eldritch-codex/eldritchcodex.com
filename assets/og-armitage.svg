@@ -73,7 +73,7 @@
   <rect width="1200" height="630" fill="url(#veil)"/>
   <rect width="1200" height="630" fill="url(#vfd-hex)" mask="url(#vfd-mask)"/>
 
-  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74" filter="url(#vfd-glow)">ELDRITCHCODEX · III · AGENT, SKILLSET &amp; CLI</text>
+  <text x="132" y="96" font-family="IBM Plex Mono" font-size="15" letter-spacing="3.4" fill="#7e7b74" filter="url(#vfd-glow)">ELDRITCHCODEX · III · AGENT TOOLKIT</text>
   <rect x="72" y="136" width="640" height="1" fill="#d9a75c" fill-opacity="0.32"/>
 
   <svg x="72" y="66" width="48" height="48" viewBox="236 230 548 562" preserveAspectRatio="xMidYMid meet">
@@ -87,12 +87,12 @@
 </svg>
 
   <text x="70" y="300" font-family="Fraunces, Georgia, serif" font-weight="300" font-size="100" fill="#ece8df" letter-spacing="-1.5" filter="url(#vfd-glow)">Armitage</text>
-  <text x="72" y="356" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#d9a75c" filter="url(#vfd-glow)">Source-grounded agent, skillset and CLI</text>
+  <text x="72" y="356" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="30" fill="#d9a75c" filter="url(#vfd-glow)">Source-grounded agent toolkit</text>
 
   <text font-family="IBM Plex Sans" font-size="21" fill="#b7b4ac">
-    <tspan x="72" y="440">How I use coding agents without giving up learning from first principles. It runs on</tspan>
-    <tspan x="72" y="472">Pi, reads your Zotero library and works in Zed through a custom ACP adapter. Every</tspan>
-    <tspan x="72" y="504">factual claim must point to a source, or it is cut or marked unverified.</tspan>
+    <tspan x="72" y="440">The model answers from three sources you choose: your Zotero library, a Markdown</tspan>
+    <tspan x="72" y="472">memory and your workspace code. Every answer cites them, with links that open the</tspan>
+    <tspan x="72" y="504">Zotero item or the code file at the right page or line.</tspan>
   </text>
 
   <rect x="72" y="556" width="1056" height="1" fill="#d9a75c" fill-opacity="0.16"/>

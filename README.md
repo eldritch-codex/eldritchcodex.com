@@ -5,7 +5,7 @@ and mathematics and learning by building, from rendering and simulation to the t
 
 - **[Nodens](nodens/)**: a C++23 application framework built on modules.
 - **[Nyar](nyar/)**: a Vulkan renderer, built as a learning exercise for Nodens.
-- **[Armitage](armitage/)**: a source-grounded personal agent and research toolkit, with a small core that other tools plug into.
+- **[Armitage](armitage/)**: an agent toolkit (CLI, skillset and custom Pi harness) that answers from your Zotero library, a Markdown memory and your workspace code, and cites each source.
 
 The sources behind the projects are listed in a [public Zotero library](https://www.zotero.org/groups/6489354/eldritchcodex).
 

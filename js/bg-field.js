@@ -1,6 +1,6 @@
 // Animated background: the astrolabe's rings drift outward from the hub, in page space so
-// they scroll with the content.
-// The static gradients in css/style.css remain as the fallback.
+// they scroll with the content. It draws the same layers as the static gradients in css/style.css
+// (rings, axis, lattice), which remain as the fallback; the canvas only adds the motion.
 (() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -8,8 +8,6 @@
     const RING_GAP = 104;      // px between bone rings
     const RING_SPEED = 5;      // px/s outward drift
     const HUB_Y = -90;         // page-space y of the hub
-    const RINGS_FADE_FROM = 380;   // page-space y where the rings start to fade ...
-    const RINGS_FADE_TO = 760;     // ... and where they are gone
 
     const BONE = '236, 232, 223';
     const BLUE = '110, 168, 214';
@@ -69,26 +67,66 @@
     let width = 0, height = 0, dpr = 1, hubX = 0;
     let raf = 0, revealed = false;
 
+    // Hide the static fallback once the canvas is drawing. This has to happen on the first frame
+    // wherever the page is scrolled: a reload restores the scroll position, and below the fade the
+    // frame only clears the canvas, so the fallback used to stay until the user scrolled back up.
+    function reveal() {
+        if (revealed) return;
+        revealed = true;
+        root.classList.add('bg-live');
+    }
+
     function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
-        dpr = 1;   // the lines are faint and thin; a full-density canvas costs far more than it shows
+        // Match the screen's pixel density (capped at 2), or the thin rings are drawn small and stretched.
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
         canvas.width = Math.round(width * dpr);
         canvas.height = Math.round(height * dpr);
         const hub = getComputedStyle(root).getPropertyValue('--hub-x').trim();
         hubX = hub.endsWith('%') ? (parseFloat(hub) / 100) * width : parseFloat(hub) || width * 0.82;
     }
 
-    function ring(cx, cy, r, color, alpha) {
-        if (r <= 0) return;
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    // The same layers as the static gradients in css/style.css, in page space, with the rings moving.
+    // Rings: bone every RING_GAP, blue every second, amber every fourth. Axis: one line through the hub.
+    // Lattice: faint 45 and -45 degree lines, LATTICE_GAP apart, fixed to the page.
+    const LATTICE_GAP = 148;
+    const LATTICE_STEP = LATTICE_GAP * Math.SQRT2;   // distance between lattice lines along an axis
+
+    function rings(cx, cy, period, offset, color, alpha, near, far) {
         ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+        ctx.beginPath();
+        // Start at the first ring that can reach the screen; the others are far off and cost time.
+        const first = Math.max(0, Math.floor((near - offset) / period));
+        for (let r = offset + first * period; r < far; r += period) {
+            if (r <= 0) continue;
+            ctx.moveTo(cx + r, cy);
+            ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        }
+        ctx.stroke();
+    }
+
+    function lattice(scroll) {
+        const pageW = root.clientWidth || width;
+        const pageH = Math.max(root.scrollHeight, height);
+        ctx.strokeStyle = `rgba(${BONE}, 0.012)`;
+        ctx.beginPath();
+        // 45deg: lines run down and to the right, through y = x + (pageH - scroll) - k * step.
+        for (let b = (pageH - scroll) % LATTICE_STEP - LATTICE_STEP; b < height; b += LATTICE_STEP) {
+            if (b + width < 0) continue;
+            ctx.moveTo(0, b);
+            ctx.lineTo(width, b + width);
+        }
+        // -45deg: lines run up and to the right, through y = c - x with c = pageW + pageH - scroll - k * step.
+        const c0 = (pageW + pageH - scroll) % LATTICE_STEP;
+        for (let c = c0; c < width + height; c += LATTICE_STEP) {
+            ctx.moveTo(0, c);
+            ctx.lineTo(width, c - width);
+        }
         ctx.stroke();
     }
 
     let lastDraw = 0;
-    let cleared = false;
 
     function frame(now) {
         // The drift is slow, so about 30 fps looks the same and halves the canvas work.
@@ -96,28 +134,24 @@
         lastDraw = now;
         const t = now / 1000;
         const scroll = window.scrollY || 0;
-        // Past the fade, everything drawn here is off screen: clear once and wait.
-        if (scroll > RINGS_FADE_TO + 60) {
-            if (!cleared) { ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, width, height); cleared = true; }
-            raf = requestAnimationFrame(frame);
-            return;
-        }
-        cleared = false;
         const cy = HUB_Y - scroll;
 
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, width, height);
         ctx.lineWidth = 1;
 
-        // Farthest visible distance from the hub, to know how many rings to draw.
-        const reach = Math.hypot(Math.max(hubX, width - hubX), Math.max(cy, height - cy));
-        // The offset cycles through four gaps, so the 1-in-2 and 1-in-4 ring tones repeat seamlessly.
+        lattice(scroll);
+
+        // Nearest and farthest distance from the hub to the screen: only rings between them are drawn.
+        const nearX = hubX < 0 ? -hubX : hubX > width ? hubX - width : 0;
+        const nearY = cy < 0 ? -cy : cy > height ? cy - height : 0;
+        const near = Math.hypot(nearX, nearY);
+        const far = Math.hypot(Math.max(hubX, width - hubX), Math.max(Math.abs(cy), Math.abs(height - cy)));
+        // The offset cycles through four gaps, so every ring tone repeats seamlessly.
         const offset = (t * RING_SPEED) % (RING_GAP * 4);
-        for (let i = 0, r = offset; r < reach; i++, r += RING_GAP) {
-            if (i % 4 === 0) ring(hubX, cy, r, AMBER, 0.04);
-            else if (i % 2 === 0) ring(hubX, cy, r, BLUE, 0.035);
-            else ring(hubX, cy, r, BONE, 0.03);
-        }
+        rings(hubX, cy, RING_GAP, offset, BONE, 0.03, near, far);
+        rings(hubX, cy, RING_GAP * 2, offset, BLUE, 0.035, near, far);
+        rings(hubX, cy, RING_GAP * 4, offset, AMBER, 0.04, near, far);
 
         // The instrument's vertical axis through the hub.
         ctx.beginPath();
@@ -126,23 +160,9 @@
         ctx.strokeStyle = `rgba(${BONE}, 0.03)`;
         ctx.stroke();
 
-        // The rings and the axis belong to the top of the page: lower down, where they would cross
-        // the sections as faint diagonal streaks, they fade out.
-        const fade = ctx.createLinearGradient(0, RINGS_FADE_FROM - scroll, 0, RINGS_FADE_TO - scroll);
-        fade.addColorStop(0, 'rgba(0,0,0,1)');
-        fade.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.save();
-        ctx.globalCompositeOperation = 'destination-in';
-        ctx.fillStyle = fade;
-        ctx.fillRect(0, 0, width, height);
-        ctx.restore();
-
         for (const ring of GLYPH_RINGS) glyphRing(hubX, cy, ring, t);
 
-        if (!revealed) {
-            revealed = true;
-            root.classList.add('bg-live'); // hide the static fallback
-        }
+        reveal();
         raf = requestAnimationFrame(frame);
     }
 

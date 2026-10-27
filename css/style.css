@@ -2810,3 +2810,65 @@ body::after {
         display: none;
     }
 }
+
+/* Skill groups: the note sits directly under its label, and the table follows without a gap. */
+.group-note {
+    margin: 10px 0 4px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.group-note+.ledger-table tbody tr:first-child td {
+    border-top: 0;
+}
+
+/* The terminal mock-up has fixed columns: size its text to the figure's width so no line is cut off.
+   A monospace character is 0.6em wide and the widest row (the footer) is about 91 columns. */
+.figure:has(> .tui) {
+    container-type: inline-size;
+}
+
+.figure:has(> .tui) > .tui {
+    font-size: min(11.5px, calc((100cqw - 32px) / 55));
+    line-height: 1.5;
+}
+
+/* Rules are drawn as lines, not dashes, so they and the tinted cards fill the box's width. */
+.tui .trl {
+    display: block;
+    height: 1.5em;
+    background: linear-gradient(currentColor, currentColor) 0 50% / 100% 1px no-repeat;
+}
+
+.tui .tplan {
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    height: 1.5em;
+}
+
+.tui .tplan .trl {
+    flex: 1;
+    margin: 0 1ch;
+}
+
+/* The cards flow their text to the box's width, and the footer rows spread across it with aligned columns. */
+.tui .tmc,
+.tui .tmu {
+    white-space: pre-wrap;
+    padding-left: 2ch;
+    padding-right: 2ch;
+}
+
+.tui .tfrow {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1ch;
+}
+
+.tui .tfgrid {
+    display: grid;
+    grid-template-columns: 9ch 12ch 17ch 16ch 13ch 17ch;
+    column-gap: 1ch;
+    justify-content: space-between;
+}
