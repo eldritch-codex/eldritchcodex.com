@@ -260,7 +260,7 @@ Which skills does the swe-devops role load?
 <span class="tl">   <span class="tg">✓</span> grep <span class="tq">“hiddenChargeBodies”</span>   <span class="tq">→ 2 matches  0.1s</span></span>
 <span class="tl">   <span class="tg">✓</span> tasks set   <span class="tq">→ 3/3 complete</span></span>
 <span class="tl"> </span><span class="tblk tmc"> 
-swe-devops loads armitage-maintain, armitage-zed and work-patterns.<span class="tf">[^1]</span> A skill the model can already start stays a pointer that it loads when needed. Only a skill the model cannot start has its text added to the prompt.<span class="tf">[^2]</span>
+swe-devops loads armitage-maintain and work-patterns.<span class="tf">[^1]</span> A skill the model can already start stays a pointer that it loads when needed. Only a skill the model cannot start has its text added to the prompt.<span class="tf">[^2]</span>
  
 <span class="tq">[^1] agent/src/armitage_agent/pi/roles/swe-devops.md:7</span>
 <span class="tq">[^2] agent/src/armitage_agent/pi/extensions/armitage-role.ts:149</span>
@@ -471,13 +471,13 @@ swe-devops loads armitage-maintain, armitage-zed and work-patterns.<span class="
                         <li><span class="item-idx">Builder</span>
                             <div>
                                 <h4 class="role-name">swe-coder</h4>
-                                <p>Builds one phase of an approved plan, proves it with tests and its docs, then stops so you can commit it. Never commits itself. Skills: <code>armitage-swe</code>, <code>armitage-zed</code>, <code>work-patterns</code>.</p>
+                                <p>Builds one phase of an approved plan, proves it with tests and its docs, then stops so you can commit it. Never commits itself. Skills: <code>armitage-swe</code>, <code>work-patterns</code>.</p>
                             </div>
                         </li>
                         <li><span class="item-idx">Delivery</span>
                             <div>
                                 <h4 class="role-name">swe-devops</h4>
-                                <p>Handles CI/CD, releases, versioning and git, and groups the phase commits before a push. Writes no application code, and confirms before any commit, push, tag or deploy. Skills: <code>armitage-maintain</code>, <code>armitage-zed</code>, <code>work-patterns</code>.</p>
+                                <p>Handles CI/CD, releases, versioning and git, and groups the phase commits before a push. Writes no application code, and confirms before any commit, push, tag or deploy. Skills: <code>armitage-maintain</code>, <code>work-patterns</code>.</p>
                             </div>
                         </li>
                     </ul>
@@ -673,10 +673,6 @@ swe-devops loads armitage-maintain, armitage-zed and work-patterns.<span class="
                             <tr>
                                 <td>armitage-swe</td>
                                 <td>Before a big change (over 3 files or 80 lines, a new feature, a migration), writes a design plan and implements only after you approve.</td>
-                            </tr>
-                            <tr>
-                                <td>armitage-zed</td>
-                                <td>Builds, runs, tests and debugs a project through its Zed tasks, debug scenarios and dev container, without opening a way out of the sandbox.</td>
                             </tr>
                             <tr>
                                 <td>armitage-github</td>
